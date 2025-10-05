@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kaseb.Views.AddAds_Childrens.ProcessingOfUpladAd"
+             xmlns:Childrens="clr-namespace:Kaseb.Views.Lobby_Childrens"
+             xmlns:Elements="clr-namespace:Kaseb.Views.Element"
+             >
+
+    <Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="100" ></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+            <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Black}}" Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+                <Grid>
+                    <Label Text="درحال ثبت آگهی" HorizontalOptions="Center" VerticalOptions="Center" FontSize="18" FontAttributes="None"></Label>
+                </Grid>
+            </Border>
+
+
+            <Grid  Grid.Row="1"  >
+
+
+            </Grid>
+
+            <Elements:Header></Elements:Header>
+            <Childrens:MenuAPP Grid.Row="2" isMapClicked="True" ></Childrens:MenuAPP>
+
+        </Grid>
+    </Border>
+</Grid>

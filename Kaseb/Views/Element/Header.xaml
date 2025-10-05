@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Border xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             xmlns:VM="clr-namespace:Kaseb.ViewModels.Element" 
+             xmlns:Models="clr-namespace:Kaseb.Models" Margin="15,10,15,0"
+             xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui" 
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material" 
+             Background="Transparent" StrokeThickness="0" 
+             x:Class="Kaseb.Views.Element.Header">
+    <Border.Shadow>
+        <Shadow Brush="Black" Opacity=".2"></Shadow>
+    </Border.Shadow>
+    <Border.BindingContext>
+        <VM:HeaderVM />
+    </Border.BindingContext>
+    <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="24*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="12*"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="2" >
+            <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray600}}" StrokeShape="RoundRectangle 10" StrokeThickness="0">
+                    <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
+                    <Label Grid.Column="1" Text="{x:Static Models:FontAwsomeIconLoader.LocationDot}" TextColor="{DynamicResource Primary}" FontSize="18" VerticalTextAlignment="Center" FontFamily="7Awesome" Margin="10"></Label>
+                    <Label Grid.Column="3" Text="همدان"  FontFamily="Vazirmatn" TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" FontSize="18" VerticalTextAlignment="Center" Margin="2" ></Label>
+                    </StackLayout>
+                </Border>
+            </Border>
+            <Border Grid.Column="0"  >
+            <material:ButtonView PressedCommand="{Binding  Search_LoadCommand}" Margin="0" Padding="0" StrokeShape="RoundRectangle 10" StrokeThickness="0">
+                <Border   Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray600}}" StrokeShape="RoundRectangle 10" StrokeThickness="0">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="8*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="1"   Text="{x:Static Models:FontAwsomeIconLoader.MagnifyingGlass}" TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" FontSize="18" VerticalTextAlignment="Center"  FontFamily="7Awesome" Margin="5,0,5,0"></Label>
+                        <Label Grid.Column="2" Text="جستجوی محصولات" FontSize="18" TextColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray200}}" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" ></Label>
+                    </Grid>
+                </Border>
+
+            </material:ButtonView>
+        </Border>
+
+    </Grid>
+    
+
+
+</Border>

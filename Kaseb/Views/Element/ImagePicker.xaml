@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ur:ButtonView xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" Padding="0" Margin="5,5,5,5"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps" x:Name="ImagePickerElement" 
+             xmlns:Models="clr-namespace:Kaseb.Models" FlowDirection="RightToLeft" WidthRequest="80" HeightRequest="80"
+             xmlns:ur="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material" Background="Transparent"
+             xmlns:urElement="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             x:Class="Kaseb.Views.Element.ImagePicker" Tapped="ImagePickerElement_Tapped">
+
+    <Grid>
+
+        <Border  
+      StrokeShape="RoundRectangle 10,10,10,10"
+      Stroke="{DynamicResource Gray100}" 
+      StrokeThickness="0"
+      Margin="0,0,0,0" Padding="0">
+
+            <Image 
+                Source="{Binding Source={x:Reference ImagePickerElement}, Path=Images.Source ,Mode=TwoWay}"
+                Aspect="AspectFill" WidthRequest="80" HeightRequest="80"  ></Image>
+        </Border>
+
+        <Border  
+      StrokeShape="RoundRectangle 10,10,10,10" HorizontalOptions="Fill" VerticalOptions="Fill"
+      Background="{AppThemeBinding Dark={StaticResource Gray900}, Light={StaticResource Gray100}}" 
+      Opacity=".9" IsVisible="False" x:Name="DeleteImageBorder"
+      StrokeThickness="0"
+      Margin="0,0,0,0">
+            <Grid>
+                <Label Text="حذف عکس؟" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0,20"></Label>
+                <Border WidthRequest="50"
+                        HorizontalOptions="Center" VerticalOptions="Center"
+                        Margin="0,30,0,0"
+                        StrokeShape="RoundRectangle 10,10,10,10" 
+                        HeightRequest="20"
+                        Background="{StaticResource Primary}">
+                    <Label Text="بله" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White"></Label>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+
+</ur:ButtonView>

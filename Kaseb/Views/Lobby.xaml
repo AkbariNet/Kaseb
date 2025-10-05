@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             xmlns:Models="clr-namespace:Kaseb.Models" 
+             xmlns:loc="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+             xmlns:Childrens="clr-namespace:Kaseb.Views.Lobby_Childrens"
+             xmlns:Elements="clr-namespace:Kaseb.Views.Element"
+             xmlns:ur="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             xmlns:urElement="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             x:Class="Kaseb.Views.Lobby">
+
+    <Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="100" ></RowDefinition>
+            </Grid.RowDefinitions>
+
+           
+            <Grid  Grid.Row="1"  >
+                
+                    <Elements:Selector ></Elements:Selector>
+                
+            </Grid>
+
+            <Elements:Header></Elements:Header>
+            <Childrens:MenuAPP Grid.Row="2" isMapClicked="True" ></Childrens:MenuAPP>
+
+        </Grid>
+    </Border>
+
+</Grid>

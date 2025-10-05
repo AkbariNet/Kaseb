@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kaseb.Views.Element.AdElementPage" BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray900}}"
+             xmlns:VM="clr-namespace:Kaseb.ViewModels" x:Name="AdElementPageView"
+             xmlns:Models="clr-namespace:Kaseb.Models" 
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material" 
+             xmlns:Controls="clr-namespace:Kaseb.Controls"
+             >
+    <Grid.BindingContext>
+        <VM:AddAdsVM />
+    </Grid.BindingContext>
+
+    <uranium:UraniumContentPage Grid.RowSpan="4">
+        <Grid>
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" ></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="1"  Margin="0,-60,0,0">
+                <StackLayout  >
+                    <Border Margin="50,50,50,0"
+            StrokeShape="RoundRectangle 50,50,50,50" 
+            Stroke="{StaticResource Gray600}" 
+            StrokeThickness="0"  
+            >
+                        <Border.Triggers>
+                            <DataTrigger TargetType="Border"
+                                Binding="{Binding IsUrgent}"
+                                Value="True">
+                            </DataTrigger>
+                            <DataTrigger TargetType="Border"
+                                Binding="{Binding IsUrgent}"
+                                Value="False">
+                            </DataTrigger>
+                        </Border.Triggers>
+
+                        <Image Aspect="AspectFill" HeightRequest="300" Source="{Binding Image}">
+
+                        </Image>
+                    </Border>
+                    <StackLayout  Margin="10,30,10,10">
+                        <Label Text="{Binding Title}"  FontFamily="VazirmatnBlack"  FontSize="24" HorizontalOptions="Center"></Label>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <Label Text="در "  FontFamily="VazirmatnMedium" FontSize="16" Margin="0,10,0,0" Opacity="0.5" HorizontalOptions="Center"></Label>
+
+                            <Label Text="{Binding City}"  FontFamily="VazirmatnMedium" FontSize="16" Margin="0,10,0,0" Opacity="0.5" HorizontalOptions="Center"></Label>
+                  
+                        </StackLayout>
+                       </StackLayout >
+                    <StackLayout Margin="0,15,0,0" Spacing="10" Orientation="Horizontal"  HorizontalOptions="Center">
+                        <Border HeightRequest="50"  StrokeShape="20"
+                    BackgroundColor="{StaticResource Primary}"
+                    >
+                            <Border.Triggers>
+                                <DataTrigger TargetType="Border"
+                                    Binding="{Binding IsUrgent}"
+                                    Value="True">
+                                    <Setter Property="IsVisible" Value="True" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Border"
+                                    Binding="{Binding IsUrgent}"
+                                    Value="False">
+                                    <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                            </Border.Triggers>
+                            <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Start">
+
+                                <Label Text="{x:Static Models:FontAwsomeIconLoader.Fire}"
+                           FontFamily="7Awesome" Margin="15,0,0,0"
+                           FontSize="16" 
+                           TextColor="{StaticResource White}"
+                           VerticalOptions="Center"
+                            HorizontalOptions="Center"></Label>
+                                <Label Text="فوری" VerticalOptions="Center" 
+                            TextColor="{StaticResource White}" HorizontalOptions="Center" FontFamily="VazirmatnBlack"  Margin="0,0,15,0"></Label>
+                            </StackLayout>
+
+                        </Border>
+                        <Border HeightRequest="50"  StrokeShape="20"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}"
+                   
+                    >
+                            <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Start">
+
+                                <Label Text="{x:Static Models:FontAwsomeIconLoader.WeightHanging}"
+                           FontFamily="7Awesome" Margin="15,0,0,0"
+                           FontSize="16" 
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
+                           VerticalOptions="Center"
+                           Opacity="0.7" HorizontalOptions="Center"></Label>
+                                <Label Text="{Binding ValueOfWeighKG}" FontFamily="VazirmatnExtraBold"  VerticalOptions="Center" FontAttributes="Bold"
+                                Opacity="0.7" HorizontalOptions="Center"  Margin="0,0,15,0"></Label>
+                            </StackLayout>
+
+                        </Border>
+                        <Border HeightRequest="50"  StrokeShape="20"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}"
+                    >
+                            <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Start">
+
+                                <Label Text="{x:Static Models:FontAwsomeIconLoader.Hashtag}"
+                           FontFamily="7Awesome" Margin="15,0,0,0"
+                           FontSize="16" 
+                           TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
+                           VerticalOptions="Center"
+                           Opacity="0.7" HorizontalOptions="Center"></Label>
+                                <Label Text="{Binding ValueOfTag1}" FontFamily="VazirmatnExtraBold"  VerticalOptions="Center" FontAttributes="Bold"
+                            Opacity="0.7" HorizontalOptions="Center"  Margin="0,0,15,0"></Label>
+                            </StackLayout>
+
+                        </Border>
+                    </StackLayout>
+                    <StackLayout Margin="0,20,0,0" HorizontalOptions="Center" Orientation="Horizontal">
+
+                        <Label Text="{Binding Price}"  FontSize="18" FontAttributes="800"
+                       HorizontalTextAlignment="Center" Opacity="0.7"  FontFamily="VazirmatnBlack"
+                       HorizontalOptions="Center"></Label>
+                        <Label Text=" تومان"  FontSize="18" FontFamily="VazirmatnBlack"
+                       HorizontalTextAlignment="Center" Opacity="0.7"
+                       HorizontalOptions="Center"></Label>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="Center" Margin="0,30,0,0">
+                        <Label Text="{Binding Content}" WidthRequest="240"   FontFamily="VazirmatnLight"
+                       HorizontalTextAlignment="Center" Opacity="0.7"
+                       HorizontalOptions="Center"></Label>
+
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Grid.Row="2" Margin="0,0,0,0" Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+                <Border StrokeShape="20"  >
+                    <Button
+                StyleClass="FilledButton" FontFamily="VazirmatnBlack" 
+                Text="تماس" HeightRequest="50" WidthRequest="150" TextColor="{AppThemeBinding Dark={StaticResource Primary}, Light={StaticResource White}}"
+                    FontSize="18" x:Name="CallButton" Clicked="CallButton_Clicked" ></Button>
+                </Border>
+                <Border StrokeShape="20"  >
+                    <Button
+           StyleClass="TextButton" FontFamily="VazirmatnBold" 
+           Text="جزئیات آگهی" HeightRequest="50" 
+               FontSize="18" ></Button>
+                </Border>
+            </StackLayout>
+
+            <Border Background="Transparent">
+                <Grid>
+                    <Button StyleClass="FilledButton" WidthRequest="60" ImageSource="{FontImageSource
+                     Glyph={x:Static Models:FontAwsomeIconLoader.ArrowRight},
+                     Size=24, 
+                     FontFamily=7Awesome
+                     , Color={AppThemeBinding Light={DynamicResource Black},
+                     Dark={StaticResource White}}}"  HorizontalOptions="Start"
+                         Margin="10" CornerRadius="15" Opacity="0.8"
+                         BackgroundColor="Transparent" Clicked="Button_Clicked" >
+
+                    </Button>
+                </Grid>
+            </Border>
+        </Grid>
+        <uranium:UraniumContentPage.Attachments>
+            <Controls:MyCustomBottomSheetView x:Name="bottomSheet" 
+                                  BackgroundColor="{AppThemeBinding Dark={DynamicResource Black}, Light={DynamicResource White}}"
+                                  
+                                  
+                                  StrokeShape="RoundRectangle 20,20,0,0"
+                                  Margin="0,360,0,0"
+                                  Stroke="Transparent"
+                                  StrokeThickness="0"
+                                  
+                                  DisablePageWhenOpened="False"
+                                  CloseOnTapOutside="True"
+                                  >
+
+
+                <material:BottomSheetView.Body >
+                    <Grid HeightRequest="600" 
+                          BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}">
+                        <StackLayout Margin="20" Spacing="10">
+                            <Label Text="جزئیات آگهی" FontSize="18" FontAttributes="Bold" Opacity="0.8" Margin="20,0,20,20"/>
+                            <Grid ColumnDefinitions="*,*">
+                            <Grid ColumnDefinitions="*,*">
+                                <StackLayout Orientation="Horizontal"  Margin="20,0,0,0">
+
+                                    <Label Text="مکان آگهی : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
+                                    <Label Text="{Binding City}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
+
+                                </StackLayout>
+                            </Grid>
+                            <Grid ColumnDefinitions="*,*" Grid.Column="1">
+                                <StackLayout Orientation="Horizontal"  Margin="20,0,0,0">
+
+                                    <Label Text="وزن : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
+                                    <Label Text="{Binding ValueOfWeighKG}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
+
+                                </StackLayout>
+                            </Grid>
+                            </Grid>
+                            <BoxView StyleClass="Divider" />
+                            <Grid ColumnDefinitions="*,*">
+                                <StackLayout Orientation="Horizontal"  Margin="20,0,20,0">
+
+                                    <Label Text="زمان انتشار : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
+                                    <Label Text="{Binding Date}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
+
+                                </StackLayout>
+                            </Grid>
+                            <BoxView StyleClass="Divider" />
+                            <Grid ColumnDefinitions="*,*">
+                            <StackLayout Orientation="Horizontal"  Margin="20,0,20,0">
+
+                                <Label Text="نوع فروش: " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
+                                    <Label Text="{Binding ValueOfTag1}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
+                                    <Label Text=" و فوری" FontSize="16" FontAttributes="Bold"  Opacity="0.8">
+
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label"
+                                Binding="{Binding IsUrgent}"
+                                Value="True">
+                                                <Setter Property="IsVisible" Value="True"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="Label"
+                                Binding="{Binding IsUrgent}"
+                                Value="False">
+                                                <Setter Property="IsVisible" Value="False"></Setter>
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
+
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Grid.Column="1"  Margin="20,0,20,0">
+
+                                    <Label Text="مدت : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
+                                    <Label Text="{Binding MonthForNonCash}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
+                                    <Label Text=" ماهه" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
+
+                                    <StackLayout.Triggers>
+                                        <DataTrigger TargetType="StackLayout"
+                                Binding="{Binding NonCash}"
+                                Value="True">
+                                            <Setter Property="IsVisible" Value="True"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="StackLayout"
+                                Binding="{Binding SomeOfCashMostPayed}"
+                                Value="False">
+                                            <Setter Property="IsVisible" Value="False"></Setter>
+                                        </DataTrigger>
+                                    </StackLayout.Triggers>
+                                </StackLayout>
+                            </Grid>
+                            <Label Text="پرداخت پیش پرداخت الزامی است"  Margin="20,10,20,0" FontSize="16" FontAttributes="Bold"  Opacity="0.8">
+
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label"
+                                Binding="{Binding SomeOfCashMostPayed}"
+                                Value="True">
+                                        <Setter Property="IsVisible" Value="True"></Setter>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label"
+                                Binding="{Binding SomeOfCashMostPayed}"
+                                Value="False">
+                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                            <BoxView StyleClass="Divider" />
+                            <StackLayout Spacing="10">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="تضمین موجودی آگهی: " FontSize="16" FontAttributes="Bold"  Opacity="0.3" Margin="20,0,20,0"/>
+                                    <Label Text="{Binding InventoryGuarantee}"   FontSize="16" FontAttributes="Bold"  Opacity="0.8" Margin="20,0,20,0"/>
+                                    <Label Text=" روز" FontSize="16" FontAttributes="Bold"  Opacity="0.3" Margin="0,0,20,0"/>
+
+                                </StackLayout>
+
+                                <BoxView StyleClass="Divider" />
+
+                                <StackLayout.Triggers>
+
+                                    <DataTrigger TargetType="StackLayout"
+                                Binding="{Binding InventoryGuarantee}"
+                                Value="0">
+                                        <Setter Property="IsVisible" Value="False"></Setter>
+                                    </DataTrigger>
+                                </StackLayout.Triggers>
+                            </StackLayout>
+                            <Border StrokeShape="20" HeightRequest="100" Margin="20,0,20,0">
+                                <maps:Map x:Name="MapAd">
+                                  
+                                </maps:Map>
+                            </Border>
+                        </StackLayout>
+                    </Grid>
+
+                </material:BottomSheetView.Body>
+                <material:BottomSheetView.Header>
+                    <Grid
+                  HeightRequest="30" Shadow="{Shadow Opacity=0.8}"
+                  BackgroundColor="{AppThemeBinding Light={StaticResource Gray100} , Dark= {StaticResource Gray600}}"
+                        Opacity="0.8"
+                   >
+                        <Border HeightRequest="3" WidthRequest="60" BackgroundColor="Black" StrokeShape="50" ></Border>
+                    </Grid>
+
+                </material:BottomSheetView.Header>
+
+
+            </Controls:MyCustomBottomSheetView>
+        </uranium:UraniumContentPage.Attachments>
+    </uranium:UraniumContentPage>
+
+</Grid>

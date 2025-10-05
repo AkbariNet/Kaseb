@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ur:ButtonView xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps" x:Name="SelectAdTypeElement"
+             xmlns:Models="clr-namespace:Kaseb.Models" FlowDirection="RightToLeft" BackgroundColor="Transparent"
+             xmlns:ur="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material" Background="Transparent"
+             xmlns:urElement="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             x:Class="Kaseb.Views.Element.SelectAdType" Margin="5" 
+                     xmlns:VM="clr-namespace:Kaseb.ViewModels.Element" 
+                     
+             Shadow="{Shadow Opacity=0.9, Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+
+    <ur:ButtonView.BindingContext>
+        <VM:SelectAdTypeVM />
+    </ur:ButtonView.BindingContext>
+
+    <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}"
+          Padding="5"
+          StrokeShape="10" 
+          >
+
+        <ur:ButtonView BackgroundColor="Transparent" Background="Transparent"
+                    PressedCommand="{Binding  ChangeCategoryCommand }"   >
+            <Grid ColumnDefinitions="30,*">
+                
+                <Label  Text="{x:Static Models:FontAwsomeIconLoader.Box} "
+                        FontFamily="7Awesome"                   
+                        TextColor="{AppThemeBinding Light={DynamicResource Gray950}, Dark={StaticResource White}}"
+                        ></Label>
+                <Label  Grid.Column="1"  Text="{Binding CategoryName }"  TextColor="{AppThemeBinding Light={x:StaticResource Black}, Dark={x:StaticResource White}}" ></Label>
+                <Label  Grid.Column="1" HorizontalTextAlignment="End" Text="{x:Static Models:FontAwsomeIconLoader.AngleRight} "
+           FontFamily="7Awesome"                   
+           TextColor="{AppThemeBinding Light={DynamicResource Gray950}, Dark={StaticResource White}}"
+           ></Label>
+            </Grid>
+        </ur:ButtonView>
+
+    </Border>
+</ur:ButtonView>

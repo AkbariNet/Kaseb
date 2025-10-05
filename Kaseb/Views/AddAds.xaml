@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             xmlns:Models="clr-namespace:Kaseb.Models" BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray900}}"
+             xmlns:VM="clr-namespace:Kaseb.ViewModels" x:Name="AddAdsView"
+             xmlns:Childrens="clr-namespace:Kaseb.Views.Lobby_Childrens"
+             xmlns:Elements="clr-namespace:Kaseb.Views.Element"
+             xmlns:ur="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             xmlns:urElement="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             xmlns:local="clr-namespace:Kaseb.Views.Element"
+             xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:loc="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+
+             x:Class="Kaseb.Views.AddAds">
+
+    <Grid.BindingContext>
+        <VM:AddAdsVM />
+    </Grid.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" ></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="110" ></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Black}}" Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+            <Grid>
+                <Label Text="ثبت آگهی" HorizontalOptions="Center" VerticalOptions="Center" FontSize="18" FontAttributes="None"></Label>
+                <Button StyleClass="FilledButton" WidthRequest="60" ImageSource="{FontImageSource
+                        Glyph={x:Static Models:FontAwsomeIconLoader.ArrowRight},
+                        Size=24, 
+                        FontFamily=7Awesome
+                        , Color={AppThemeBinding Light={DynamicResource Gray950},
+                        Dark={StaticResource White}}}"  HorizontalOptions="Start"
+                            Margin="10" CornerRadius="15"
+                            BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Black}}" Shadow="{Shadow Opacity=.05}" >
+
+                </Button>
+            </Grid>
+        </Border>
+
+        
+        <ScrollView  Grid.Row="1" IsVisible="True" x:Name="Section1">
+            <StackLayout>
+                <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10" Margin="10"  Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+
+                    <StackLayout>
+                        <Label Text="عکس ها *"></Label>
+
+                        <FlexLayout Direction="Row"
+                          Wrap="Wrap"  x:Name="ImagesFlex"
+                          AlignItems="Stretch"
+                          JustifyContent="Start"
+                          Margin="0,10,0,10">
+                          
+                            <ur:ButtonView HeightRequest="80" FlexLayout.Order="20" StrokeShape="0"
+                                           WidthRequest="80" Padding="0" 
+                                           HorizontalOptions="Fill" VerticalOptions="Fill"
+                                           Background="Transparent" Margin="5"
+                                           Pressed="PickPhoto">
+                                <Border Stroke="{DynamicResource Primary}" StrokeThickness="2" StrokeShape="10"
+Opacity="0.8" >
+                                    <Grid WidthRequest="80" HeightRequest="80" >
+                                        <Label Text="{x:Static Models:FontAwsomeIconLoader.Camera}" 
+       FontFamily="7Awesome"
+       FontSize="12"
+       TextColor="{DynamicResource Primary}" 
+      HorizontalOptions="Center"
+      VerticalOptions="End" Margin="0,0,0,23"
+      ></Label>
+                                        <Label Text="افزایش عکس" 
+       FontSize="12"
+       TextColor="{DynamicResource Primary}" 
+      HorizontalOptions="Center"
+      VerticalOptions="Start" Margin="0,23,0,0"
+      ></Label>
+
+                                    </Grid>
+                                </Border>
+                            </ur:ButtonView>
+
+                        </FlexLayout>
+
+                        <Label Text="شما میتوانید حداکثر 5 عکس اضافه کنید" Margin="0,10,0,0" Opacity=".2" ></Label>
+                    </StackLayout>
+                </Border>
+                <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10" Margin="10"  Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+
+                    <StackLayout>
+                        <Label Text="عنوان *"></Label>
+                        <ur:TextField BorderColor="{AppThemeBinding Light={x:StaticResource Gray300}, Dark={x:StaticResource Gray900}}" Text="{Binding Title}" BackgroundColor="Transparent" >
+                            <validation:RequiredValidation  Message="این قسمت باید پر شود" />
+                        </ur:TextField>
+                        <Label Text="0/100" Margin="0,10,0,0" Opacity=".2" ></Label>
+                    </StackLayout>
+                </Border>
+                <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10" Margin="10"  Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+                    <StackLayout>
+                        <Label Text="توضیحات *"></Label>
+                        <ur:EditorField
+                            Text="{Binding Content}"
+                            Icon="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.MoneyCheck},
+                        Size=24, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                        Dark={StaticResource White}}}"   BorderColor="{AppThemeBinding Light={x:StaticResource Gray300}, Dark={x:StaticResource Gray900}}" BackgroundColor="Transparent" >
+
+                        </ur:EditorField>
+                        <Label Text="0/500" Margin="0,10,0,0" Opacity=".2" ></Label>
+                    </StackLayout>
+                </Border>
+            </StackLayout>
+        </ScrollView>
+        <ScrollView Grid.Row="1" IsVisible="False" x:Name="Section2">
+            <StackLayout>
+                <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10" Margin="10"  Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+                    <StackLayout>
+                        <Label Text="دسته بندی *"></Label>
+                        <StackLayout Orientation="Horizontal" Margin="0,20,0,0" >
+                            <Button ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.SortDown},
+                       Size=24, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                       Dark={StaticResource White}}}" TextColor="{AppThemeBinding Light={DynamicResource Gray950},
+                       Dark={StaticResource White}}" WidthRequest="30" HorizontalOptions="Start" x:Name="OpenCollectionSelection"
+                      Command="{Binding OpenCollectionSelectionCommand}"
+                       Text="" ContentLayout="Left,10" 
+                       BackgroundColor="{AppThemeBinding Dark={StaticResource Gray900}, Light={StaticResource Gray100}}"/>
+                            <Button  MinimumWidthRequest="100" Text="{Binding CategoryName}"
+                       Command="{Binding OpenCollectionSelectionCommand}"
+                      Background="{AppThemeBinding Dark={StaticResource Gray900},
+                  Light={StaticResource Gray100}}" TextColor="{AppThemeBinding Light={DynamicResource Gray950},
+                       Dark={StaticResource White}}" Margin="10,0,10,0"  CornerRadius="10">
+
+                            </Button>
+                        </StackLayout>
+                    </StackLayout>
+                </Border>
+                <Grid ColumnDefinitions="*,*">
+                    <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10" Margin="10"  Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+
+                        <StackLayout>
+                            <Label Text="قیمت *"></Label>
+                            <ur:TextField Icon="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.MoneyBillWave},
+                        Size=24, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                        Dark={StaticResource White}}}"
+                                          Text="{Binding Price}"
+                                          BorderColor="{AppThemeBinding Light={x:StaticResource Gray300}, Dark={x:StaticResource Gray900}}"
+                                          BackgroundColor="Transparent" >
+                                <validation:RequiredValidation Message="این قسمت باید پر شود" />
+
+                                <validation:DigitsOnlyValidation Message="لطفا قیمت را بصورت عددی و صحیح وارد نمایید" />
+                            </ur:TextField>
+                            <Label Text="تومان" Margin="0,10,0,0" Opacity=".2" ></Label>
+                        </StackLayout>
+                    </Border>
+                    <Border Grid.Column="1" BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10" Margin="10"  Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+
+                        <StackLayout>
+                            <Label Text="وزن *"></Label>
+                            <ur:TextField Icon="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.WeightHanging},
+                                      Size=24, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                                      Dark={StaticResource White}}}" BorderColor="{AppThemeBinding Light={x:StaticResource Gray300},
+                                      Dark={x:StaticResource Gray900}}"
+                                          Text="{Binding ValueOfWeighKG}"
+                                          BackgroundColor="Transparent" >
+                                <validation:RequiredValidation Message="این قسمت باید پر شود" />
+
+                                <validation:DigitsOnlyValidation Message="لطفا وزن را بصورت عددی و صحیح وارد نمایید" />
+                            </ur:TextField>
+                            <Label Text="وزن برحسب کیلوگرم" Margin="0,10,0,0" Opacity=".2" ></Label>
+                        </StackLayout>
+                    </Border>
+
+                </Grid>
+                <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10" Margin="10"  Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox HorizontalOptions="Start" IsChecked="{Binding IsUrgentRequest}" ></CheckBox>
+                        <Label Text="فروش فوری (120 هزارتومان*)" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                    </StackLayout>
+                </Border>
+                <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10" Margin="10"  Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+
+                    <Border  
+                      
+                      BackgroundColor="{AppThemeBinding Light={x:StaticResource White},
+           Dark={x:StaticResource Gray600}}"
+                Padding="0" StrokeShape="10"
+                
+                Shadow="{Shadow Opacity=0.9 ,
+           Brush={AppThemeBinding Light={x:StaticResource Gray100},
+           Dark={x:StaticResource Gray600}}}">
+                        <StackLayout >
+                            <Label Text=" تعیین حداکثر تضمین موجودی" 
+                                 HorizontalOptions="Start"
+                                 VerticalOptions="Center"
+                                 Margin="0,0,0,20"/>
+                            <StackLayout Orientation="Horizontal"  Margin="10,20,0,0">
+
+                                <Label Text="حداکثر تضمین موجودی:"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center"
+                                />
+                                <ur:PickerField Margin="10,0,10,0" MinimumWidthRequest="70" SelectedItem="{Binding InventoryGuarantee}">
+                                    <ur:PickerField.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>1</x:String>
+                                            <x:String>2</x:String>
+                                            <x:String>3</x:String>
+                                            <x:String>4</x:String>
+                                            <x:String>5</x:String>
+                                            <x:String>6</x:String>
+                                            <x:String>7</x:String>
+                                            <x:String>8</x:String>
+                                            <x:String>9</x:String>
+                                            <x:String>10</x:String>
+                                            <x:String>11</x:String>
+                                            <x:String>12</x:String>
+                                            <x:String>13</x:String>
+                                            <x:String>14</x:String>
+                                            <x:String>15</x:String>
+                                            <x:String>16</x:String>
+                                            <x:String>17</x:String>
+                                            <x:String>18</x:String>
+                                            <x:String>19</x:String>
+                                            <x:String>20</x:String>
+                                            <x:String>21</x:String>
+                                            <x:String>22</x:String>
+                                            <x:String>23</x:String>
+                                            <x:String>24</x:String>
+                                            <x:String>25</x:String>
+                                            <x:String>26</x:String>
+                                            <x:String>27</x:String>
+                                            <x:String>28</x:String>
+                                            <x:String>29</x:String>
+                                        </x:Array>
+                                    </ur:PickerField.ItemsSource>
+                                </ur:PickerField>
+                                <Label Text="روز"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center"
+                                 Margin="10,0,0,0"/>
+                            </StackLayout>
+
+                        </StackLayout>
+
+                    </Border>
+                </Border>
+
+            </StackLayout>
+        </ScrollView>
+        <ScrollView Grid.Row="1" IsVisible="False" x:Name="Section3">
+            <StackLayout>
+                <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10" Margin="10"  Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+
+                    <StackLayout Orientation="Vertical">
+                        <Label Text=" شرایط فروش" HorizontalOptions="Start" VerticalOptions="Center"
+                    Margin="0,0,0,20"></Label>
+
+                        <RadioButton Content="نقدی" x:Name="CashRadioSelection" GroupName="SellType" IsChecked="True"/>
+                        <BoxView StyleClass="Divider"></BoxView>
+                        <RadioButton Content="مدت دار" x:Name="DeptRadioSelection" GroupName="SellType" IsChecked="{Binding NonCash}"/>
+                        <StackLayout>
+                            <Border  
+                                x:Name="SetDeptSection"
+                                BackgroundColor="{AppThemeBinding Light={x:StaticResource White},
+                     Dark={x:StaticResource Gray600}}"
+                          Padding="20" StrokeShape="10"
+                          Margin="10"  
+                          Shadow="{Shadow Opacity=0.9 ,
+                     Brush={AppThemeBinding Light={x:StaticResource Gray100},
+                     Dark={x:StaticResource Gray600}}}">
+                                <Border.Triggers>
+                                    <DataTrigger TargetType="Border"
+                         Binding="{Binding Source={x:Reference DeptRadioSelection}, Path=IsChecked}"
+                         Value="True">
+                                        <Setter Property="IsVisible" Value="True" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Border"
+                         Binding="{Binding Source={x:Reference DeptRadioSelection}, Path=IsChecked}"
+                         Value="False">
+                                        <Setter Property="IsVisible" Value="False" />
+                                    </DataTrigger>
+                                </Border.Triggers>
+                                <StackLayout >
+                                    <Label Text=" تعیین مدت فروش" 
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center"
+                                           Margin="0,0,0,20"/>
+                                    <StackLayout Orientation="Horizontal"  Margin="10,20,0,0">
+
+                                        <Label Text="زمان فروش:"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                          />
+                                        <ur:PickerField Margin="10,0,10,0" MinimumWidthRequest="50" SelectedItem="{Binding MonthForNonCash}">
+                                            <ur:PickerField.ItemsSource>
+                                                <x:Array Type="{x:Type x:String}">
+                                                    <x:String>1</x:String>
+                                                    <x:String>2</x:String>
+                                                    <x:String>3</x:String>
+                                                    <x:String>4</x:String>
+                                                    <x:String>5</x:String>
+                                                    <x:String>6</x:String>
+                                                    <x:String>7</x:String>
+                                                    <x:String>8</x:String>
+                                                    <x:String>9</x:String>
+                                                    <x:String>10</x:String>
+                                                    <x:String>11</x:String>
+                                                    <x:String>12</x:String>
+                                                </x:Array>
+                                            </ur:PickerField.ItemsSource>
+                                        </ur:PickerField>
+                                        <Label Text="ماهه"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           Margin="10,0,0,0"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
+                                        <CheckBox HorizontalOptions="Start"  IsChecked="{Binding SomeOfCashMostPayed}"></CheckBox>
+                                        <Label Text="پرداخت پیش پرداخت الزامی است" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                                    </StackLayout>
+                                    <BoxView StyleClass="Divider" Margin="0,20,0,20"></BoxView>
+
+                                    <Label Text=" تعیین نوع دریافت وجه" 
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center"
+                                           Margin="0,0,0,20"/>
+                                    <RadioButton Content="چک"  GroupName="DeptType"  />
+                                    <RadioButton Content="سفته" GroupName="DeptType"/>
+                                    <RadioButton Content="فاکتور"  GroupName="DeptType" />
+                                </StackLayout>
+
+                            </Border>
+                        </StackLayout>
+                    </StackLayout>
+                </Border>
+
+            </StackLayout>
+        </ScrollView>
+        <Grid Grid.Row="1" IsVisible="False" x:Name="Section4">
+            <StackLayout>
+                <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10" Margin="10"  Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+                    <StackLayout Spacing="20">
+                        <Label Text="انتخاب موقعیت جغرافیایی" />
+                        <Border  
+                            StrokeShape="RoundRectangle 10,10,10,10"
+                            Stroke="{DynamicResource Gray100}"
+                            StrokeThickness="0"
+                            Margin="0,0,0,0">
+                            <maps:Map MapType="Street" 
+                                      MapClicked="Map_MapClicked" IsShowingUser="True"
+                            HeightRequest="300">
+                                
+                                <x:Arguments>
+
+                                    <maps:MapSpan>
+                                        <x:Arguments>
+                                            <loc:Location>
+                                                <x:Arguments>
+                                                    <x:Double>34.823999</x:Double>
+                                                    <x:Double>48.429919</x:Double>
+                                                </x:Arguments>
+                                            </loc:Location>
+                                            <x:Double>.01</x:Double>
+                                            <x:Double>.01</x:Double>
+                                        </x:Arguments>
+                                    </maps:MapSpan>
+
+                                </x:Arguments>
+
+                            </maps:Map>
+
+                        </Border>
+                        <BoxView StyleClass="Divider"></BoxView>
+                    </StackLayout>
+                </Border>
+
+                <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10" Margin="10"  Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+                    <StackLayout Spacing="20">
+                        <Label Text="تگ ویژه (120 هزارتومان)" />
+                        <ur:TextField>
+                            <validation:MaxLengthValidation MaxLength="6" Message="تگ ویژه نمیتواند از 6 کارکتر بیشتر باشد"/>
+                        </ur:TextField>
+                        <Label Text="آگهی شما به عنوان ویژه ثبت شده و متن ذکر شده شما در لیست آگهی ها به نمایش در خواهد آمد." Opacity="0.3"/>
+                        
+                    </StackLayout>
+                </Border>
+
+            </StackLayout>
+        </Grid>
+        <Button Grid.Row="2" Text="بعدی"
+                StyleClass="FilledButton"
+                Clicked="NextButton_Clicked"
+                FontSize="18"
+                HeightRequest="60"
+                WidthRequest="120"
+                Margin="20,0,20,20"
+                HorizontalOptions="End"
+                VerticalOptions="Fill"
+                CornerRadius="10"  ></Button>
+        <Button Grid.Row="2" Text="قبلی" Clicked="BackButton_Clicked"
+                x:Name="SectionBackButton"
+                IsVisible="False"
+                FontSize="18"
+                HeightRequest="60"
+                WidthRequest="120"
+                Margin="20,0,160,20"
+                HorizontalOptions="End"
+                VerticalOptions="Fill"
+                CornerRadius="10"
+                BackgroundColor="Transparent"
+                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"></Button>
+
+        <!--Category Window-->
+        <Border  Background="Transparent"
+                Grid.RowSpan="3"
+                IsVisible="False" 
+                x:Name="CollectionSelection">
+         
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="30" ></RowDefinition>
+                </Grid.RowDefinitions>
+
+
+                <StackLayout Grid.Row="1" Background="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray900}}">
+                    <ScrollView>
+                        <ContentView Content="{Binding StackOfElements ,Mode=TwoWay}" >
+                        </ContentView>
+                    </ScrollView>
+
+                </StackLayout>
+                <Border Grid.Row="2" Background="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray900}}"></Border>
+            </Grid>
+        </Border>
+    </Grid>
+
+</Grid>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui" 
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material" 
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             xmlns:Models="clr-namespace:Kaseb.Models" 
+             xmlns:VM="clr-namespace:Kaseb.ViewModels.Element" 
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             
+             x:Class="Kaseb.Views.Element.SearchElement">
+    <Grid.BindingContext>
+        <VM:HeaderVM />
+    </Grid.BindingContext>
+    <Grid.Shadow>
+        <Shadow Brush="Black" Opacity=".2"></Shadow>
+    </Grid.Shadow>
+    <Border BackgroundColor="{AppThemeBinding Light={DynamicResource White},
+                Dark={StaticResource Black}}"
+                Opacity="0.8">
+    </Border>
+        
+    <Grid  VerticalOptions="Start" HorizontalOptions="Fill" HeightRequest="60" Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Border  BackgroundColor="{AppThemeBinding Light={DynamicResource Gray100},
+                Dark={StaticResource Gray950}}" Grid.ColumnSpan="3" HeightRequest="70"></Border>
+        <Button FontFamily="7Awesome" StyleClass="FilledButton" 
+                HeightRequest="50" Margin="10,5,0,0" BackgroundColor="{AppThemeBinding Light={DynamicResource Gray100},
+                Dark={StaticResource Gray900}}"
+                Command="{Binding CloseCommand}" 
+                ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.ChevronRight},
+                Size=24, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                Dark={StaticResource White}}}"></Button>
+        <material:TextField Grid.Column="1"  Margin="0,5,10,0" BorderThickness="1" Title="آگهی"  ></material:TextField>
+    </Grid>
+
+
+</Grid>

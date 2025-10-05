@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<uranium:UraniumContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"  
+             xmlns:Elements="clr-namespace:Kaseb.Views.Element" BackgroundColor="Transparent"
+             xmlns:Models="clr-namespace:Kaseb.Models" 
+             xmlns:VM="clr-namespace:Kaseb.ViewModels" 
+             xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material" 
+             xmlns:loc="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+             xmlns:local="clr-namespace:Kaseb.Views.Element"
+                    Padding="0,-70,0,0" 
+             xmlns:Controls="clr-namespace:Kaseb.Controls"
+             x:Class="Kaseb.Views.Element.Selector">
+    <uranium:UraniumContentPage.BindingContext>
+        <VM:AdsVM />
+    </uranium:UraniumContentPage.BindingContext>
+    
+    <Border Grid.RowSpan="2" Margin="0,0,0,-80" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Background="Transparent" >
+        <Grid>
+            <maps:Map x:Name="map" IsShowingUser="False" IsTrafficEnabled="True" IsZoomEnabled="True"  >
+                <x:Arguments>
+
+                    <maps:MapSpan>
+                        <x:Arguments>
+                            <loc:Location>
+                                <x:Arguments>
+                                    <x:Double>34.820692</x:Double>
+                                    <x:Double>48.429202</x:Double>
+                                </x:Arguments>
+                            </loc:Location>
+                            <x:Double>.02</x:Double>
+                            <x:Double>.02</x:Double>
+                        </x:Arguments>
+                    </maps:MapSpan>
+
+                </x:Arguments>
+
+            </maps:Map>
+        </Grid>
+    </Border>
+
+    <uranium:UraniumContentPage.Attachments>
+        <Controls:MyCustomBottomSheetView x:Name="bottomSheet" 
+                                  BackgroundColor="{AppThemeBinding Dark={DynamicResource Black}, Light={DynamicResource White}}"
+                                  
+                                  
+                                  StrokeShape="RoundRectangle 20,20,0,0"
+                                  Margin="0,200,0,0"
+                                  Stroke="Transparent"
+                                  StrokeThickness="0"
+                                  
+                                  DisablePageWhenOpened="False"
+                                  CloseOnTapOutside="True"
+                                  >
+
+
+            <material:BottomSheetView.Body>
+                <Grid RowDefinitions="Auto,*"  >
+                    <RefreshView   
+                 HeightRequest="450"  
+                 Command="{Binding RefreshAdsCommand}"
+                 IsRefreshing="{Binding IsRefreshing}"
+                 Margin="10,10,10,0" >
+
+                        <CollectionView 
+                     ItemsSource="{Binding Items}"  
+                     VerticalOptions="FillAndExpand"
+                     RemainingItemsThreshold="1"
+                     RemainingItemsThresholdReachedCommand="{Binding LazyLoaderCommand}"
+                     >
+
+                        <CollectionView.ItemTemplate >
+                                <DataTemplate>
+                                    <local:AdElement  Model="{Binding .}" />
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+                </RefreshView>
+                </Grid>
+
+            </material:BottomSheetView.Body>
+            <material:BottomSheetView.Header>
+                 <Grid
+                  HeightRequest="60" 
+                  BackgroundColor="{StaticResource Primary}"
+                   >
+                    <Label Text="آگهی ها" TextColor="{DynamicResource White}" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" ></Label>
+               
+                </Grid>
+                
+            </material:BottomSheetView.Header>
+
+            
+        </Controls:MyCustomBottomSheetView>
+    </uranium:UraniumContentPage.Attachments>
+
+
+    
+   
+
+</uranium:UraniumContentPage>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             xmlns:Models="clr-namespace:Kaseb.Models" 
+             xmlns:VM="clr-namespace:Kaseb.ViewModels" 
+             xmlns:Childrens="clr-namespace:Kaseb.Views.Lobby_Childrens"
+             xmlns:Elements="clr-namespace:Kaseb.Views.Element"
+             xmlns:local="clr-namespace:Kaseb.Views.Element"
+             x:Class="Kaseb.Views.Ads">
+    <Grid.BindingContext>
+        <VM:AdsVM />
+    </Grid.BindingContext>
+    <Border >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="100" ></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <RefreshView
+            Grid.Row="1" 
+            Command="{Binding RefreshAdsCommand}"
+            IsRefreshing="{Binding IsRefreshing}"
+            Margin="15,20,15,0">
+
+                <CollectionView
+                ItemsSource="{Binding Items}"
+                RemainingItemsThreshold="1"
+               RemainingItemsThresholdReachedCommand="{Binding LazyLoaderCommand}"
+                >
+                    <CollectionView.ItemTemplate >
+                        <DataTemplate >
+                            <!-- هر آیتم خودش یک AdElementView است -->
+                            <local:AdElement Model="{Binding .}" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+            </RefreshView>
+            <Elements:Header></Elements:Header>
+
+            <Childrens:MenuAPP Grid.Row="2" isAdClicked="True" ></Childrens:MenuAPP>
+        </Grid>
+    </Border>
+
+</Grid>
