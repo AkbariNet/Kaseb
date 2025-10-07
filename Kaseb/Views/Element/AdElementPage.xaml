@@ -14,6 +14,7 @@
     </Grid.BindingContext>
 
     <uranium:UraniumContentPage Grid.RowSpan="4">
+        
         <Grid>
 
 
@@ -41,10 +42,10 @@
                                 Value="False">
                             </DataTrigger>
                         </Border.Triggers>
+                        <material:ButtonView Tapped="ImageView_Tapped" Padding="0" Stroke="Transparent" StrokeThickness="0">
 
-                        <Image Aspect="AspectFill" HeightRequest="300" Source="{Binding Image}">
-
-                        </Image>
+                            <Image Aspect="AspectFill" HeightRequest="300" Source="{Binding Image}"/>
+                        </material:ButtonView>
                     </Border>
                     <StackLayout  Margin="10,30,10,10">
                         <Label Text="{Binding Title}"  FontFamily="VazirmatnBlack"  FontSize="24" HorizontalOptions="Center"></Label>
@@ -143,7 +144,8 @@
                     FontSize="18" x:Name="CallButton" Clicked="CallButton_Clicked" ></Button>
                 </Border>
                 <Border StrokeShape="20"  >
-                    <Button
+                    <Button x:Name="DetailButton"  
+                        Clicked="DetailButton_Clicked"
            StyleClass="TextButton" FontFamily="VazirmatnBold" 
            Text="جزئیات آگهی" HeightRequest="50" 
                FontSize="18" ></Button>
@@ -165,13 +167,15 @@
                 </Grid>
             </Border>
         </Grid>
+        
         <uranium:UraniumContentPage.Attachments>
-            <Controls:MyCustomBottomSheetView x:Name="bottomSheet" 
+            <Controls:MyCustomBottomSheetView 
+                x:Name="bottomSheet" 
                                   BackgroundColor="{AppThemeBinding Dark={DynamicResource Black}, Light={DynamicResource White}}"
                                   
                                   
                                   StrokeShape="RoundRectangle 20,20,0,0"
-                                  Margin="0,360,0,0"
+                                  Margin="0,0,0,0"
                                   Stroke="Transparent"
                                   StrokeThickness="0"
                                   
@@ -179,12 +183,27 @@
                                   CloseOnTapOutside="True"
                                   >
 
+                <Controls:MyCustomBottomSheetView.Triggers>
+                    <DataTrigger TargetType="Controls:MyCustomBottomSheetView"
+                                    Binding="{Binding Source={x:Reference AdElementPageView}, Path=isDetailVisible}"
+                                    Value="True">
+                        <Setter Property="IsVisible" Value="True" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Controls:MyCustomBottomSheetView"
+                                    Binding="{Binding Source={x:Reference AdElementPageView}, Path=isDetailVisible}"
+                                    Value="False">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                </Controls:MyCustomBottomSheetView.Triggers>
+
 
                 <material:BottomSheetView.Body >
-                    <Grid HeightRequest="600" 
+                    <ScrollView HeightRequest="450">
+                    <Grid 
                           BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}">
                         <StackLayout Margin="20" Spacing="10">
                             <Label Text="جزئیات آگهی" FontSize="18" FontAttributes="Bold" Opacity="0.8" Margin="20,0,20,20"/>
+                            
                             <Grid ColumnDefinitions="*,*">
                             <Grid ColumnDefinitions="*,*">
                                 <StackLayout Orientation="Horizontal"  Margin="20,0,0,0">
@@ -297,7 +316,7 @@
                             </Border>
                         </StackLayout>
                     </Grid>
-
+                    </ScrollView>
                 </material:BottomSheetView.Body>
                 <material:BottomSheetView.Header>
                     <Grid
@@ -314,5 +333,5 @@
             </Controls:MyCustomBottomSheetView>
         </uranium:UraniumContentPage.Attachments>
     </uranium:UraniumContentPage>
-
+    <Grid IsVisible="False" x:Name="GridOfImages" Background="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"></Grid>
 </Grid>

@@ -28,7 +28,7 @@
         
         <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Black}}" Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
             <Grid>
-                <Label Text="ثبت آگهی" HorizontalOptions="Center" VerticalOptions="Center" FontSize="18" FontAttributes="None"></Label>
+                <Label Text="ثبت آگهی" HorizontalOptions="Center" VerticalOptions="Center" FontFamily="VazirmatnBold" FontSize="18" FontAttributes="None"></Label>
                 <Button StyleClass="FilledButton" WidthRequest="60" ImageSource="{FontImageSource
                         Glyph={x:Static Models:FontAwsomeIconLoader.ArrowRight},
                         Size=24, 
@@ -36,6 +36,7 @@
                         , Color={AppThemeBinding Light={DynamicResource Gray950},
                         Dark={StaticResource White}}}"  HorizontalOptions="Start"
                             Margin="10" CornerRadius="15"
+                        
                             BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Black}}" Shadow="{Shadow Opacity=.05}" >
 
                 </Button>

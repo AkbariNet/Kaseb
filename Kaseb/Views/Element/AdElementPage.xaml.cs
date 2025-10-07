@@ -1,5 +1,6 @@
 ﻿using Kaseb.Services;
 using Kaseb.ViewModels;
+using Kaseb.Views.Element.AdElementPageChildrens;
 using Microsoft.Maui.Maps;
 using UraniumUI.Pages;
 
@@ -47,5 +48,17 @@ public partial class AdElementPage : Grid
         var location = new Location(ViewModel.Latitude, ViewModel.Longitude);
         var span = MapSpan.FromCenterAndRadius(location, Distance.FromKilometers(2));
         MapAd.MoveToRegion(span);
+    }
+    
+    public bool isDetailVisible = false;
+    private void DetailButton_Clicked(object sender, EventArgs e) => isDetailVisible= isDetailVisible == true ? false : true;
+
+    private void ImageView_Tapped(object sender, EventArgs e)
+    {
+        AdElementImageSlider views = new AdElementImageSlider();
+        views.images = ViewModel.Images;
+        GridOfImages.Children.Add(views);
+        GridOfImages.IsVisible = true;
+
     }
 }

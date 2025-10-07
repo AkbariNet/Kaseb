@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+             x:Class="Kaseb.Views.Element.AdElementPageChildrens.AdElementImageSlider"
+             x:Name="AddElementImgaeSliderView"
+             >
+    <CarouselView x:Name="ImageSlider"
+              HeightRequest="300" Background="Red"
+              IndicatorView="indicator">
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+                <Image Source="{Binding}" 
+                   Aspect="AspectFill"
+                   WidthRequest="350"
+                   HeightRequest="200"
+                   Margin="5"
+                   />
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+    </CarouselView>
+    
+    <d:IndicatorView x:Name="indicator"
+               IndicatorColor="LightGray"
+               SelectedIndicatorColor="White"
+               HorizontalOptions="Center"
+               Margin="0,5,0,0"/>
+
+</Grid>

@@ -102,6 +102,9 @@
 	  <MauiXaml Update="Views\Element\AdElementPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Element\AdElementPageChildrens\AdElementImageSlider.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Element\Header.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
