@@ -58,49 +58,34 @@ namespace Kaseb.Controls
                     break;
                 case GestureStatus.Completed:
                 case GestureStatus.Canceled:
-                    bool NeedToClose = false;
                     if (this.TranslationY < this.Height * .2)
                     {
                         IsPresented = true;
-                    }
-                    else if (this.TranslationY > 300)
-                    {
-                        IsPresented = false;
-                        NeedToClose = true;
                     }
                     else
                     {
                         IsPresented = false;
                     }
 
-                    MyAlignBottomSheet(needToClose: NeedToClose);
+                    MyAlignBottomSheet();
                     break;
             }
         }
 
         // متد جدیدی که منطق AlignBottomSheet را پیاده‌سازی می‌کند
-        private void MyAlignBottomSheet(bool animate = true,bool needToClose=false)
+        private void MyAlignBottomSheet(bool animate = true)
         {
-            double y;
-            if (!needToClose)
+            double y = this.Height - Header.Height;
+            if (IsPresented)
             {
-
-                if (IsPresented)
-                {
-                    y = 0;
-                    OnOpened(); // OnOpened یک متد protected virtual است و قابل فراخوانی است.
-                }
-                else
-                {
-                    y = 190;
-                    //OnClosed(); // OnClosed یک متد protected virtual است و قابل فراخوانی است.
-
-                }
+                y = 0;
+                OnOpened(); // OnOpened یک متد protected virtual است و قابل فراخوانی است.
             }
             else
             {
-                y = this.Height - Header.Height;
-                OnClosed();
+                y = 190;
+                //OnClosed(); // OnClosed یک متد protected virtual است و قابل فراخوانی است.
+
             }
 
             if (animate)
