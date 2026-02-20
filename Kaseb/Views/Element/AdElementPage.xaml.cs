@@ -49,22 +49,9 @@ public partial class AdElementPage : Grid
         var span = MapSpan.FromCenterAndRadius(location, Distance.FromKilometers(2));
         MapAd.MoveToRegion(span);
     }
-
-    public bool isDetailVisible
-    {
-        get;
-        set
-        {
-
-        }
-    }
-    private void DetailButton_Clicked(object sender, EventArgs e)
-    {
-        if (isDetailVisible) bottomSheet.IsVisible = false;
-        else bottomSheet.IsVisible = true;
-
-        isDetailVisible=!isDetailVisible;
-    }
+    
+    public bool isDetailVisible = false;
+    private void DetailButton_Clicked(object sender, EventArgs e) => isDetailVisible= isDetailVisible == true ? false : true;
 
     private void ImageView_Tapped(object sender, EventArgs e)
     {

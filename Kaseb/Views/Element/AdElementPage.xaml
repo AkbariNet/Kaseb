@@ -178,11 +178,23 @@
                                   Margin="0,0,0,0"
                                   Stroke="Transparent"
                                   StrokeThickness="0"
-                                  IsVisible="False"
+                                  
                                   DisablePageWhenOpened="False"
                                   CloseOnTapOutside="True"
                                   >
 
+                <Controls:MyCustomBottomSheetView.Triggers>
+                    <DataTrigger TargetType="Controls:MyCustomBottomSheetView"
+                                    Binding="{Binding Source={x:Reference AdElementPageView}, Path=isDetailVisible}"
+                                    Value="True">
+                        <Setter Property="IsVisible" Value="True" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Controls:MyCustomBottomSheetView"
+                                    Binding="{Binding Source={x:Reference AdElementPageView}, Path=isDetailVisible}"
+                                    Value="False">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                </Controls:MyCustomBottomSheetView.Triggers>
 
 
                 <material:BottomSheetView.Body >
