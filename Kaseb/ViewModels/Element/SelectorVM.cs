@@ -1,9 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Kaseb.Models; // AdElementModel
-using Kaseb.Models.Element;
+using KasebCore.Models; // AdElementModel
+using KasebCore.Models.Element;
 using Kaseb.Services;
-using Kaseb.Services.AdService;
+using KasebAdServices.Connection;
 using Microsoft.Maui.ApplicationModel;
 using System.Collections.ObjectModel;
 

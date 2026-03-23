@@ -1,4 +1,13 @@
 <Solution>
+  <Folder Name="/APIs/">
+    <Project Path="../../KasebAPI/KasebAPI/KasebAPI.csproj" />
+  </Folder>
+  <Folder Name="/Core/">
+    <Project Path="KasebCore/KasebCore.csproj" Id="62354778-9e7d-4d33-af27-523fac6de9ae" />
+  </Folder>
+  <Folder Name="/Services/">
+    <Project Path="KasebAdServices/KasebAdServices.csproj" Id="191db918-e35a-4c85-8d2b-8e44b0504425" />
+  </Folder>
   <Project Path="Kaseb/Kaseb.csproj">
     <Deploy />
   </Project>

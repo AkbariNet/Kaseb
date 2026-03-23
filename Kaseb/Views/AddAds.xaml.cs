@@ -1,6 +1,7 @@
 ﻿using Kaseb.Services;
 using Kaseb.Services.AdService;
 using Kaseb.ViewModels;
+using Kaseb.Views.AddAds_Childrens;
 using Kaseb.Views.Element;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Maps;
@@ -12,10 +13,13 @@ namespace Kaseb.Views
     public partial class AddAds : Grid
     {
 
-        internal AddAdsVM ViewModel => this.BindingContext as AddAdsVM;
+        AddAdsVM ViewModel=new AddAdsVM();
+     
         public  AddAds()
         {
             InitializeComponent();
+            
+            this.BindingContext = ViewModel;
             ViewModel.PropertyChanged += (s, e) =>
             {
                 if (e.PropertyName == nameof(ViewModel.IsColletionSelectionVisible))
@@ -77,6 +81,7 @@ namespace Kaseb.Views
             }
             else if (Section4.IsVisible && !AnimationReserved)
             {
+
                 ViewModel.ItsTimeToUploadAd.Invoke(images);
             }
         }
@@ -137,6 +142,7 @@ namespace Kaseb.Views
                 if (result != null)
                 {
                     var stream = await result.OpenReadAsync();
+                    
                     images.Add(new ImagePicker());
                     images[images.Count - 1].ListOfImages= images;
                     images[images.Count - 1].Images.Source = ImageSource.FromStream(() => stream);
@@ -167,6 +173,12 @@ namespace Kaseb.Views
             ViewModel.Latitude = e.Location.Latitude;
             ViewModel.Longitude = e.Location.Longitude;
             map.Pins.Add(pin);
+        }
+
+        private void exit_Clicked(object sender, EventArgs e)
+        {
+           
+            PageLoader.includePage(PageLoader.Ads);
         }
     }
 

@@ -40,11 +40,10 @@ namespace Kaseb.Views.Element
                     {
                         BindingContext = new AddAdsVM()
                         {
-
                             Model = this.Model.Clone()
+                          
                         }
                     });
-
                 }
                 catch (Exception)
                 {

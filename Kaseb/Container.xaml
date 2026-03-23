@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
              FlowDirection="RightToLeft"  Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}"
-             xmlns:Pages="clr-namespace:Kaseb.Views"
+             xmlns:Pages="clr-namespace:Kaseb.Views" 
              x:Class="Kaseb.Container">
-    <Grid>
+    <Grid  Margin="0,50,0,20" >
         <Grid x:Name="Contain" >
 
         </Grid>

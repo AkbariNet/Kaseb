@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Kaseb.Services 
 {
-    internal class PageLoader
+    internal static class PageLoader
     {
-        public static Container MyContiner = new Container();
+        public static Container TheParent = new Container();
         public static void getCountainer(Container container)
         {
-            MyContiner = container;
+            TheParent = container;
         }
         public static Lobby Lobby = new Lobby();
         public static Ads Ads = new Ads();
@@ -25,33 +25,33 @@ namespace Kaseb.Services
             switch (PageLoadProcessing.MenuStatement)
             {
                 case PageLoadProcessing.PageState.location:
-                    MyContiner.UpdateGrid(Lobby);
+                    TheParent.UpdateGrid(Lobby);
 
                     break;
 
                 case PageLoadProcessing.PageState.ad:
-                    MyContiner.UpdateGrid(Ads);
+                    TheParent.UpdateGrid(Ads);
                     break;
 
                 case PageLoadProcessing.PageState.addAd:
-                    MyContiner.UpdateGrid(AddAds);
+                    TheParent.UpdateGrid(AddAds);
                     break;
             }
         }
-        public static void includePage(View view) => MyContiner.UpdateGrid(view);
+        public static void includePage(View view) => TheParent.UpdateGrid(view);
         public static void includeOverlay(object sender, IView Content)
         {
-            MyContiner.AddOverlay(Content);
+            TheParent.AddOverlay(Content);
         }
         public static void removeOverlay(IView Content)
         {
 
-            MyContiner.RemoveOverlay(Content);
+            TheParent.RemoveOverlay(Content);
         }
         public static void removeOverlay()
         {
 
-            MyContiner.RemoveOverlay();
+            TheParent.RemoveOverlay();
         }
     }
 }

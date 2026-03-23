@@ -4,11 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Kaseb"
-    Shell.FlyoutBehavior="Disabled"
+    x:Name="TheShell"
     Title="Kaseb">
-
-    <ShellContent
-        ContentTemplate="{DataTemplate local:Container}"
-        Route="MainPage" />
-
+    <ShellContent x:Name="MainShellContent">
+    </ShellContent>
 </Shell>

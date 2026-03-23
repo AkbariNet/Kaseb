@@ -1,3 +1,6 @@
+using Kaseb.Models.Element;
+using System.Collections.ObjectModel;
+
 namespace Kaseb.Views.Element.AdElementPageChildrens;
 
 public partial class AdElementImageSlider : Grid
@@ -5,9 +8,14 @@ public partial class AdElementImageSlider : Grid
 	public AdElementImageSlider()
 	{
 		InitializeComponent();
-        ImageSlider.ItemsSource = images;
+        List<string> imagePaths = new List<string>();
+        foreach (var item in images)
+        {
+            imagePaths.Add(item.ImagePath);
+        }
+            ImageSlider.ItemsSource = imagePaths;
     }
-    public List<string> images { get; set; }
+    public List<AdImage> images { get; set; }
 
 
 }

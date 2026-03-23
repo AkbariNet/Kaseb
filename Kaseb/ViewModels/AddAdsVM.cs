@@ -1,11 +1,8 @@
-﻿using Android.Media.TV.Ads;
-using Android.Views;
-using AndroidX.AppCompat.View.Menu;
-using AndroidX.Lifecycle;
+﻿
 using CommunityToolkit.Mvvm.Input;
-using Kaseb.Models.Element;
+using KasebCore.Models.Element;
 using Kaseb.Services;
-using Kaseb.Services.AdService;
+using KasebAdServices.Connection;
 using Kaseb.ViewModels.Element;
 using Kaseb.Views.AddAds_Childrens;
 using Kaseb.Views.Element;
@@ -15,28 +12,34 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Windows.Input;
-using static Android.Graphics.ColorSpace;
-using static Android.Icu.Text.CaseMap;
+using Enum = System.Enum;
+using Kaseb.Services.ShowingContext;
 
 namespace Kaseb.ViewModels
 {
     internal partial class AddAdsVM : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
 
+        public AddAdsVM()
+        {
+            ItsTimeToUploadAd += UploadAdFunc;
+            StackOfElements = new StackLayout();
+        }
 
         private AdElementModel _model = new AdElementModel();
-        public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public Action<List<ImagePicker>> ItsTimeToUploadAd;
+        public Action<List<ImagePicker>> ItsTimeToUploadAd ;
 
         public static string ImageToBase64(string imagePath)
         {
             if (!File.Exists(imagePath))
-                return null;
+                return "null";
 
             // پسوند فایل رو پیدا کن (jpg, png, webp, ...)
             var extension = Path.GetExtension(imagePath).ToLower().Replace(".", "");
@@ -52,26 +55,32 @@ namespace Kaseb.ViewModels
         }
         public async void UploadAdFunc(List<ImagePicker> imgs)
         {
-            Images = new List<string>();
+            Images = new List<AdImage?>();
             foreach (ImagePicker img in imgs)
             {
                 // تبدیل به Base64 و اضافه کردن به مدل
                 string base64Image = ImageToBase64(img.FilePath);
                 if (!string.IsNullOrEmpty(base64Image))
                 {
-                    Images.Add(base64Image);
+                    AdImage adImage = new AdImage { ImagePath = base64Image };
+                    Images.Add(adImage);
                 }
             }
-            UploadAd UploadAd = new UploadAd();
-            bool success = await UploadAd.UploadAdAsync(_model);
+            foreach (ImagePicker img in imgs)
+                ImagePaths.Add(img.FilePath);
 
-            if (success)
+            UploadAd UploadAd = new UploadAd();
+            GetResoultInfo success = await UploadAd.UploadAdAsync(_model);
+
+
+            if (success.IsSuccess)
             {
                 PageLoader.includePage(new ProcessingOfUpladAd());
+                MessageBox.ShowMessage(Title: success.IsSuccess.ToString(), Subtitle: success.Message, ButtonText: "OK");
             }
             else
             {
-                MessageBox.ShowMessage();
+                MessageBox.ShowMessage(Title : success.IsSuccess.ToString(),Subtitle: success.Message,ButtonText: "OK");
             }
 
         }
@@ -161,7 +170,6 @@ namespace Kaseb.ViewModels
                 SelectAdType selectAdType = new SelectAdType() { BindingContext = r };
                 StackOfElements.Children.Add(selectAdType);
             }
-            ItsTimeToUploadAd += UploadAdFunc;
             IsColletionSelectionVisible = true;
             OnPropertyChanged(nameof(IsColletionSelectionVisible));
         }
@@ -263,9 +271,20 @@ namespace Kaseb.ViewModels
         }
 
         //Propery For Images
-        public List<string> Images
+        public List<AdImage?> Images
         {
-            get => Model?.Images ?? null;
+            get
+            {
+                if (Model?.Images is not null)
+                {
+                    return Model.Images;
+                }
+                else
+                {
+                    List<AdImage?> AList = new List<AdImage?>();
+                    return AList;
+                }
+            } 
             set
             {
                 if (Model != null && Model.Images != value)
@@ -279,17 +298,32 @@ namespace Kaseb.ViewModels
         //Propery For Image
         public string Image
         {
-            get => Model?.Image ?? "";
+            get => Model?.Images?[0].ImagePath ?? "";
             set
             {
-                if (Model != null && Model.Image != value)
+                if (Model != null && Model?.Images?[0].ImagePath != value)
                 {
-                    Model.Image = value;
+                    Model?.Images?[0].ImagePath = value;
                     OnPropertyChanged(nameof(Image));
                 }
             }
         }
 
+        //Value For WeighKG
+        public List<string> ImagePaths
+        {
+
+            get => Model?.ImagePaths ?? new List<string>();
+
+            set
+            {
+                if (Model != null && Model.ImagePaths != value )
+                {
+                    Model.ImagePaths = value;
+                    OnPropertyChanged(nameof(ImagePaths));
+                }
+            }
+        }
         //Propery For IsUrgent
         public bool IsUrgent
         {

@@ -1,15 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Kaseb.Models.Element;
-using Kaseb.Models.Services.AdService;
-using Kaseb.Services;
-using Kaseb.Services.AdService;
+using KasebCore.Models.Services.AdService;
+using KasebCore.Services;
 using Kaseb.Views.Element;
 using Microsoft.Maui.Dispatching;
 using System.Collections.ObjectModel;
 using System.Diagnostics.Tracing;
 using System.Windows.Input;
 using MvvmHelpers;
+using KasebCore.Models.Element;
+using KasebAdServices.Connection;
 
 namespace Kaseb.ViewModels
 {
@@ -85,6 +85,7 @@ namespace Kaseb.ViewModels
 
 
         }
+        
         private async System.Threading.Tasks.Task LoadAdsAsync(bool isUpdate=false)
         {
             // فرض: LoadAdsAsync async است و AdsView را پر می‌کند

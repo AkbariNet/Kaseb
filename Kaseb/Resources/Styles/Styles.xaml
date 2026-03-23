@@ -27,6 +27,7 @@
 
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource PrimaryDarkText}}" />
+        
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
         <Setter Property="FontFamily" Value="Vazirmatn"/>
         <Setter Property="FontSize" Value="14"/>

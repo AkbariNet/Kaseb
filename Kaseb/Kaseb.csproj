@@ -132,8 +132,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="API_Backup\" />
 	  <Folder Include="Resources\Images\foods\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\KasebAdServices\KasebAdServices.csproj" />
+	  <ProjectReference Include="..\KasebCore\KasebCore.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -29,7 +29,11 @@
         <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Black}}" Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
             <Grid>
                 <Label Text="ثبت آگهی" HorizontalOptions="Center" VerticalOptions="Center" FontFamily="VazirmatnBold" FontSize="18" FontAttributes="None"></Label>
-                <Button StyleClass="FilledButton" WidthRequest="60" ImageSource="{FontImageSource
+                <Button StyleClass="FilledButton"
+                        x:Name="exit"
+                        WidthRequest="60"
+                        Clicked="exit_Clicked"
+                        ImageSource="{FontImageSource
                         Glyph={x:Static Models:FontAwsomeIconLoader.ArrowRight},
                         Size=24, 
                         FontFamily=7Awesome
@@ -393,7 +397,7 @@ Opacity="0.8" >
         <Button Grid.Row="2" Text="بعدی"
                 StyleClass="FilledButton"
                 Clicked="NextButton_Clicked"
-                FontSize="18"
+                FontSize="18" 
                 HeightRequest="60"
                 WidthRequest="120"
                 Margin="20,0,20,20"

@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using Kaseb.Models.Element;
+using KasebCore.Models.Element;
 using Kaseb.Services;
-using Kaseb.Services.AdService;
+using KasebAdServices.Connection;
 using Kaseb.Views.Element;
 using MvvmHelpers;
 using System;
@@ -11,7 +11,6 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Text;
 using System.Windows.Input;
-using static Android.Provider.MediaStore;
 
 namespace Kaseb.ViewModels.Element
 {
@@ -114,14 +113,20 @@ namespace Kaseb.ViewModels.Element
         //Propery For Image
         public string Image
         {
-            get => Model?.Image ?? "";
+            get
+            {
+                if (Model?.Images?[0] is not null)
+                {
+                    return Model?.Images[0].ImagePath ?? "";
+
+                }
+                else
+                {
+                    return "";
+                }
+            }
             set
             {
-                if (Model != null && Model.Image != value)
-                {
-                    Model.Image = value;
-                    OnPropertyChanged(nameof(Image));
-                }
             }
         }
 
