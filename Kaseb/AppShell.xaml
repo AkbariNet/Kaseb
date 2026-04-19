@@ -6,6 +6,11 @@
     xmlns:local="clr-namespace:Kaseb"
     x:Name="TheShell"
     Title="Kaseb">
-    <ShellContent x:Name="MainShellContent">
+    <ShellContent x:Name="MainShellContent"
+        Shell.NavBarIsVisible="False"
+        Shell.FlyoutItemIsVisible="False"
+        Shell.TabBarIsVisible="False"
+                    Route="MainPage"
+                  ContentTemplate="{DataTemplate local:Container}">
     </ShellContent>
 </Shell>

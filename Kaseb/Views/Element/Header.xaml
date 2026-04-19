@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
              xmlns:VM="clr-namespace:Kaseb.ViewModels.Element" 
-             xmlns:Models="clr-namespace:Kaseb.Models" Margin="15,10,15,0"
+             xmlns:Models="clr-namespace:KasebCore.Models;assembly=KasebCore" Margin="15,10,15,0"
              xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui" 
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material" 
-             Background="Transparent" StrokeThickness="0" 
+             Background="Transparent" StrokeThickness="0" VerticalOptions="Start"
              x:Class="Kaseb.Views.Element.Header">
     <Border.Shadow>
         <Shadow Brush="Black" Opacity=".2"></Shadow>
@@ -14,7 +14,8 @@
     <Border.BindingContext>
         <VM:HeaderVM />
     </Border.BindingContext>
-    <Grid >
+    <StackLayout Orientation="Vertical" Spacing="15">
+        <Grid HeightRequest="40">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="24*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -22,32 +23,46 @@
 
             </Grid.ColumnDefinitions>
             <Border Grid.Column="2" >
-            <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray600}}" StrokeShape="RoundRectangle 10" StrokeThickness="0">
+                <Border Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray600}}" StrokeShape="RoundRectangle 10" StrokeThickness="0">
                     <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
-                    <Label Grid.Column="1" Text="{x:Static Models:FontAwsomeIconLoader.LocationDot}" TextColor="{DynamicResource Primary}" FontSize="18" VerticalTextAlignment="Center" FontFamily="7Awesome" Margin="10"></Label>
-                    <Label Grid.Column="3" Text="همدان"  FontFamily="Vazirmatn" TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" FontSize="18" VerticalTextAlignment="Center" Margin="2" ></Label>
+                        <Label Grid.Column="1" Text="{x:Static Models:FontAwsomeIconLoader.LocationDot}" TextColor="{DynamicResource Primary}" FontSize="18" VerticalTextAlignment="Center" FontFamily="7Awesome" 
+                           Margin="15,10,10,10"></Label>
+                        <Label Grid.Column="3" Text="همه ایران"  FontFamily="Vazirmatn" TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" FontSize="18" VerticalTextAlignment="Center" Margin="2" ></Label>
                     </StackLayout>
                 </Border>
             </Border>
             <Border Grid.Column="0"  >
-            <material:ButtonView PressedCommand="{Binding  Search_LoadCommand}" Margin="0" Padding="0" StrokeShape="RoundRectangle 10" StrokeThickness="0">
-                <Border   Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray600}}" StrokeShape="RoundRectangle 10" StrokeThickness="0">
+                <material:ButtonView PressedCommand="{Binding  Search_LoadCommand}" Margin="0" Padding="0" StrokeShape="RoundRectangle 10" StrokeThickness="0">
+                    <Border   Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray600}}" StrokeShape="RoundRectangle 10" StrokeThickness="0">
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                            <ColumnDefinition Width="8*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1"   Text="{x:Static Models:FontAwsomeIconLoader.MagnifyingGlass}" TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" FontSize="18" VerticalTextAlignment="Center"  FontFamily="7Awesome" Margin="5,0,5,0"></Label>
-                        <Label Grid.Column="2" Text="جستجوی محصولات" FontSize="18" TextColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray200}}" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" ></Label>
-                    </Grid>
-                </Border>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="8*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="1"   Text="{x:Static Models:FontAwsomeIconLoader.MagnifyingGlass}" TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" FontSize="18" VerticalTextAlignment="Center"  FontFamily="7Awesome" Margin="5,0,5,0"></Label>
+                            <Label Grid.Column="2" Text="جستجوی محصولات" FontSize="18" TextColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray200}}" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" ></Label>
+                        </Grid>
+                    </Border>
 
-            </material:ButtonView>
-        </Border>
+                </material:ButtonView>
+            </Border>
 
-    </Grid>
+        </Grid>
+        <StackLayout Orientation="Horizontal" Spacing="10">
+            <Button HorizontalOptions="Start" Text="پیشرفته"
+                    FontSize="12"
+                    Background="{AppThemeBinding Dark={DynamicResource Gray100},Light={DynamicResource Gray900}}"
+                    TextColor="{AppThemeBinding Dark={DynamicResource Gray900},Light={DynamicResource White}}"
+                    ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.ListUl},
+                        Size=10, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource White},
+                        Dark={StaticResource Gray900}}}"
+                    x:Name="AdsFilterButton"
+                    Clicked="AdsFilterButton_Clicked"
+                    ></Button>
+        </StackLayout>
+    </StackLayout>
     
 
 

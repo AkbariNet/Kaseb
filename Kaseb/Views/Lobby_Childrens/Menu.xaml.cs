@@ -1,11 +1,4 @@
-﻿using Kaseb.Models;
-using Kaseb.Services;
-using Microsoft.Maui.Devices.Sensors;
-using System.Linq;
-using System.Windows.Input;
-using UraniumUI.Material.Controls;
-using UraniumUI.Pages;
-namespace Kaseb.Views.Lobby_Childrens
+﻿namespace Kaseb.Views.Lobby_Childrens
 {
     public partial class MenuAPP : Grid 
     {

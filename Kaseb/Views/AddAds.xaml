@@ -3,7 +3,7 @@
 <Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
-             xmlns:Models="clr-namespace:Kaseb.Models" BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray900}}"
+             xmlns:Models="clr-namespace:KasebCore.Models;assembly=KasebCore" BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray900}}"
              xmlns:VM="clr-namespace:Kaseb.ViewModels" x:Name="AddAdsView"
              xmlns:Childrens="clr-namespace:Kaseb.Views.Lobby_Childrens"
              xmlns:Elements="clr-namespace:Kaseb.Views.Element"
@@ -13,6 +13,7 @@
              xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:loc="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+      
 
              x:Class="Kaseb.Views.AddAds">
 
@@ -180,7 +181,7 @@ Opacity="0.8" >
                 <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10" Margin="10"  Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
 
                     <StackLayout Orientation="Horizontal">
-                        <CheckBox HorizontalOptions="Start" IsChecked="{Binding IsUrgentRequest}" ></CheckBox>
+                        <CheckBox HorizontalOptions="Start" IsChecked="{Binding IsUrgent}" ></CheckBox>
                         <Label Text="فروش فوری (120 هزارتومان*)" HorizontalOptions="Start" VerticalOptions="Center"></Label>
                     </StackLayout>
                 </Border>
@@ -346,6 +347,27 @@ Opacity="0.8" >
         <Grid Grid.Row="1" IsVisible="False" x:Name="Section4">
             <StackLayout>
                 <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10" Margin="10"  Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+                    <StackLayout>
+                        <Label Text="مکان *"></Label>
+                        <StackLayout Orientation="Horizontal" Margin="0,20,0,0" >
+                            <Button ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.SortDown},
+        Size=24, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+        Dark={StaticResource White}}}" TextColor="{AppThemeBinding Light={DynamicResource Gray950},
+        Dark={StaticResource White}}" WidthRequest="30" HorizontalOptions="Start" x:Name="OpenMapCollectionSelection"
+       Command="{Binding OpenMapCollectionSelectionCommand}"
+        Text="" ContentLayout="Left,10" 
+        BackgroundColor="{AppThemeBinding Dark={StaticResource Gray900}, Light={StaticResource Gray100}}"/>
+                            <Button  MinimumWidthRequest="100" Text="{Binding CityName}"
+        Command="{Binding OpenMapCollectionSelectionCommand}"
+       Background="{AppThemeBinding Dark={StaticResource Gray900},
+   Light={StaticResource Gray100}}" TextColor="{AppThemeBinding Light={DynamicResource Gray950},
+        Dark={StaticResource White}}" Margin="10,0,10,0"  CornerRadius="10">
+
+                            </Button>
+                        </StackLayout>
+                    </StackLayout>
+                </Border>
+                <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10" Margin="10"  Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
                     <StackLayout Spacing="20">
                         <Label Text="انتخاب موقعیت جغرافیایی" />
                         <Border  
@@ -355,7 +377,7 @@ Opacity="0.8" >
                             Margin="0,0,0,0">
                             <maps:Map MapType="Street" 
                                       MapClicked="Map_MapClicked" IsShowingUser="True"
-                            HeightRequest="300">
+                            HeightRequest="150">
                                 
                                 <x:Arguments>
 
@@ -384,7 +406,7 @@ Opacity="0.8" >
                 <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10" Margin="10"  Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
                     <StackLayout Spacing="20">
                         <Label Text="تگ ویژه (120 هزارتومان)" />
-                        <ur:TextField>
+                        <ur:TextField Text="{Binding ValueOfTag2}">
                             <validation:MaxLengthValidation MaxLength="6" Message="تگ ویژه نمیتواند از 6 کارکتر بیشتر باشد"/>
                         </ur:TextField>
                         <Label Text="آگهی شما به عنوان ویژه ثبت شده و متن ذکر شده شما در لیست آگهی ها به نمایش در خواهد آمد." Opacity="0.3"/>
@@ -395,6 +417,7 @@ Opacity="0.8" >
             </StackLayout>
         </Grid>
         <Button Grid.Row="2" Text="بعدی"
+                x:Name="NextButton"
                 StyleClass="FilledButton"
                 Clicked="NextButton_Clicked"
                 FontSize="18" 
@@ -432,13 +455,58 @@ Opacity="0.8" >
                 </Grid.RowDefinitions>
 
 
-                <StackLayout Grid.Row="1" Background="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray900}}">
-                    <ScrollView>
-                        <ContentView Content="{Binding StackOfElements ,Mode=TwoWay}" >
-                        </ContentView>
-                    </ScrollView>
+                <Grid Grid.Row="1" Background="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray900}}">
 
-                </StackLayout>
+
+                    <CollectionView
+                ItemsSource="{Binding ElementsOfCategory}"
+                RemainingItemsThreshold="0"
+                >
+                        <CollectionView.ItemTemplate >
+                            <DataTemplate >
+                                <!-- هر آیتم خودش یک AdElementView است -->
+                                <local:SelectAdType  />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+
+                </Grid>
+                <Border Grid.Row="2" Background="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray900}}"></Border>
+            </Grid>
+        </Border>
+        <!--Cities Window-->
+        <Border  Background="Transparent"
+                Grid.RowSpan="3"
+                IsVisible="False" 
+                x:Name="CitiesCollectionSelection">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" ></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="30" ></RowDefinition>
+                </Grid.RowDefinitions>
+
+
+                <Grid Grid.Row="1" Background="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray900}}">
+
+
+                    <CollectionView
+                ItemsSource="{Binding ElementsOfCities}"
+                RemainingItemsThreshold="0"
+                >
+                        <CollectionView.ItemTemplate >
+                            <DataTemplate >
+                                <!-- هر آیتم خودش یک AdElementView است -->
+                                <local:SelectAdCity  />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+
+                </Grid>
                 <Border Grid.Row="2" Background="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray900}}"></Border>
             </Grid>
         </Border>

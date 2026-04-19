@@ -5,9 +5,9 @@
              FlowDirection="RightToLeft"  Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}"
              xmlns:Pages="clr-namespace:Kaseb.Views" 
              x:Class="Kaseb.Container">
-    <Grid  Margin="0,50,0,20" >
-        <Grid x:Name="Contain" >
-
+    <Grid >
+        <Grid x:Name="Contain">
+        
         </Grid>
         <Grid x:Name="Overlay">
             

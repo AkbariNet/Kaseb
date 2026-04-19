@@ -1,5 +1,5 @@
 ﻿using Kaseb.Services;
-using Kaseb.Services.AdService;
+using KasebAdServices.Services.Connection;
 using Kaseb.ViewModels;
 using Kaseb.Views.AddAds_Childrens;
 using Kaseb.Views.Element;
@@ -8,6 +8,7 @@ using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Devices.Sensors;
 using System.ComponentModel;
 using System.Linq;
+using Kaseb.Services.ShowingContext;
 namespace Kaseb.Views
 {
     public partial class AddAds : Grid
@@ -27,6 +28,13 @@ namespace Kaseb.Views
                     if (ViewModel.IsColletionSelectionVisible) ShowWithFade(CollectionSelection);
 
                     else HideWithFade(CollectionSelection);
+                }
+
+                else if (e.PropertyName == nameof(ViewModel.IsMapColletionSelectionVisible))
+                {
+                    if (ViewModel.IsMapColletionSelectionVisible) ShowWithFade(CitiesCollectionSelection);
+
+                    else HideWithFade(CitiesCollectionSelection);
                 }
             };
         }
@@ -66,18 +74,21 @@ namespace Kaseb.Views
                 AnimationReserved = true;
                 await SlideSections(Section1, Section2, true);
                 SectionBackButton.IsVisible = true;
+                NextButton.Text = "بعدی";
             }
             else if (Section2.IsVisible && !AnimationReserved)
             {
                 AnimationReserved = true;
                 await SlideSections(Section2, Section3, true);
                 SectionBackButton.IsVisible = true;
+                NextButton.Text = "بعدی";
             }
             else if (Section3.IsVisible && !AnimationReserved)
             {
                 AnimationReserved = true;
                 await SlideSections(Section3, Section4, true);
                 SectionBackButton.IsVisible = true;
+                NextButton.Text = "ثبت آگهی";
             }
             else if (Section4.IsVisible && !AnimationReserved)
             {
@@ -93,18 +104,21 @@ namespace Kaseb.Views
                 AnimationReserved = true;
                 await SlideSections(Section4, Section3, false);
                 SectionBackButton.IsVisible = true;
+                NextButton.Text = "بعدی";
             }
             else if (Section3.IsVisible && !AnimationReserved)
             {
                 AnimationReserved = true;
                 await SlideSections(Section3, Section2, false);
                 SectionBackButton.IsVisible = true;
+                NextButton.Text = "بعدی";
             }
             else if (Section2.IsVisible && !AnimationReserved)
             {
                 AnimationReserved = true;
                 await SlideSections(Section2, Section1, false);
                 SectionBackButton.IsVisible = false;
+                NextButton.Text = "بعدی";
             }
         }
 

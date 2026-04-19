@@ -2,8 +2,9 @@
 using CommunityToolkit.Mvvm.Input;
 using KasebCore.Models; // AdElementModel
 using KasebCore.Models.Element;
+using KasebAdServices.Services.Calculating;
 using Kaseb.Services;
-using KasebAdServices.Connection;
+using KasebAdServices.Services.Connection;
 using Microsoft.Maui.ApplicationModel;
 using System.Collections.ObjectModel;
 

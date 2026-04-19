@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kaseb.Views.AddAds_Childrens.ProcessingOverlay"
+             x:Name="ProcessingOverlayElement"
+             >
+    <Border
+        
+                BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Black}}" 
+                WidthRequest="250"
+                VerticalOptions="Center"
+                StrokeShape="20"
+                Shadow="{Shadow Opacity=0.6 , Brush={AppThemeBinding Light={x:StaticResource Gray100},
+                Dark={x:StaticResource Gray600}}}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="1" Spacing="10">
+
+                <Label  
+                       x:Name="StatementLabel"
+                       Opacity="0.4"
+                   HorizontalOptions="Center" 
+                   FontSize="12"></Label>
+                <Label   
+                        x:Name="MessageLabel"
+                   HorizontalOptions="Center" 
+                   FontSize="18"></Label>
+
+                <Label   
+                       
+                   HorizontalOptions="Center" 
+                   Opacity="0.4"
+                   x:Name="MessageSubtitleLabel"
+                   FontSize="10"></Label>
+            </StackLayout>
+
+        </Grid>
+    </Border>
+</Grid>

@@ -1,5 +1,6 @@
 ﻿
 using Kaseb.Services;
+using Kaseb.Views.AdsOverlay;
 namespace Kaseb.Views.Element
 {
     public partial class Header : Border
@@ -12,6 +13,10 @@ namespace Kaseb.Views.Element
 
         }
 
+        private void AdsFilterButton_Clicked(object sender, EventArgs e)
+        {
+            PageLoader.includeOverlay(null, new AdsFilterView());
+        }
     }
 
 }

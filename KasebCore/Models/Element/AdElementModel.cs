@@ -1,116 +1,169 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Text;
-using System.Text.Json;
+﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
 
-namespace KasebCore.Models.Element 
+namespace KasebCore.Models.Element
 {
-    public class AdElementModel : INotifyPropertyChanged
+    public class AdElementModel
     {
         [JsonPropertyName("author")]
-        public string? Author { get; set; }
+        public string Author { get; set; } = string.Empty;
 
         [JsonPropertyName("id")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [JsonPropertyName("category")]
         public Category? Category { get; set; }
 
         [JsonPropertyName("title")]
-        public string? Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         [JsonPropertyName("content")]
-        public string? Content { get; set; }
+        public string Content { get; set; } = string.Empty;
 
         [JsonPropertyName("city")]
-        public string? City { get; set; }
+        public string City { get; set; } = string.Empty;
+        public Cities? _cities;
+        public Cities? Cities
+        {
+            get { return _cities; }
+
+            set
+            {
+                _cities = value;
+                City = _cities switch
+                {
+                    KasebCore.Models.Element.Cities.IsNull => "هنوز انتخاب نشده",
+                    KasebCore.Models.Element.Cities.Barfejin => "برفجین",
+                    KasebCore.Models.Element.Cities.Toejin => "توئجین",
+                    KasebCore.Models.Element.Cities.Muejin => "موئجین",
+                    KasebCore.Models.Element.Cities.Selulan => "سلولان",
+                    KasebCore.Models.Element.Cities.HeydareBalaShahr => "حیدره بالای شهر",
+                    KasebCore.Models.Element.Cities.Maryanaj => "مریانج",
+                    KasebCore.Models.Element.Cities.Bahar => "بهار",
+                    _  => "تعریف نشده",
+                };
+            }
+        }
 
         [JsonPropertyName("images")]
-        public List<AdImage>? Images { get; set; }
-
-    
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        public List<AdImage>? Images { get; set; } = new();
 
         [JsonPropertyName("date")]
-        public string? Date { get; set; }
+        public DateTime Date { get; set; }
 
         [JsonPropertyName("phone")]
-        public string? Phone { get; set; }
+        public string Phone { get; set; } = string.Empty;
 
         [JsonPropertyName("price")]
-        public string? Price { get; set; }
+        public string Price { get; set; } = string.Empty;
 
-        [JsonPropertyName("IsUrgent")]
+        [JsonPropertyName("isUrgent")]
         public bool IsUrgent { get; set; }
 
-        [JsonPropertyName("IsUrgentRequest")]
+        [JsonPropertyName("isUrgentRequest")]
         public bool IsUrgentRequest { get; set; }
 
-        [JsonPropertyName("ValueOfWeighKG")]
-        public string? ValueOfWeighKG { get; set; }
+        [JsonPropertyName("valueOfWeighKG")]
+        public string ValueOfWeighKG { get; set; } = string.Empty;
 
-        [JsonPropertyName("ValueOfTag1")]
-        public string? ValueOfTag1 { get; set; }
+        [JsonPropertyName("valueOfTag1")]
+        public string ValueOfTag1 { get; set; } = string.Empty;
 
-        [JsonPropertyName("ValueOfTag2")]
-        public string? ValueOfTag2 { get; set; }
+        [JsonPropertyName("valueOfTag2")]
+        public string ValueOfTag2 { get; set; } = string.Empty;
 
-        [JsonPropertyName("NonCash")]
+        [JsonPropertyName("nonCash")]
         public bool NonCash { get; set; }
 
-        [JsonPropertyName("SomeOfCashMostPayed")]
+        [JsonPropertyName("someOfCashMostPayed")]
         public bool SomeOfCashMostPayed { get; set; }
 
-        [JsonPropertyName("MonthForNonCash")]
+        [JsonPropertyName("monthForNonCash")]
         public int MonthForNonCash { get; set; }  // حداکثر 120
 
-        [JsonPropertyName("Latitude")]
+        [JsonPropertyName("latitude")]
         public double Latitude { get; set; }
 
-        [JsonPropertyName("Longitude")]
+        [JsonPropertyName("longitude")]
         public double Longitude { get; set; }
 
-        [JsonPropertyName("InventoryGuarantee")]
+        [JsonPropertyName("inventoryGuarantee")]
         public int InventoryGuarantee { get; set; }  // 1 تا 30 }
 
 
         [JsonPropertyName("ImagePaths")]
         public List<string> ImagePaths { get; set; } = new();
 
-        public AdElementModel Clone()
+        public List<string> ImageLinks { get; set; } = new();
+
+        public string MainImageLink { get; set; } = string.Empty;
+
+        public string ValueSummery
         {
-            return new AdElementModel
+            get => KasebCore.Services.Combining.Combine.CombineDateAndCity(Date,City); 
+        }
+
+        public AdElementModel()
+        {
+
+        }
+
+
+        public bool IsShowWeighKG
+        {
+            get
             {
-                Author = this.Author,
-                Id = this.Id,
-                Category = this.Category, // اگر Category خودش یک object هست، بهتره اونم Clone بشه
-                Title = this.Title,
-                Content = this.Content,
-                City = this.City,
-                Images = this.Images != null ? new List<AdImage>(this.Images) : null, // کپی لیست
-                ImagePaths= this.ImagePaths != null ? new List<string>(this.ImagePaths) : new List<string>(), // کپی لیست
-                Date = this.Date,
-                Phone = this.Phone,
-                Price = this.Price,
-                IsUrgent = this.IsUrgent,
-                IsUrgentRequest = this.IsUrgentRequest,
-                ValueOfWeighKG = this.ValueOfWeighKG,
-                ValueOfTag1 = this.ValueOfTag1,
-                ValueOfTag2 = this.ValueOfTag2,
-                NonCash = this.NonCash,
-                SomeOfCashMostPayed = this.SomeOfCashMostPayed,
-                MonthForNonCash = this.MonthForNonCash,
-                Latitude = this.Latitude,
-                Longitude = this.Longitude,
-                InventoryGuarantee = this.InventoryGuarantee
-            };
+
+                if (ValueOfWeighKG != null && ValueOfWeighKG != string.Empty
+                    && ValueOfWeighKG != "")
+                {
+                    return true;
+                }
+                else
+                    return false;
+
+            }
+        }
+
+
+        //Propery For Tag1
+        public bool IsShowTag1
+        {
+            get
+            {
+
+                if (ValueOfTag1 != null && ValueOfTag1 != string.Empty
+                    && ValueOfTag1 != "")
+                {
+                    return true;
+                }
+                else
+                    return false;
+
+            }
+        }
+
+        //Propery For Tag2
+        public bool IsShowTag2
+        {
+            get
+            {
+
+                if (ValueOfTag2 != null && ValueOfTag2 != string.Empty
+                    && ValueOfTag2 != "")
+                {
+                    return true;
+                }
+                else
+                    return false;
+
+            }
         }
 
     }
+
+
+
     public enum Category
     {
         IsNull,
@@ -122,6 +175,20 @@ namespace KasebCore.Models.Element
         Tomato,
         Mushroom,
         Almond,
+
+    }
+    public enum Cities
+    {
+        IsNull,
+        Barfejin,
+        Toejin,
+        Muejin,
+        Selulan,
+        HeydareBalaShahr,
+        Maryanaj,
+        Bahar,
+
+
 
     }
 }

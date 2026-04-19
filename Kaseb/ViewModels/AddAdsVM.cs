@@ -1,30 +1,27 @@
-﻿
-using CommunityToolkit.Mvvm.Input;
-using KasebCore.Models.Element;
+﻿using KasebCore.Models.Element;
 using Kaseb.Services;
-using KasebAdServices.Connection;
+using KasebAdServices.Services.Connection;
 using Kaseb.ViewModels.Element;
 using Kaseb.Views.AddAds_Childrens;
 using Kaseb.Views.Element;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Text;
-using System.Windows.Input;
 using Enum = System.Enum;
 using Kaseb.Services.ShowingContext;
+using CommunityToolkit.Mvvm.Input;
+using MvvmHelpers;
+using Kaseb.Views;
 
 namespace Kaseb.ViewModels
 {
-    internal partial class AddAdsVM : INotifyPropertyChanged
+    public partial class AddAdsVM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public AddAdsVM()
         {
             ItsTimeToUploadAd += UploadAdFunc;
-            StackOfElements = new StackLayout();
+            SelectAdType.ButtonClicked += CloseCollectionSelection;
+            SelectAdCity.ButtonClicked += CloseMapCollectionSelection;
         }
 
         private AdElementModel _model = new AdElementModel();
@@ -55,6 +52,7 @@ namespace Kaseb.ViewModels
         }
         public async void UploadAdFunc(List<ImagePicker> imgs)
         {
+            Date = DateTime.Now;
             Images = new List<AdImage?>();
             foreach (ImagePicker img in imgs)
             {
@@ -68,19 +66,30 @@ namespace Kaseb.ViewModels
             }
             foreach (ImagePicker img in imgs)
                 ImagePaths.Add(img.FilePath);
+            ProcessingOverlay OverlayOfProcessing = new ProcessingOverlay();
+            
+            OverlayOfProcessing.Show("درحال افزودن آگهی...");
+            PageLoader.includeOverlay(null, OverlayOfProcessing);
 
-            UploadAd UploadAd = new UploadAd();
-            GetResoultInfo success = await UploadAd.UploadAdAsync(_model);
+            GetResoultInfo UploadAdProcessingInfo = await UploadAd.UploadAdAsync(_model);
 
 
-            if (success.IsSuccess)
+            if (UploadAdProcessingInfo.IsSuccess)
             {
-                PageLoader.includePage(new ProcessingOfUpladAd());
-                MessageBox.ShowMessage(Title: success.IsSuccess.ToString(), Subtitle: success.Message, ButtonText: "OK");
+                OverlayOfProcessing.Show("موفقیت آمیز!", UploadAdProcessingInfo.Message,false);
+                await Task.Delay(3000);
+                PageLoader.removeOverlay(OverlayOfProcessing);
+
+                PageLoader.includePage(PageLoader.Ads);
+                PageLoader.Ads.ViewModel=new AdsVM();
+                PageLoader.AddAds = new AddAds();
+
             }
             else
             {
-                MessageBox.ShowMessage(Title : success.IsSuccess.ToString(),Subtitle: success.Message,ButtonText: "OK");
+                OverlayOfProcessing.Show("شکست!", UploadAdProcessingInfo.Message, false);
+                await Task.Delay(5000);
+                PageLoader.removeOverlay(OverlayOfProcessing);
             }
 
         }
@@ -90,7 +99,7 @@ namespace Kaseb.ViewModels
             get => _model;
             set
             {
-                _model = value;
+                _model = value;/*
                 OnPropertyChanged(nameof(Model));
                 OnPropertyChanged(nameof(Title));
                 OnPropertyChanged(nameof(Content));
@@ -99,7 +108,7 @@ namespace Kaseb.ViewModels
                 OnPropertyChanged(nameof(ValueOfTag2));
                 OnPropertyChanged(nameof(Price));
                 OnPropertyChanged(nameof(ValueOfWeighKG));
-                OnPropertyChanged(nameof(Category));
+                OnPropertyChanged(nameof(Category));*/
 
 
                 ///
@@ -110,42 +119,32 @@ namespace Kaseb.ViewModels
             }
         }
 
-        //Propery For Title
-        public Category Category
+        //Propery For Category
+        public Category? Category
         {
-            get => Model?.Category ?? Category.IsNull;
+            get => Model?.Category ?? KasebCore.Models.Element.Category.IsNull;
             set
             {
-                if (Model?.Category != value)
+                if (Model.Category != value && value != KasebCore.Models.Element.Category.IsNull)
                 {
-                    Model?.Category = value;
+                    Model.Category = value;
+                 
                     OnPropertyChanged(nameof(Category));
                     OnPropertyChanged(nameof(CategoryName));
-                    CategoryName = Category switch
-                    {
-                        Category.Garlic => "سیر",
-                        Category.Shallot => "موسیر",
-                        Category.Walnut => "گردو",
-                        Category.Potato => "سیب زمینی",
-                        Category.Cucumber => "خیار",
-                        Category.Tomato => "گوجه فرنگی",
-                        Category.Mushroom => "قارچ",
-                        Category.Almond => "بادام",
-                        Category.IsNull => "هنوز انتخاب نشده",
-                        _ => "نامشخص"
-                    };
                 }
             }
         }
 
-        
-        public StackLayout StackOfElements { get; set; } 
+
 
         //For Visiblity of collectionsection
         public bool IsColletionSelectionVisible { get; set; }
 
+        //For Visiblity of MapCollectionsection
+        public bool IsMapColletionSelectionVisible { get; set; }
+
         [RelayCommand]
-        public void CloseCollectionSelection(Category category)
+        public void CloseCollectionSelection(Category? category)
         {
 
             Category = category;
@@ -156,22 +155,57 @@ namespace Kaseb.ViewModels
         }
 
         [RelayCommand]
+        public void CloseMapCollectionSelection(Cities? cities)
+        {
+
+            City = cities;
+
+            IsMapColletionSelectionVisible = false;
+            OnPropertyChanged(nameof(IsMapColletionSelectionVisible));
+
+        }
+        public ObservableRangeCollection<Kaseb.Views.Element.SelectAdType> ElementsOfCategory { get; set; } = new();
+        [RelayCommand]
         public void OpenCollectionSelection()
         {
-            StackOfElements = new StackLayout();
+            var theList = new List<SelectAdType>();
+
             foreach (Category category in Enum.GetValues(typeof(Category)))
             {
-                // Skip IsNull اگه لازم باشه
-                if (category == Category.IsNull)
-                    continue;
+                if (category == KasebCore.Models.Element.Category.IsNull) continue;
 
-                SelectAdTypeVM r = new SelectAdTypeVM() { _Category = category };
-                r.ButtonClicked += CloseCollectionSelection;
-                SelectAdType selectAdType = new SelectAdType() { BindingContext = r };
-                StackOfElements.Children.Add(selectAdType);
+                var model = new SelectAdTypeModel { Category = category };
+
+                var view = new SelectAdType(model);      // یا new SelectAdType() { BindingContext = vm };
+
+                theList.Add(view);
             }
+            ElementsOfCategory.Clear();
+            ElementsOfCategory.AddRange(theList);
             IsColletionSelectionVisible = true;
             OnPropertyChanged(nameof(IsColletionSelectionVisible));
+        }
+        public ObservableRangeCollection<Kaseb.Views.Element.SelectAdCity> ElementsOfCities { get; set; } = new();
+        
+        [RelayCommand]
+        public void OpenMapCollectionSelection()
+        {
+            var theList = new List<SelectAdCity>();
+
+            foreach (Cities Cities in Enum.GetValues(typeof(Cities)))
+            {
+                if (Cities == KasebCore.Models.Element.Cities.IsNull) continue;
+
+                var model = new SelectAdCityModel { Cities = Cities };
+
+                var view = new SelectAdCity(model);      // یا new SelectAdType() { BindingContext = vm };
+
+                theList.Add(view);
+            }
+            ElementsOfCities.Clear();
+            ElementsOfCities.AddRange(theList);
+            IsMapColletionSelectionVisible = true;
+            OnPropertyChanged(nameof(IsMapColletionSelectionVisible));
         }
 
 
@@ -182,21 +216,29 @@ namespace Kaseb.ViewModels
         {
             get
             {
-                return Category switch
+                try
                 {
-                    Category.Garlic => "سیر",
-                    Category.Shallot => "موسیر",
-                    Category.Walnut => "گردو",
-                    Category.Potato => "سیب زمینی",
-                    Category.Cucumber => "خیار",
-                    Category.Tomato => "گوجه فرنگی",
-                    Category.Mushroom => "قارچ",
-                    Category.Almond => "بادام",
-                    Category.IsNull => "هنوز انتخاب نشده",
-                    _ => "نامشخص"
-                };
+
+                    return Category switch
+                    {
+                        KasebCore.Models.Element.Category.Garlic => "سیر",
+                        KasebCore.Models.Element.Category.Shallot => "موسیر",
+                        KasebCore.Models.Element.Category.Walnut => "گردو",
+                        KasebCore.Models.Element.Category.Potato => "سیب زمینی",
+                        KasebCore.Models.Element.Category.Cucumber => "خیار",
+                        KasebCore.Models.Element.Category.Tomato => "گوجه فرنگی",
+                        KasebCore.Models.Element.Category.Mushroom => "قارچ",
+                        KasebCore.Models.Element.Category.Almond => "بادام",
+                        KasebCore.Models.Element.Category.IsNull => "هنوز انتخاب نشده",
+                        _ => "نامشخص"
+                    };
+                }
+                catch (Exception)
+                {
+                    return "error";
+                    throw;
+                }
             }
-            set { }
         }
 
         //Propery For Title
@@ -229,9 +271,9 @@ namespace Kaseb.ViewModels
         }
 
         //Propery For Date
-        public string Date
+        public DateTime Date
         {
-            get => Model?.Date ?? "";
+            get => Model?.Date ?? new DateTime();
             set
             {
                 if (Model != null && Model.Date != value)
@@ -240,21 +282,41 @@ namespace Kaseb.ViewModels
                     OnPropertyChanged(nameof(Date));
                 }
             }
-        }
+        } 
         //Propery For City
-        public string City
+        public Cities? City
         {
-            get => Model?.City ?? "";
+
+            get => Model?.Cities ?? KasebCore.Models.Element.Cities.IsNull;
             set
             {
-                if (Model != null && Model.City != value)
+                if (Model.Cities != value && value != KasebCore.Models.Element.Cities.IsNull)
                 {
-                    Model.City = value;
+                    Model.Cities = value;
+
                     OnPropertyChanged(nameof(City));
+                    OnPropertyChanged(nameof(CityName));
                 }
             }
         }
 
+        //Propery For Category Name
+        public string CityName
+        {
+            get
+            {
+                try
+                {
+
+                    return Model?.City ?? "نامشخص";
+                }
+                catch (Exception)
+                {
+                    return "error";
+                    throw;
+                }
+            }
+        }
 
         //Propery For Price
         public string Price
@@ -410,6 +472,15 @@ namespace Kaseb.ViewModels
                 {
                     Model.NonCash = value;
                     OnPropertyChanged(nameof(NonCash));
+                    if (NonCash)
+                    {
+                        ValueOfTag1 = "غیرنقدی";
+                    }
+                    else
+                    {
+
+                        ValueOfTag1 = "نقدی";
+                    }
                 }
             }
         }

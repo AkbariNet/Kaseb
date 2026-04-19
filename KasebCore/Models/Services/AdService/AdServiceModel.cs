@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace KasebCore.Models.Services.AdService
+﻿namespace KasebCore.Models.Services.AdService
 {
     public static class AdServiceModel
     {
@@ -11,7 +7,7 @@ namespace KasebCore.Models.Services.AdService
         public static void SetHTTP()
         {
             httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("http://192.168.0.103:5008/api/");
+            httpClient.BaseAddress = new Uri("http://2.185.144.243:5008/");
 
         }
       

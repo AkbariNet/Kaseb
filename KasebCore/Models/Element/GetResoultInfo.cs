@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace KasebCore.Models.Element
+﻿namespace KasebCore.Models.Element
 {
     public  class GetResoultInfo
     {

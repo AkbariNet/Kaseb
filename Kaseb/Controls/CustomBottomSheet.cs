@@ -1,15 +1,6 @@
-﻿using Kaseb.Services.ShowingContext;
-using KasebAdServices;
-using Microsoft.Maui.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using UraniumUI.Extensions;
-using UraniumUI.Material;
 using UraniumUI.Material.Attachments;
-using UraniumUI.Material.Controls;
 
 namespace Kaseb.Controls
 {
@@ -44,7 +35,6 @@ namespace Kaseb.Controls
                 Header.GestureRecognizers.Add(customPanGestureRecognizer);
             }
         }
-        MessageBox MessageBox = new MessageBox();
         private void CustomPanGestureRecognizer_PanUpdated(object sender, PanUpdatedEventArgs e)
         {
             switch (e.StatusType)

@@ -5,31 +5,34 @@
              xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material" 
              xmlns:loc="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
-             xmlns:VM="clr-namespace:Kaseb.ViewModels.Lobby_Childrens" 
-             xmlns:Models="clr-namespace:Kaseb.Models" x:Name="Menu"
+             xmlns:VM="clr-namespace:Kaseb.ViewModels.Lobby_Childrens"  
+             xmlns:Models="clr-namespace:KasebCore.Models;assembly=KasebCore" x:Name="Menu"
              x:Class="Kaseb.Views.Lobby_Childrens.MenuAPP">
     <Grid.BindingContext>
         <VM:MenuVM />
     </Grid.BindingContext>
-    <Grid>
+    <Grid >
 
 
 
 
-        <Border Grid.Row="2" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
+        <Border 
+            
+            Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
             <Border.Shadow>
                 <Shadow Brush="Black" Opacity=".2"></Shadow>
             </Border.Shadow>
         </Border>
-        <Border Grid.Row="2" Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" HorizontalOptions="Fill"  Margin="15,10,15,20">
+        <Border  Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" HorizontalOptions="Fill"  Margin="15,10,15,20">
             <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal">
 
-                <Button StyleClass="FilledButton" FontSize="12" ContentLayout="Top,0"
+                <Button StyleClass="FilledButton" FontSize="12" ContentLayout="Top,-10"
                         Padding="10,5,10,0"
                         Margin="10,15,10,0" HeightRequest="60" BackgroundColor="Transparent"
-                        TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" Text="آگهی ها"
+                        TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" 
+                        Text="آگهی ها"
                         ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.House},
-                        Size=24, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                        Size=18, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
                         Dark={StaticResource White}}}"  Command="{Binding isAdButtonClicked}" >
 
                     <Button.Triggers>
@@ -40,7 +43,7 @@
                                       Value="{DynamicResource Primary}" />
                                                 <Setter Property="ImageSource"
                                                         Value="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.House},
-                                                        Size=24, FontFamily=7Awesome, Color={DynamicResource Primary}}"></Setter>
+                                                        Size=18, FontFamily=7Awesome, Color={DynamicResource Primary}}"></Setter>
                         </DataTrigger>
 
                         <DataTrigger TargetType="Button"
@@ -50,18 +53,19 @@
                                     Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" />
                                         <Setter Property="ImageSource"
                                                 Value="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.House},
-                                                Size=24, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                                                Size=18, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
                                                 Dark={StaticResource White}}}"></Setter>
                         </DataTrigger>
                     </Button.Triggers>
 
                 </Button>
-                <Button StyleClass="FilledButton" FontSize="12" ContentLayout="Top,0"
+                <Button StyleClass="FilledButton" FontSize="12"  ContentLayout="Top,-10"
                                   Padding="10,5,10,0"
                         Margin="10,15,10,0" HeightRequest="60" BackgroundColor="Transparent"
-                        TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" Text="نقشه"
+                        TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" 
+                        Text="نقشه"
                         ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.Map},
-                        Size=24, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                        Size=18, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
                         Dark={StaticResource White}}}"  Command="{Binding isLocationButtonClicked}" >
 
                     <Button.Triggers>
@@ -72,7 +76,7 @@
                                     Value="{DynamicResource Primary}" />       
                                             <Setter Property="ImageSource"
                                     Value="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.Map},
-                                    Size=24, FontFamily=7Awesome, Color={DynamicResource Primary}}"></Setter>
+                                    Size=18, FontFamily=7Awesome, Color={DynamicResource Primary}}"></Setter>
                         </DataTrigger>
 
                         <DataTrigger TargetType="Button"
@@ -82,18 +86,19 @@
                                               Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" />
                                             <Setter Property="ImageSource"
                                                          Value="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.Map},
-                                                         Size=24, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                                                         Size=18, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
                                                          Dark={StaticResource White}}}"></Setter>
                                         </DataTrigger>      
                     </Button.Triggers>
 
                 </Button>
-                <Button StyleClass="FilledButton" FontSize="12" ContentLayout="Top,0" 
+                <Button StyleClass="FilledButton" FontSize="12"  ContentLayout="Top,-10"
                          Padding="10,5,10,0"
                          Margin="10,15,10,0" HeightRequest="60" BackgroundColor="Transparent"
-                          TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" Text="ثبت آگهی"
+                          TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" 
+                        Text="ثبت آگهی"
                          ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.SquarePlus},
-                         Size=24, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                         Size=18, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
                          Dark={StaticResource White}}}"  Command="{Binding  isAddAdButtonClicked}"  >
 
                     <Button.Triggers>
@@ -104,7 +109,7 @@
                                      Value="{DynamicResource Primary}" />
                                                 <Setter Property="ImageSource"
                                  Value="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.SquarePlus},
-                                   Size=24, FontFamily=7Awesome, Color={DynamicResource Primary}}"></Setter>
+                                   Size=18, FontFamily=7Awesome, Color={DynamicResource Primary}}"></Setter>
                         </DataTrigger>
 
                         <DataTrigger TargetType="Button"
@@ -114,7 +119,7 @@
                                       Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" />
                                             <Setter Property="ImageSource"
                                       Value="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.SquarePlus},
-                                      Size=24, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                                      Size=18, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
                                       Dark={StaticResource White}}}"></Setter>            
                         </DataTrigger>
                     </Button.Triggers>

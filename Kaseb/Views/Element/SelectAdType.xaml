@@ -1,39 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ur:ButtonView xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps" x:Name="SelectAdTypeElement"
-             xmlns:Models="clr-namespace:Kaseb.Models" FlowDirection="RightToLeft" BackgroundColor="Transparent"
+             x:Name="SelectAdTypeElement"
+             xmlns:Models="clr-namespace:KasebCore.Models;assembly=KasebCore" FlowDirection="RightToLeft" BackgroundColor="Transparent"
              xmlns:ur="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material" Background="Transparent"
              xmlns:urElement="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
-             x:Class="Kaseb.Views.Element.SelectAdType" Margin="5" 
-                     xmlns:VM="clr-namespace:Kaseb.ViewModels.Element" 
-                     
-             Shadow="{Shadow Opacity=0.9, Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+             x:Class="Kaseb.Views.Element.SelectAdType" Margin="10" 
+             PressedCommand="{Binding  ChangeCategoryCommand , Mode=TwoWay}" 
+            >
 
-    <ur:ButtonView.BindingContext>
-        <VM:SelectAdTypeVM />
-    </ur:ButtonView.BindingContext>
 
-    <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}"
-          Padding="5"
+    <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}"
+          Padding="10"
           StrokeShape="10" 
+          HeightRequest="50"
+            
           >
 
-        <ur:ButtonView BackgroundColor="Transparent" Background="Transparent"
-                    PressedCommand="{Binding  ChangeCategoryCommand }"   >
-            <Grid ColumnDefinitions="30,*">
-                
-                <Label  Text="{x:Static Models:FontAwsomeIconLoader.Box} "
-                        FontFamily="7Awesome"                   
-                        TextColor="{AppThemeBinding Light={DynamicResource Gray950}, Dark={StaticResource White}}"
-                        ></Label>
-                <Label  Grid.Column="1"  Text="{Binding CategoryName }"  TextColor="{AppThemeBinding Light={x:StaticResource Black}, Dark={x:StaticResource White}}" ></Label>
-                <Label  Grid.Column="1" HorizontalTextAlignment="End" Text="{x:Static Models:FontAwsomeIconLoader.AngleRight} "
+        <Grid BackgroundColor="Transparent" Background="Transparent"
+                     VerticalOptions="Center">
+            <Grid ColumnDefinitions="10,*,10">
+
+                <Label  Grid.Column="1"  Text="{Binding CategoryName, Mode=TwoWay }"  TextColor="{AppThemeBinding Light={x:StaticResource Gray600}, Dark={x:StaticResource White}}" ></Label>
+                <Label  Grid.Column="1" HorizontalTextAlignment="End" Text="{x:Static Models:FontAwsomeIconLoader.Plus} "
            FontFamily="7Awesome"                   
-           TextColor="{AppThemeBinding Light={DynamicResource Gray950}, Dark={StaticResource White}}"
+           TextColor="{AppThemeBinding Light={DynamicResource Gray600}, Dark={StaticResource White}}"
            ></Label>
             </Grid>
-        </ur:ButtonView>
+        </Grid>
 
     </Border>
 </ur:ButtonView>

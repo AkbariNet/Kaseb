@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KasebCore.Services
+﻿namespace KasebCore.Models
 {
-    internal static class PageLoadProcessing
+    public static class PageLoadProcessing
     {
         public static PageState MenuStatement {  get; set; } = PageState.ad;
         public static bool isAdButtonClicked {  get; set; }

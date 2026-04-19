@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Kaseb.Services.ShowingContext
+﻿namespace Kaseb.Services.ShowingContext
 {
     public static class MessageBox
     {

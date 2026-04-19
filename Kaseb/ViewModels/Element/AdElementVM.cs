@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using KasebCore.Models.Element;
 using Kaseb.Services;
-using KasebAdServices.Connection;
+using KasebAdServices.Services.Connection;
 using Kaseb.Views.Element;
 using MvvmHelpers;
 using System;
@@ -36,25 +36,15 @@ namespace Kaseb.ViewModels.Element
                 OnPropertyChanged(nameof(Image));
 
 
-                if (_model.ValueOfWeighKG != null)
-                    IsShowWeighKG = true;
-
-                if (_model.ValueOfTag1 != null)
-                    IsShowTag1 = true;
-
-                if (_model.ValueOfTag2 != null)
-                    IsShowTag2 = true;
-                ///
-
                 ///Add <,> to Price like 1,000,000 
 
             }
         }
 
 
-       
+
         //Propery For Title
-        public string Title
+        public new string Title
         {
             get => Model?.Title ?? "";
             set
@@ -83,9 +73,9 @@ namespace Kaseb.ViewModels.Element
         }
 
         //Propery For Date
-        public string Date
+        public DateTime Date
         {
-            get => Model?.Date ?? "";
+            get => Model?.Date ?? new DateTime();
             set
             {
                 if (Model != null && Model.Date != value)
@@ -98,14 +88,29 @@ namespace Kaseb.ViewModels.Element
         //Propery For Price
         public string Price
         {
-            get =>  string.Format("{0:N0}", long.Parse(Model?.Price ?? ""));
-                
+            get => string.Format("{0:N0}", long.Parse(Model?.Price ?? ""));
+
             set
             {
                 if (Model != null && Model.Price != value)
                 {
                     Model.Price = value;
                     OnPropertyChanged(nameof(Price));
+                }
+            }
+        }
+
+        //Propery For City
+        public string City
+        {
+            get => Model?.City ?? "";
+
+            set
+            {
+                if (Model != null && Model.City != value)
+                {
+                    Model.City = value;
+                    OnPropertyChanged(nameof(City));
                 }
             }
         }
@@ -130,6 +135,46 @@ namespace Kaseb.ViewModels.Element
             }
         }
 
+        //Propery For Image
+        public string MainImageLink
+        {
+            get
+            {
+                if (Model?.MainImageLink is not null)
+                {
+                    return Model?.MainImageLink ?? "";
+
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            set
+            {
+            }
+        }
+
+        public List<string> ImageLinks
+        {
+            get
+            {
+                if (Model?.ImageLinks is not null)
+                {
+                    return Model?.ImageLinks ?? new();
+
+                }
+                else
+                {
+                    return new();
+                }
+            }
+            set
+            {
+            }
+        }
+
+
         //Propery For IsUrgent
         public bool IsUrgent
         {
@@ -143,39 +188,43 @@ namespace Kaseb.ViewModels.Element
                 }
             }
         }
-
-        //Propery For KG
-        
-        public bool IsShowWeighKG { get; set; }
-
-        public static readonly BindableProperty IsShowWeighKGProperty =
-        BindableProperty.Create(
-        nameof(IsShowWeighKG),
-        typeof(bool),
-        typeof(AdElement),
-        defaultValue: false
-         );
-
-
-        //Propery For Tag1
-        public bool IsShowTag1 { get; set; }
-
-        //Propery For Tag2
-        public bool IsShowTag2 { get; set; }
-
-
-
+        //for tags
+        public bool IsShowWeighKG
+        {
+            get => Model?.IsShowWeighKG ?? false;
+        }
+        public bool IsShowTag1
+        {
+            get => Model?.IsShowTag1 ?? false;
+        }
+        public bool IsShowTag2
+        {
+            get => Model?.IsShowTag2 ?? false;
+        }
+   
+        public string TheSummeryOfDateAndCity
+        {
+            get
+            {
+                return Model?.ValueSummery ?? "خطا!";
+            }
+        }
         //Value For WeighKG
         public string ValueOfWeighKG
         {
 
-            get => Model?.ValueOfWeighKG ?? "" ;
+            get
+            {
+
+                return Model?.ValueOfWeighKG ?? "";
+            }
+
 
             set
             {
                 if (Model != null && Model.ValueOfWeighKG != value)
                 {
-                    Model.ValueOfWeighKG= value;
+                    Model.ValueOfWeighKG = value;
                     OnPropertyChanged(nameof(ValueOfWeighKG));
                 }
             }
@@ -185,12 +234,17 @@ namespace Kaseb.ViewModels.Element
         //Value For Tag1
         public string ValueOfTag1
         {
-            get => Model?.ValueOfTag1 ?? "";
+            get
+            {
+                return Model?.ValueOfTag1 ?? "";
+
+            }
             set
             {
                 if (Model != null && Model.ValueOfTag1 != value)
                 {
                     Model.ValueOfTag1 = value;
+
                     OnPropertyChanged(nameof(ValueOfTag1));
                 }
             }
@@ -200,11 +254,16 @@ namespace Kaseb.ViewModels.Element
         //Value For Tag2
         public string ValueOfTag2
         {
-            get => Model?.ValueOfTag2 ?? "";
+            get
+            {
+                return Model?.ValueOfTag2 ?? "";
+
+            }
             set
             {
                 if (Model != null && Model.ValueOfTag2 != value)
                 {
+
                     Model.ValueOfTag2 = value;
                     OnPropertyChanged(nameof(ValueOfTag2));
                 }

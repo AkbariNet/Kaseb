@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using Kaseb.Models.Element;
+using KasebCore.Models.Element;
 using Kaseb.Services;
 using Kaseb.ViewModels;
 using Kaseb.ViewModels.Element;
@@ -8,6 +8,7 @@ using Microsoft.Maui.Devices.Sensors;
 using System.Globalization;
 using System.Linq;
 using UraniumUI.Material.Controls;
+using Kaseb.Services.ShowingContext;
 
 namespace Kaseb.Views.Element
 {
@@ -28,7 +29,7 @@ namespace Kaseb.Views.Element
             get => (AdElementModel)GetValue(ModelProperty);
             set => SetValue(ModelProperty, value);
         }
-
+        
 
         public void OpenAd()
         {
@@ -38,17 +39,17 @@ namespace Kaseb.Views.Element
                 {
                     PageLoader.includeOverlay(null, new AdElementPage
                     {
-                        BindingContext = new AddAdsVM()
+                        BindingContext = new AdElementVM()
                         {
-                            Model = this.Model.Clone()
-                          
+                            Model = this.Model
+
                         }
                     });
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    MessageBox.ShowMessage("مشکلی پیش آمده", "در اجرای این آگلی به مشکل برخوردیم، لطفا دوباره امتحان کنید...", "باشه");
-                    throw;
+                    MessageBox.ShowMessage("مشکلی پیش آمده", "در اجرای این آگهی به مشکل برخوردیم، لطفا دوباره امتحان کنید..." +e.Message, "باشه");
+                   
                 }
             }    
         }

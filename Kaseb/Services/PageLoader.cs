@@ -1,10 +1,5 @@
-﻿using Kaseb.Models;
+﻿using KasebCore.Models;
 using Kaseb.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kaseb.Services 
 {

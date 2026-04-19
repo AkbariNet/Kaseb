@@ -3,21 +3,19 @@
 <Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
-             xmlns:Models="clr-namespace:Kaseb.Models" 
-             xmlns:VM="clr-namespace:Kaseb.ViewModels" 
+             xmlns:Models="clr-namespace:KasebCore.Models;assembly=KasebCore" 
+             
              xmlns:Childrens="clr-namespace:Kaseb.Views.Lobby_Childrens"
              xmlns:Elements="clr-namespace:Kaseb.Views.Element"
              xmlns:local="clr-namespace:Kaseb.Views.Element"
              x:Class="Kaseb.Views.Ads">
-    <Grid.BindingContext>
-        <VM:AdsVM />
-    </Grid.BindingContext>
+
     <Border >
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="100" ></RowDefinition>
+                <RowDefinition Height="80" ></RowDefinition>
             </Grid.RowDefinitions>
             
             <RefreshView

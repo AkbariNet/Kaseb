@@ -1,13 +1,10 @@
-﻿using KasebCore;
-using KasebCore.Models.Element;
+﻿using KasebCore.Models.Element;
 using KasebCore.Models.Services.AdService;
-using System;
-using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
-namespace KasebAdServices.Connection
+namespace KasebAdServices.Services.Connection
 {
     public static class UploadAd
     {
@@ -60,7 +57,7 @@ namespace KasebAdServices.Connection
                 try
                 {
 
-                   var response = await AdServiceModel.httpClient.PostAsync("ads/create-ad", form);
+                   var response = await AdServiceModel.httpClient.PostAsync("api/ads/create-ad", form);
                     if (response.IsSuccessStatusCode)
                     {
                         var result = await response.Content.ReadAsStringAsync();
@@ -124,7 +121,7 @@ namespace KasebAdServices.Connection
 
                 var contentData = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = await AdServiceModel.httpClient.PostAsync("ads/create-ad", contentData);
+                var response = await AdServiceModel.httpClient.PostAsync("api/ads/create-ad", contentData);
 
                 if (response.IsSuccessStatusCode)
                 {

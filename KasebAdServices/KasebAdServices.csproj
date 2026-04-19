@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net10.0-android;net10.0-ios;net10.0-maccatalyst</TargetFrameworks>
@@ -17,11 +17,18 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.51" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\KasebCore\KasebCore.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Platforms\Android\" />
+	  <Folder Include="Platforms\iOS\" />
+	  <Folder Include="Platforms\MacCatalyst\" />
+	  <Folder Include="Platforms\Windows\" />
 	</ItemGroup>
 
 </Project>

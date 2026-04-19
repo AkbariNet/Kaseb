@@ -2,7 +2,7 @@
 <ur:ButtonView xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" Padding="0" Margin="5,5,5,5"
              xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps" x:Name="ImagePickerElement" 
-             xmlns:Models="clr-namespace:Kaseb.Models" FlowDirection="RightToLeft" WidthRequest="80" HeightRequest="80"
+             xmlns:Models="clr-namespace:KasebCore.Models;assembly=KasebCore" FlowDirection="RightToLeft" WidthRequest="80" HeightRequest="80"
              xmlns:ur="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material" Background="Transparent"
              xmlns:urElement="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
              x:Class="Kaseb.Views.Element.ImagePicker" Tapped="ImagePickerElement_Tapped">

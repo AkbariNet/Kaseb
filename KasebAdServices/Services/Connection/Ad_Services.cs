@@ -1,18 +1,15 @@
-﻿using KasebCore;
-using KasebCore.Models.Element;
-using Kaseb.Services.Calculating;
+﻿using KasebCore.Models.Element;
+using KasebCore.Services.Converting;
+using Convert = KasebCore.Services.Converting.Convert;
 using KasebCore.Models.Services.AdService;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
+using KasebAdServices.Services.Calculating;
 using System.Text.Json;
 
-namespace KasebAdServices.Connection
+namespace KasebAdServices.Services.Connection
 {
     public class Ad_Services
     {
-        int lastID = 0;
+        int? lastID = 0;
          static Ad_Services()
         {
             AdServiceModel.SetHTTP();
@@ -21,16 +18,50 @@ namespace KasebAdServices.Connection
         {
             try
             { 
-                var response = await AdServiceModel.httpClient.GetStringAsync("ads?MaxValue=10");
+                var response = await AdServiceModel.httpClient.GetStringAsync("api/ads/MaxAds=10");
                 Console.WriteLine(response);
-
                 //List<AdElementModel> adElement = JsonSerializer.Deserialize<List<AdElementModel>>(response);
                 List<AdElementModel> Respound = JsonSerializer.Deserialize<List<AdElementModel>>(response);
-                lastID = Respound[Respound.Count - 1].Id;
-                //  return adElements;
+                if (Respound != null)
+                {
 
-                Console.WriteLine("لیست دریافت شد ");
-                return Respound;
+                    foreach (AdElementModel model in Respound)
+                    {
+                        if (model?.Images?.Count>0)
+                        {
+                            foreach (AdImage image in model.Images)
+                            {
+                                model.ImageLinks.Add(Convert.ConvertImagePathToLink(image.ImagePath));
+                            }
+
+                        }
+                        else
+                        {
+                            model?.Images?.Add(new AdImage());
+                        }
+                        if (model?.ImageLinks.Count>0)
+                        {
+                            model?.MainImageLink = model.ImageLinks[0];
+
+                        }
+                    }
+
+                    lastID = Respound[Respound.Count - 1].Id;
+                }
+                //  return adElements;
+                if (Respound != null)
+                {
+                    Console.WriteLine("لیست دریافت شد ");
+                    return Respound;
+
+                }
+                else
+                {
+                    Console.WriteLine("بدون محتوا " );
+                    return new List<AdElementModel>();  // حداقل لیست خالی برگرده
+
+                }
+
             }
             catch (Exception ex)
             {
@@ -46,7 +77,7 @@ namespace KasebAdServices.Connection
             {
                 try
                 {
-                    var response = await AdServiceModel.httpClient.GetStringAsync("ads?per_page=10&after_id=" + lastID);
+                    var response = await AdServiceModel.httpClient.GetStringAsync($"api/ads/MaximumAds=5&LastID={lastID}");
                     Console.WriteLine(response);
 
                     //List<AdElementModel> adElement = JsonSerializer.Deserialize<List<AdElementModel>>(response);
@@ -64,6 +95,7 @@ namespace KasebAdServices.Connection
             else return new List<AdElementModel>();
         }
 
+        
         public List<AdElementModel> AdsModel { get; set; } = new();
 
         public Action AdsChanged;

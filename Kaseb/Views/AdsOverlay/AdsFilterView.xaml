@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kaseb.Views.AdsOverlay.AdsFilterView" 
+      xmlns:Models="clr-namespace:KasebCore.Models;assembly=KasebCore" BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray900}}"
+            
+            >
+    <Border Margin="20,120,20,80"
+            Background="White"
+            StrokeShape="20" 
+            Shadow="{Shadow Opacity=0.8 , Brush={AppThemeBinding Light={x:StaticResource Gray100},
+ Dark={x:StaticResource Gray600}}}">
+        <StackLayout HorizontalOptions="Fill" Spacing="20" Margin="20" Padding="10">
+
+            <Label Text="جستجوی پیشرفته"
+                   HorizontalOptions="Center"
+                   Margin="0,20,0,10"
+                   FontSize="18"
+                   Opacity="0.4"></Label>
+            <Grid ColumnDefinitions="*,20,*" >
+                <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10"   Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+                    <StackLayout>
+                        <Label Text="مکان *"></Label>
+                        <StackLayout Orientation="Horizontal" Margin="0,20,0,0" >
+                            <Button  MinimumWidthRequest="80"
+     Command="{Binding OpenMapCollectionSelectionCommand}"  Text="{Binding CityName}"
+    Background="{AppThemeBinding Dark={StaticResource Gray900},
+Light={StaticResource Gray100}}" TextColor="{AppThemeBinding Light={DynamicResource Gray950},
+     Dark={StaticResource White}}" ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.SortDown},
+    Size=14, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+         Dark={StaticResource White}}}" ContentLayout="left,10" 
+                           Margin="10,0,10,0"  CornerRadius="10">
+
+                            </Button>
+                        </StackLayout>
+                    </StackLayout>
+                </Border>
+                <Border 
+                    Grid.Column="2"
+                    BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10"   Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
+                    <StackLayout>
+                        <Label Text="دسته بندی *"></Label>
+                        <StackLayout Orientation="Horizontal" Margin="0,20,0,0" >
+                            <Button  MinimumWidthRequest="80" Text="{Binding CategoryName}"
+     Command="{Binding OpenCollectionSelectionCommand}"
+    Background="{AppThemeBinding Dark={StaticResource Gray900},
+Light={StaticResource Gray100}}" TextColor="{AppThemeBinding Light={DynamicResource Gray950},
+     Dark={StaticResource White}}" ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.SortDown},
+Size=14, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+     Dark={StaticResource White}}}" ContentLayout="left,10" Margin="10,0,10,0"  CornerRadius="10">
+
+                            </Button>
+                        </StackLayout>
+                    </StackLayout>
+                </Border>
+            </Grid>
+            <Label Text="حداقل قیمت:"
+                   HorizontalOptions="Start"
+                   Margin="10,10,0,0"
+                   FontSize="14"
+                   Opacity="0.4"></Label>
+            
+            
+        </StackLayout>
+    </Border>
+</Grid>

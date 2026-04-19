@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KasebCore.Models
+﻿namespace KasebCore.Models
 {
-    internal static class  FontAwsomeIconLoader
+    public static class  FontAwsomeIconLoader
     {
         public const string Space = "\u0020";
         public const string Exclamation = "\u0021";

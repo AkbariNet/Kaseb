@@ -45,20 +45,44 @@ public partial class AdElementPage : Grid
 
     public void InitMap()
     {
-        var location = new Location(ViewModel.Latitude, ViewModel.Longitude);
-        var span = MapSpan.FromCenterAndRadius(location, Distance.FromKilometers(2));
-        MapAd.MoveToRegion(span);
+        try
+        {
+            if (ViewModel?.Latitude != null && ViewModel?.Longitude != null)
+            {
+                var location = new Location(ViewModel.Latitude, ViewModel.Longitude);
+                var span = MapSpan.FromCenterAndRadius(location, Distance.FromKilometers(2));
+                MapAd.MoveToRegion(span);
+
+            }
+        }
+        catch (Exception)
+        {
+
+        }
     }
     
     public bool isDetailVisible = false;
-    private void DetailButton_Clicked(object sender, EventArgs e) => isDetailVisible= isDetailVisible == true ? false : true;
+    private void DetailButton_Clicked(object sender, EventArgs e)
+    {
+        if (!isDetailVisible)
+        {
+            bottomSheet.IsVisible = true;
+            isDetailVisible = true;
+        }
+
+        else
+        {
+            bottomSheet.IsVisible = false;
+            isDetailVisible = false;
+        }
+    }
 
     private void ImageView_Tapped(object sender, EventArgs e)
-    {
+    {/*
         AdElementImageSlider views = new AdElementImageSlider();
         views.images = ViewModel.Images;
         GridOfImages.Children.Add(views);
-        GridOfImages.IsVisible = true;
+        GridOfImages.IsVisible = true;*/
 
     }
 }

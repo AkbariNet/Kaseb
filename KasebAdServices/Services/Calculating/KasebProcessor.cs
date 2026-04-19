@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Kaseb.Services.Calculating
+﻿
+namespace KasebAdServices.Services.Calculating
 {
     public static class KasebProcessor
     {

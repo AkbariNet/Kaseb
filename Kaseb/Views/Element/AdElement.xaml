@@ -8,15 +8,15 @@
              StrokeShape="RoundRectangle 0"
              Padding="0" 
                      Tapped="AdElementView_Pressed"
-             xmlns:Models="clr-namespace:Kaseb.Models" BackgroundColor="Transparent"
+             xmlns:Models="clr-namespace:KasebCore.Models;assembly=KasebCore" BackgroundColor="Transparent"
              xmlns:local="clr-namespace:Kaseb.Views.Element" x:Name="AdElementView" Margin="0,0,0,20"
              x:Class="Kaseb.Views.Element.AdElement">
 
     <material:ButtonView.BindingContext>
         <VM:AdElementVM />
+        
     </material:ButtonView.BindingContext>
-     <Grid 
-                          >
+     <Grid>
 
         <Grid  >
             <Grid.ColumnDefinitions>
@@ -30,7 +30,7 @@
           StrokeThickness="0"
           Margin="0,0,0,0">
 
-                <Image Aspect="AspectFill" Source="{Binding Image}">
+                <Image Aspect="AspectFill" Source="{Binding MainImageLink}">
 
                 </Image>
             </Border>
@@ -42,17 +42,17 @@
                     <Border IsVisible="{Binding IsUrgent}" Background="{AppThemeBinding Light={StaticResource  Primary}, Dark={StaticResource Primary}}" StrokeShape="RoundRectangle 10,10,10,10" Margin="0,0,5,0">
                         <Label Text="فوری!" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center"  FontSize="10" Margin="10,0,10,0"></Label>
                     </Border>
-                    <Border IsVisible="{Binding IsShowWeighKG}" Background="{AppThemeBinding Light={StaticResource  Gray900}, Dark={StaticResource Gray600}}" StrokeShape="RoundRectangle 10,10,10,10" Margin="0,0,5,0">
+                    <Border IsVisible="{Binding IsShowWeighKG , Mode=TwoWay}" Background="{AppThemeBinding Light={StaticResource  Gray900}, Dark={StaticResource Gray600}}" StrokeShape="RoundRectangle 10,10,10,10" Margin="0,0,5,0">
                         <Label Text="{Binding ValueOfWeighKG}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="10" Margin="10,0,10,0"/>
                     </Border>
-                    <Border IsVisible="{Binding IsShowTag1}"  Background="{AppThemeBinding Light={StaticResource  Gray100}, Dark={StaticResource Gray600}}" StrokeShape="RoundRectangle 10,10,10,10" Margin="0,0,5,0">
+                    <Border IsVisible="{Binding IsShowTag1 , Mode=TwoWay}"  Background="{AppThemeBinding Light={StaticResource  Gray100}, Dark={StaticResource Gray600}}" StrokeShape="RoundRectangle 10,10,10,10" Margin="0,0,5,0">
                         <Label Text="{Binding ValueOfTag1}" HorizontalOptions="Center" VerticalOptions="Center"  FontSize="10" Margin="10,0,10,0"></Label>
                     </Border>
-                    <Border IsVisible="{Binding IsShowTag2}" Background="{AppThemeBinding Light={StaticResource  Gray100}, Dark={StaticResource Gray600}}" StrokeShape="RoundRectangle 10,10,10,10" Margin="0,0,5,0">
+                    <Border IsVisible="{Binding IsShowTag2 , Mode=TwoWay}" Background="{AppThemeBinding Light={StaticResource  Gray100}, Dark={StaticResource Gray600}}" StrokeShape="RoundRectangle 10,10,10,10" Margin="0,0,5,0">
                         <Label Text="{Binding ValueOfTag2}" HorizontalOptions="Center" VerticalOptions="Center"  FontSize="10" Margin="10,0,10,0"></Label>
                     </Border>
                 </StackLayout>
-                <Label Text="{Binding Date}" FontSize="14"   Margin="0,0,0,0"></Label>
+                <Label Text="{Binding ValueSummery}" FontSize="14"   Margin="0,0,0,0"></Label>
                 <StackLayout Orientation="Horizontal">
                     <Label FontSize="14"  HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Margin="0,0,0,0" Text="کیلویی "></Label>
                     <Label Text="{Binding Price}" FontSize="14"  HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Margin="0,0,0,0"></Label>
