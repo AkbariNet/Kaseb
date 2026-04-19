@@ -7,6 +7,7 @@ using Kaseb.Views.Element;
 using System.ComponentModel;
 using Enum = System.Enum;
 using Kaseb.Services.ShowingContext;
+using ConvertCore = KasebCore.Services.Converting.Convert;
 using CommunityToolkit.Mvvm.Input;
 using MvvmHelpers;
 using Kaseb.Views;
@@ -219,19 +220,8 @@ namespace Kaseb.ViewModels
                 try
                 {
 
-                    return Category switch
-                    {
-                        KasebCore.Models.Element.Category.Garlic => "سیر",
-                        KasebCore.Models.Element.Category.Shallot => "موسیر",
-                        KasebCore.Models.Element.Category.Walnut => "گردو",
-                        KasebCore.Models.Element.Category.Potato => "سیب زمینی",
-                        KasebCore.Models.Element.Category.Cucumber => "خیار",
-                        KasebCore.Models.Element.Category.Tomato => "گوجه فرنگی",
-                        KasebCore.Models.Element.Category.Mushroom => "قارچ",
-                        KasebCore.Models.Element.Category.Almond => "بادام",
-                        KasebCore.Models.Element.Category.IsNull => "هنوز انتخاب نشده",
-                        _ => "نامشخص"
-                    };
+                    Model.CategoryString = ConvertCore.ConvertCategoryListToCategoryString(Category);
+                    return Model.CategoryString;
                 }
                 catch (Exception)
                 {

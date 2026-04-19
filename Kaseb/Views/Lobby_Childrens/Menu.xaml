@@ -8,6 +8,9 @@
              xmlns:VM="clr-namespace:Kaseb.ViewModels.Lobby_Childrens"  
              xmlns:Models="clr-namespace:KasebCore.Models;assembly=KasebCore" x:Name="Menu"
              x:Class="Kaseb.Views.Lobby_Childrens.MenuAPP">
+    <Grid.Shadow>
+        <Shadow Brush="Black" Opacity=".1"></Shadow>
+    </Grid.Shadow>
     <Grid.BindingContext>
         <VM:MenuVM />
     </Grid.BindingContext>
@@ -18,12 +21,11 @@
 
         <Border 
             
-            Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}">
-            <Border.Shadow>
-                <Shadow Brush="Black" Opacity=".2"></Shadow>
-            </Border.Shadow>
+            Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+            StrokeShape="20" Margin="30,0,30,10">
+           
         </Border>
-        <Border  Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" HorizontalOptions="Fill"  Margin="15,10,15,20">
+        <Border   HorizontalOptions="Fill"  Margin="15,10,15,20">
             <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal">
 
                 <Button StyleClass="FilledButton" FontSize="12" ContentLayout="Top,-10"
@@ -125,6 +127,41 @@
                     </Button.Triggers>
 
                 </Button>
+
+                <Button StyleClass="FilledButton" FontSize="12"  ContentLayout="Top,-10"
+                         Padding="10,5,10,0"
+                         Margin="10,15,10,0" HeightRequest="60" BackgroundColor="Transparent"
+                          TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" 
+                        Text="پروفایل"
+                         ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.User},
+                         Size=18, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                         Dark={StaticResource White}}}"  Command="{Binding  isAddAdButtonClicked}"  >
+
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding Source={x:Reference Menu}, Path=isAddAdClicked}"
+                                    Value="True">
+                            <Setter Property="TextColor"
+                                     Value="{DynamicResource Primary}" />
+                            <Setter Property="ImageSource"
+                                 Value="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.User},
+                                   Size=18, FontFamily=7Awesome, Color={DynamicResource Primary}}"></Setter>
+                        </DataTrigger>
+
+                        <DataTrigger TargetType="Button"
+                                      Binding="{Binding Source={x:Reference Menu}, Path=isAddAdClicked}"
+                                      Value="False">
+                            <Setter Property="TextColor"
+                                      Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" />
+                            <Setter Property="ImageSource"
+                                      Value="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.User},
+                                      Size=18, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                                      Dark={StaticResource White}}}"></Setter>
+                        </DataTrigger>
+                    </Button.Triggers>
+
+                </Button>
+
 
 
             </StackLayout>

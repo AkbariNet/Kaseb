@@ -5,3 +5,7 @@
 /.vs
 /KasebCore/bin/Debug
 /KasebAdServices/bin/Debug
+/KasebAPI/KasebAPI/bin/Debug/net10.0
+/KasebAPI/KasebAPI/obj
+/KasebAPI/KasebAPI/wwwroot/images
+/KasebAPI/.vs

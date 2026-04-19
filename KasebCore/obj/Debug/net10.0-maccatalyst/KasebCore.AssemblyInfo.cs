@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KasebCore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab6fd88d6d343275f6606326ada5a04eeb05296c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+26c8968796c50c74f66f2c141d7d1c0dbef23f9c")]
 [assembly: System.Reflection.AssemblyProductAttribute("KasebCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KasebCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

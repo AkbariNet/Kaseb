@@ -1,47 +1,49 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Kaseb.Views.AdsOverlay.AdsFilterView" 
+             x:Class="Kaseb.Views.AdsOverlay.AdsFilterView"
+      xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+            
+      xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
+           
+      xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material" 
+            
       xmlns:Models="clr-namespace:KasebCore.Models;assembly=KasebCore" BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray900}}"
             
             >
-    <Border Margin="20,120,20,80"
+    <Border Margin="20,50,20,50"
             Background="White"
             StrokeShape="20" 
             Shadow="{Shadow Opacity=0.8 , Brush={AppThemeBinding Light={x:StaticResource Gray100},
  Dark={x:StaticResource Gray600}}}">
-        <StackLayout HorizontalOptions="Fill" Spacing="20" Margin="20" Padding="10">
 
-            <Label Text="جستجوی پیشرفته"
-                   HorizontalOptions="Center"
-                   Margin="0,20,0,10"
-                   FontSize="18"
-                   Opacity="0.4"></Label>
-            <Grid ColumnDefinitions="*,20,*" >
-                <Border BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10"   Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
-                    <StackLayout>
-                        <Label Text="مکان *"></Label>
-                        <StackLayout Orientation="Horizontal" Margin="0,20,0,0" >
-                            <Button  MinimumWidthRequest="80"
-     Command="{Binding OpenMapCollectionSelectionCommand}"  Text="{Binding CityName}"
-    Background="{AppThemeBinding Dark={StaticResource Gray900},
-Light={StaticResource Gray100}}" TextColor="{AppThemeBinding Light={DynamicResource Gray950},
-     Dark={StaticResource White}}" ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.SortDown},
-    Size=14, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
-         Dark={StaticResource White}}}" ContentLayout="left,10" 
-                           Margin="10,0,10,0"  CornerRadius="10">
+        <Grid RowDefinitions="auto,*,auto">
+            <Label Text="فیلتر ها"
+HorizontalOptions="Center"
+Margin="0,30,0,10"
+FontSize="18"
+Opacity="0.4"></Label>
+            <ScrollView Grid.Row="1">
+                <StackLayout  Margin="20,0,20,0" Spacing="20" >
+                   
+                    <Grid ColumnDefinitions="*,*" >
 
-                            </Button>
-                        </StackLayout>
-                    </StackLayout>
-                </Border>
-                <Border 
-                    Grid.Column="2"
-                    BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray600}}" Padding="20" StrokeShape="10"   Shadow="{Shadow Opacity=0.9 , Brush={AppThemeBinding Light={x:StaticResource Gray100}, Dark={x:StaticResource Gray600}}}">
-                    <StackLayout>
-                        <Label Text="دسته بندی *"></Label>
-                        <StackLayout Orientation="Horizontal" Margin="0,20,0,0" >
-                            <Button  MinimumWidthRequest="80" Text="{Binding CategoryName}"
+                        <StackLayout  Padding="20">
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.MapLocationDot},
+                                                Size=18, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                                                Dark={StaticResource White}}}" 
+                                 HorizontalOptions="Start"
+                                 Margin="0,0,0,0"
+                                 Opacity="1"></Image>
+                                <Label Text="مکان:"
+                                    HorizontalOptions="Start"
+                                    Margin="10,0,0,0"
+                                    FontSize="14"
+                                    Opacity="1"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Margin="0,20,0,0" >
+                                <Button  MinimumWidthRequest="80" Text="{Binding CategoryName}"
      Command="{Binding OpenCollectionSelectionCommand}"
     Background="{AppThemeBinding Dark={StaticResource Gray900},
 Light={StaticResource Gray100}}" TextColor="{AppThemeBinding Light={DynamicResource Gray950},
@@ -49,18 +51,210 @@ Light={StaticResource Gray100}}" TextColor="{AppThemeBinding Light={DynamicResou
 Size=14, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
      Dark={StaticResource White}}}" ContentLayout="left,10" Margin="10,0,10,0"  CornerRadius="10">
 
-                            </Button>
+                                </Button>
+                            </StackLayout>
                         </StackLayout>
-                    </StackLayout>
-                </Border>
-            </Grid>
-            <Label Text="حداقل قیمت:"
-                   HorizontalOptions="Start"
-                   Margin="10,10,0,0"
+                        <StackLayout  Padding="20" Grid.Column="1" HorizontalOptions="End">
+                            <StackLayout Orientation="Horizontal" >
+                                <Image Source="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.ListUl},
+                                                Size=18, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                                                Dark={StaticResource White}}}" 
+                                 HorizontalOptions="Start"
+                                 Margin="0,0,0,0"
+                                 Opacity="1"/>
+                                <Label Text="دسته بندی:"
+                                    HorizontalOptions="Start"
+                                    Margin="10,0,0,0"
+                                    FontSize="14"
+                                    Opacity="1"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Margin="0,20,0,0" >
+                                <Button  MinimumWidthRequest="80" Text="{Binding CategoryName}"
+     Command="{Binding OpenCollectionSelectionCommand}"
+    Background="{AppThemeBinding Dark={StaticResource Gray900},
+Light={StaticResource Gray100}}" TextColor="{AppThemeBinding Light={DynamicResource Gray950},
+     Dark={StaticResource White}}" ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.SortDown},
+Size=14, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+     Dark={StaticResource White}}}" ContentLayout="left,10" Margin="10,0,10,0"  CornerRadius="10">
+
+                                </Button>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                    
+                    <!-- (Optional) separator -->
+                    <Rectangle HeightRequest="2"
+                       IsVisible="True"
+                       Opacity="0.1"
+                       Margin="20,10,20,10"
+                       RadiusX="20"
+                       RadiusY="20"
+                       Background="{AppThemeBinding Light={DynamicResource Gray400},
+                                            Dark={DynamicResource Gray300}}"/>
+
+                    <StackLayout  >
+                        <Border 
+                    
+                    BackgroundColor="{AppThemeBinding Light={x:StaticResource White},
+                                Dark={x:StaticResource Gray600}}"
+                               StrokeShape="10"  
+                               >
+                            <StackLayout Spacing="20">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.MoneyCheckDollar},
+                                                   Size=24, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                                                   Dark={StaticResource White}}}" 
+                                    HorizontalOptions="Start"
+                                    Margin="10,0,0,0"
+                                    Opacity="1"></Image>
+                                    <Label Text="محدوده قیمت:"
+                                       HorizontalOptions="Start"
+                                       Margin="10,0,0,0"
+                                       FontSize="14"
+                                       Opacity="1"></Label>
+                                </StackLayout>
+                                <Grid ColumnDefinitions="30,*,30"   >
+
+                                    <Label Text="از:"
+                                             
+                   Margin="10,20,0,0"
                    FontSize="14"
                    Opacity="0.4"></Label>
-            
-            
-        </StackLayout>
+                                    <material:TextField
+                                            Grid.Column="1"
+                                    Text="0"
+                            TextColor="{AppThemeBinding Light={DynamicResource Gray900}}">
+                                        <validation:DigitsOnlyValidation Message="لطفا وزن را بصورت عددی و صحیح وارد نمایید" />
+                                    </material:TextField>
+                                    <Label Text="تومان"
+                                            Grid.Column="1"
+                               HorizontalOptions="End"
+                   Margin="10,20,40,0"
+                   FontSize="14"
+                   Opacity="1"></Label>
+                                </Grid>
+                                <Grid ColumnDefinitions="30,*,30"   Margin="0,0,0,20">
+
+                                    <Label Text="تا:"
+                                             
+                   Margin="10,20,0,0"
+                   FontSize="14"
+                   Opacity="0.4"></Label>
+                                    <material:TextField
+                                            Grid.Column="1"
+                                    Text="0" 
+                            TextColor="{AppThemeBinding Light={DynamicResource Gray900}}">
+                                        <validation:DigitsOnlyValidation Message="لطفا وزن را بصورت عددی و صحیح وارد نمایید" />
+                                    </material:TextField>
+                                    <Label Text="تومان"
+                                            Grid.Column="1"
+                               HorizontalOptions="End"
+                   Margin="10,20,40,0"
+                   FontSize="14"
+                   Opacity="1"></Label>
+                                </Grid>
+                            </StackLayout>
+                        </Border>
+                    </StackLayout>
+                    
+                    <!-- (Optional) separator -->
+                    <Rectangle HeightRequest="2"
+                       IsVisible="True"
+                       Opacity="0.1"
+                       Margin="20,10,20,10"
+                       RadiusX="20"
+                       RadiusY="20"
+                       Background="{AppThemeBinding Light={DynamicResource Gray400},
+                                            Dark={DynamicResource Gray300}}"/>
+
+                    <StackLayout>
+                        <Border 
+
+                        BackgroundColor="{AppThemeBinding Light={x:StaticResource White},
+                                    Dark={x:StaticResource Gray600}}"
+                                    StrokeShape="10"  
+                                   >
+                            <StackLayout>
+                                <Label Text="وزن :"></Label>
+                                <Grid ColumnDefinitions="*,20,*" Margin="10">
+
+                                    <Label Text="از: " Margin="0,20,0,0"></Label>
+                                    <material:TextField Icon="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.WeightHanging},
+Size=24, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+Dark={StaticResource White}}}" BorderColor="{AppThemeBinding Light={x:StaticResource Gray300},
+Dark={x:StaticResource Gray900}}" Margin="20,0,0,0"
+    Text="{Binding ValueOfWeighKG}"
+    BackgroundColor="Transparent" >
+                                        <validation:RequiredValidation Message="این قسمت باید پر شود" />
+
+                                        <validation:DigitsOnlyValidation Message="لطفا وزن را بصورت عددی و صحیح وارد نمایید" />
+                                    </material:TextField>
+                                    <Label Text="تا: " Margin="0,20,0,0" Grid.Column="2"></Label>
+                                    <material:TextField Icon="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.WeightHanging},
+Size=24, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+Dark={StaticResource White}}}" BorderColor="{AppThemeBinding Light={x:StaticResource Gray300},
+Dark={x:StaticResource Gray900}}"
+    Text="{Binding ValueOfWeighKG}"
+    BackgroundColor="Transparent" Margin="20,0,0,0"
+                                                Grid.Column="2">
+                                        <validation:RequiredValidation Message="این قسمت باید پر شود" />
+
+                                        <validation:DigitsOnlyValidation Message="لطفا وزن را بصورت عددی و صحیح وارد نمایید" />
+                                    </material:TextField>
+                                </Grid>
+                                <Label Text="وزن برحسب کیلوگرم" Margin="0,10,0,0" Opacity=".2" ></Label>
+                            </StackLayout>
+                        </Border>
+                    </StackLayout>
+
+                    <!-- (Optional) separator -->
+                    <Rectangle HeightRequest="2"
+                       IsVisible="True"
+                       Opacity="0.1"
+                       Margin="20,10,20,10"
+                       RadiusX="20"
+                       RadiusY="20"
+                       Background="{AppThemeBinding Light={DynamicResource Gray400},
+                                            Dark={DynamicResource Gray300}}"/>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox HorizontalOptions="Start" IsChecked="{Binding IsUrgent}" ></CheckBox>
+                        <Label Text="فقط فوری" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox HorizontalOptions="Start" IsChecked="{Binding IsUrgent}" ></CheckBox>
+                        <Label Text="فقط غیرنقدی" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                    </StackLayout>
+                </StackLayout>
+
+            </ScrollView>
+            <Border Grid.Row="2" HeightRequest="100">
+
+                <!-- Action buttons -->
+                <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Start"
+                         Spacing="10"
+                         Margin="20,30,20,20">
+                    <Button Text="ثبت فیلتر"
+                             Padding="20,0,20,0"
+                             CornerRadius="15"
+                             FontAttributes="Bold"
+                            x:Name="Submit"
+                                 Clicked="Submit_Clicked"
+    
+                             TextColor="White"/>
+                    <Button Text="لغو"
+                        Background="Transparent"
+                        CornerRadius="15"
+                       x:Name="Cancel"
+                            Clicked="Cancel_Clicked"    
+                       
+                        
+                        TextColor="{AppThemeBinding Light={DynamicResource Gray400},
+                                             Dark={DynamicResource Gray300}}"/>
+                   
+                </StackLayout>
+                
+            </Border>
+        </Grid>
     </Border>
 </Grid>

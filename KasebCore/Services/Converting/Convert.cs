@@ -1,4 +1,5 @@
-﻿using KasebCore.Models.Services.AdService;
+﻿using KasebCore.Models.Element;
+using KasebCore.Models.Services.AdService;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -74,6 +75,48 @@ namespace KasebCore.Services.Converting
             {
                 return "بیش از چهار هفته پیش";  // اگر زمان بیشتر از چهار هفته است
             }
+        }
+
+        public static string ConvertCategoryListToCategoryString(Category? category)
+        {
+
+            try
+            {
+
+                return category switch
+                {
+                    KasebCore.Models.Element.Category.Garlic => "سیر",
+                    KasebCore.Models.Element.Category.Shallot => "موسیر",
+                    KasebCore.Models.Element.Category.Walnut => "گردو",
+                    KasebCore.Models.Element.Category.Potato => "سیب زمینی",
+                    KasebCore.Models.Element.Category.Cucumber => "خیار",
+                    KasebCore.Models.Element.Category.Tomato => "گوجه فرنگی",
+                    KasebCore.Models.Element.Category.Mushroom => "قارچ",
+                    KasebCore.Models.Element.Category.Almond => "بادام",
+                    KasebCore.Models.Element.Category.IsNull => "هنوز انتخاب نشده",
+                    _ => "نامشخص"
+                };
+            }
+            catch (Exception)
+            {
+                return "error";
+                throw;
+            }
+        }
+        public static string ConvertCityListToCityString(Cities? city)
+        {
+            return city switch
+            {
+                KasebCore.Models.Element.Cities.IsNull => "هنوز انتخاب نشده",
+                KasebCore.Models.Element.Cities.Barfejin => "برفجین",
+                KasebCore.Models.Element.Cities.Toejin => "توئجین",
+                KasebCore.Models.Element.Cities.Muejin => "موئجین",
+                KasebCore.Models.Element.Cities.Selulan => "سلولان",
+                KasebCore.Models.Element.Cities.HeydareBalaShahr => "حیدره بالای شهر",
+                KasebCore.Models.Element.Cities.Maryanaj => "مریانج",
+                KasebCore.Models.Element.Cities.Bahar => "بهار",
+                _ => "تعریف نشده",
+            };
         }
     }
 }

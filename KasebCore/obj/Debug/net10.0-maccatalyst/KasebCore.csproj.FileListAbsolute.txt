@@ -1,2 +1,14 @@
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\bin\Debug\net10.0-maccatalyst\KasebCore.dll
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\bin\Debug\net10.0-maccatalyst\KasebCore.pdb
 C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-maccatalyst\_ProcessedBundleResourcesPath.items
 C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-maccatalyst\_ProcessedContentPath.items
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-maccatalyst\KasebCore.csproj.AssemblyReference.cache
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-maccatalyst\KasebCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-maccatalyst\KasebCore.AssemblyInfoInputs.cache
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-maccatalyst\KasebCore.AssemblyInfo.cs
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-maccatalyst\KasebCore.csproj.CoreCompileInputs.cache
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-maccatalyst\KasebCore.sourcelink.json
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-maccatalyst\KasebCore.dll
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-maccatalyst\refint\KasebCore.dll
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-maccatalyst\KasebCore.pdb
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-maccatalyst\ref\KasebCore.dll

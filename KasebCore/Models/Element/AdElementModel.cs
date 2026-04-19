@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
+using ConvertCore = KasebCore.Services.Converting.Convert;
 
 namespace KasebCore.Models.Element
 {
@@ -13,6 +14,7 @@ namespace KasebCore.Models.Element
 
         [JsonPropertyName("category")]
         public Category? Category { get; set; }
+        public string? CategoryString { get; set; }
 
         [JsonPropertyName("title")]
         public string Title { get; set; } = string.Empty;
@@ -30,18 +32,7 @@ namespace KasebCore.Models.Element
             set
             {
                 _cities = value;
-                City = _cities switch
-                {
-                    KasebCore.Models.Element.Cities.IsNull => "هنوز انتخاب نشده",
-                    KasebCore.Models.Element.Cities.Barfejin => "برفجین",
-                    KasebCore.Models.Element.Cities.Toejin => "توئجین",
-                    KasebCore.Models.Element.Cities.Muejin => "موئجین",
-                    KasebCore.Models.Element.Cities.Selulan => "سلولان",
-                    KasebCore.Models.Element.Cities.HeydareBalaShahr => "حیدره بالای شهر",
-                    KasebCore.Models.Element.Cities.Maryanaj => "مریانج",
-                    KasebCore.Models.Element.Cities.Bahar => "بهار",
-                    _  => "تعریف نشده",
-                };
+                City = ConvertCore.ConvertCityListToCityString(_cities);
             }
         }
 

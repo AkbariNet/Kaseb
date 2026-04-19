@@ -14,8 +14,59 @@ namespace KasebAdServices.Services.Connection
         {
             AdServiceModel.SetHTTP();
         }
-        public async Task<List<AdElementModel>> ReadAdFromDatabase()
+        public async Task<List<AdElementModel>> ReadAdFromDatabase(bool isUpdate)
         {
+            if (isUpdate)
+            {
+                try
+                {
+                    var response = await AdServiceModel.httpClient.GetStringAsync($"api/ads/MaximumAds=5&LastID={lastID}");
+                    Console.WriteLine(response);
+
+                    //List<AdElementModel> adElement = JsonSerializer.Deserialize<List<AdElementModel>>(response);
+                    List<AdElementModel> Respound = JsonSerializer.Deserialize<List<AdElementModel>>(response);
+                    if (Respound != null)
+                    {
+
+                        foreach (AdElementModel model in Respound)
+                        {
+                            if (model?.Images?.Count > 0)
+                            {
+                                foreach (AdImage image in model.Images)
+                                {
+                                    model.ImageLinks.Add(Convert.ConvertImagePathToLink(image.ImagePath));
+                                }
+
+                            }
+                            else
+                            {
+                                model?.Images?.Add(new AdImage());
+                            }
+                            if (model?.ImageLinks.Count > 0)
+                            {
+                                model?.MainImageLink = model.ImageLinks[0];
+
+                            }
+                        }
+
+                        lastID = Respound[Respound.Count - 1].Id;
+                        Console.WriteLine("لیست دریافت شد ");
+                        return Respound;
+                    }
+                    else
+                    {
+                        Console.WriteLine("بدون محتوا ");
+                        return new List<AdElementModel>();  // حداقل لیست خالی برگرده
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("2خطا در دریافت داده: " + ex.Message);
+                    return new List<AdElementModel>();  // حداقل لیست خالی برگرده
+                }
+            }
+            else 
             try
             { 
                 var response = await AdServiceModel.httpClient.GetStringAsync("api/ads/MaxAds=10");
@@ -47,14 +98,9 @@ namespace KasebAdServices.Services.Connection
                     }
 
                     lastID = Respound[Respound.Count - 1].Id;
-                }
-                //  return adElements;
-                if (Respound != null)
-                {
-                    Console.WriteLine("لیست دریافت شد ");
-                    return Respound;
-
-                }
+                        Console.WriteLine("لیست دریافت شد ");
+                        return Respound;
+                    }
                 else
                 {
                     Console.WriteLine("بدون محتوا " );
@@ -71,31 +117,7 @@ namespace KasebAdServices.Services.Connection
         }
 
 
-        public async Task<List<AdElementModel>> ReadAdFromDatabase(bool isUpdate)
-        {
-            if (isUpdate)
-            {
-                try
-                {
-                    var response = await AdServiceModel.httpClient.GetStringAsync($"api/ads/MaximumAds=5&LastID={lastID}");
-                    Console.WriteLine(response);
 
-                    //List<AdElementModel> adElement = JsonSerializer.Deserialize<List<AdElementModel>>(response);
-                    List<AdElementModel> Respound = JsonSerializer.Deserialize<List<AdElementModel>>(response);
-                    lastID = Respound[Respound.Count - 1].Id;
-                    //  return adElements;*/
-                    return Respound;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("2خطا در دریافت داده: " + ex.Message);
-                    return new List<AdElementModel>();  // حداقل لیست خالی برگرده
-                }
-            }
-            else return new List<AdElementModel>();
-        }
-
-        
         public List<AdElementModel> AdsModel { get; set; } = new();
 
         public Action AdsChanged;
@@ -121,7 +143,7 @@ namespace KasebAdServices.Services.Connection
             else
             {
                 AdsModel.Clear();
-                foreach (var ad in await ReadAdFromDatabase())
+                foreach (var ad in await ReadAdFromDatabase(false))
                 {
                     if (ad.ValueOfWeighKG is not null)
                     {

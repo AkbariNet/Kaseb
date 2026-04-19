@@ -1,2 +1,17 @@
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\bin\Debug\net10.0-ios\KasebAdServices.dll
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\bin\Debug\net10.0-ios\KasebAdServices.pdb
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\bin\Debug\net10.0-ios\KasebCore.dll
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\bin\Debug\net10.0-ios\KasebCore.pdb
 C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\obj\Debug\net10.0-ios\_ProcessedBundleResourcesPath.items
 C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\obj\Debug\net10.0-ios\_ProcessedContentPath.items
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\obj\Debug\net10.0-ios\KasebAdServices.csproj.AssemblyReference.cache
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\obj\Debug\net10.0-ios\KasebAdServices.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\obj\Debug\net10.0-ios\KasebAdServices.AssemblyInfoInputs.cache
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\obj\Debug\net10.0-ios\KasebAdServices.AssemblyInfo.cs
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\obj\Debug\net10.0-ios\KasebAdServices.csproj.CoreCompileInputs.cache
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\obj\Debug\net10.0-ios\KasebAdServices.sourcelink.json
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\obj\Debug\net10.0-ios\KasebAdS.44DCD896.Up2Date
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\obj\Debug\net10.0-ios\KasebAdServices.dll
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\obj\Debug\net10.0-ios\refint\KasebAdServices.dll
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\obj\Debug\net10.0-ios\KasebAdServices.pdb
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebAdServices\obj\Debug\net10.0-ios\ref\KasebAdServices.dll

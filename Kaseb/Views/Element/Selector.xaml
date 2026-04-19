@@ -16,7 +16,7 @@
         <VM:AdsVM />
     </uranium:UraniumContentPage.BindingContext>
     
-    <Border Grid.RowSpan="2" Margin="0,0,0,-80" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Background="Transparent" >
+    <Border Grid.RowSpan="2" Margin="0,0,0,0"  Background="Transparent" >
         <Grid>
             <maps:Map x:Name="map" IsShowingUser="False" IsTrafficEnabled="True" IsZoomEnabled="True"  >
                 <x:Arguments>
@@ -41,12 +41,13 @@
     </Border>
 
     <uranium:UraniumContentPage.Attachments>
+
         <Controls:MyCustomBottomSheetView x:Name="bottomSheet" 
                                   BackgroundColor="{AppThemeBinding Dark={DynamicResource Black}, Light={DynamicResource White}}"
-                                  
-                                  
-                                  StrokeShape="RoundRectangle 20,20,0,0"
                                   Margin="0,200,0,0"
+                                  HorizontalOptions="Center"
+                                  StrokeShape="RoundRectangle 20,20,0,0"
+                                  
                                   Stroke="Transparent"
                                   StrokeThickness="0"
                                   
@@ -65,35 +66,35 @@
 
                         <CollectionView 
                      ItemsSource="{Binding Items}"  
-                     VerticalOptions="FillAndExpand"
+                    
                      RemainingItemsThreshold="1"
                      RemainingItemsThresholdReachedCommand="{Binding LazyLoaderCommand}"
                      >
 
-                        <CollectionView.ItemTemplate >
+                            <CollectionView.ItemTemplate >
                                 <DataTemplate>
                                     <local:AdElement  Model="{Binding .}" />
 
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
 
-                    </CollectionView>
-                </RefreshView>
+                        </CollectionView>
+                    </RefreshView>
                 </Grid>
 
             </material:BottomSheetView.Body>
             <material:BottomSheetView.Header>
-                 <Grid
+                <Grid
                   HeightRequest="60" 
                   BackgroundColor="{StaticResource Primary}"
                    >
                     <Label Text="آگهی ها" TextColor="{DynamicResource White}" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" ></Label>
-               
+
                 </Grid>
-                
+
             </material:BottomSheetView.Header>
 
-            
+
         </Controls:MyCustomBottomSheetView>
     </uranium:UraniumContentPage.Attachments>
 

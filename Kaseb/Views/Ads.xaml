@@ -17,29 +17,49 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="80" ></RowDefinition>
             </Grid.RowDefinitions>
+       
+            <Border Grid.Row="1"  Margin="15,20,15,0" StrokeShape="RoundRectangle 20" >
+
+                <RefreshView
             
-            <RefreshView
-            Grid.Row="1" 
             Command="{Binding RefreshAdsCommand}"
             IsRefreshing="{Binding IsRefreshing}"
-            Margin="15,20,15,0">
+            >
 
-                <CollectionView
+                    <CollectionView
                 ItemsSource="{Binding Items}"
                 RemainingItemsThreshold="1"
                RemainingItemsThresholdReachedCommand="{Binding LazyLoaderCommand}"
                 >
-                    <CollectionView.ItemTemplate >
-                        <DataTemplate >
-                            <!-- هر آیتم خودش یک AdElementView است -->
-                            <local:AdElement Model="{Binding .}" />
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
+                        <CollectionView.ItemTemplate >
+                            <DataTemplate >
+                                <!-- هر آیتم خودش یک AdElementView است -->
+                                <local:AdElement Model="{Binding .}" />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
 
-                </CollectionView>
-            </RefreshView>
+                    </CollectionView>
+                </RefreshView>
+            </Border>
             <Elements:Header></Elements:Header>
-
+            <!--
+    Gradient overlay that appears on mobile platforms
+    (UWP,MacCatalyst is excluded).  It fades from dark gray at the
+    bottom to transparent toward the top.
+-->
+            <Border Grid.RowSpan="5"
+        Opacity="1"
+        IsVisible="{OnPlatform Default=true, UWP=false , MacCatalyst=false}"
+        StrokeThickness="0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,2.25" EndPoint="0,0">
+                        <GradientStop Color="{AppThemeBinding Light={DynamicResource White}, Dark=#222}"
+                          Offset="0.6"/>
+                        <GradientStop Color="Transparent" Offset="0.7"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            
             <Childrens:MenuAPP Grid.Row="2" isAdClicked="True" ></Childrens:MenuAPP>
         </Grid>
     </Border>

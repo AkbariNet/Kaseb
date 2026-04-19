@@ -51,7 +51,7 @@
 
         </Grid>
         <StackLayout Orientation="Horizontal" Spacing="10">
-            <Button HorizontalOptions="Start" Text="پیشرفته"
+            <Button HorizontalOptions="Start" Text="فیلتر ها"
                     FontSize="12"
                     Background="{AppThemeBinding Dark={DynamicResource Gray100},Light={DynamicResource Gray900}}"
                     TextColor="{AppThemeBinding Dark={DynamicResource Gray900},Light={DynamicResource White}}"

@@ -1,2 +1,14 @@
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\bin\Debug\net10.0-ios\KasebCore.dll
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\bin\Debug\net10.0-ios\KasebCore.pdb
 C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-ios\_ProcessedBundleResourcesPath.items
 C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-ios\_ProcessedContentPath.items
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-ios\KasebCore.csproj.AssemblyReference.cache
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-ios\KasebCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-ios\KasebCore.AssemblyInfoInputs.cache
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-ios\KasebCore.AssemblyInfo.cs
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-ios\KasebCore.csproj.CoreCompileInputs.cache
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-ios\KasebCore.sourcelink.json
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-ios\KasebCore.dll
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-ios\refint\KasebCore.dll
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-ios\KasebCore.pdb
+C:\Users\MrAkbariDavar\source\repos\MoradStudio\Kaseb\KasebCore\obj\Debug\net10.0-ios\ref\KasebCore.dll

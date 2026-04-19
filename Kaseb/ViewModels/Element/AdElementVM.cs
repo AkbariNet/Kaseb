@@ -36,8 +36,6 @@ namespace Kaseb.ViewModels.Element
                 OnPropertyChanged(nameof(Image));
 
 
-                ///Add <,> to Price like 1,000,000 
-
             }
         }
 
@@ -72,6 +70,19 @@ namespace Kaseb.ViewModels.Element
             }
         }
 
+        //Propery For Content
+        public string CategoryString
+        {
+            get => Model?.CategoryString ?? "";
+            set
+            {
+                if (Model != null && Model.CategoryString != value)
+                {
+                    Model.CategoryString = value;
+                    OnPropertyChanged(nameof(CategoryString));
+                }
+            }
+        }
         //Propery For Date
         public DateTime Date
         {
