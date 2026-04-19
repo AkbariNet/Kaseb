@@ -1,0 +1,6 @@
+@KasebAPI_HostAddress = http://localhost:5008
+
+GET {{KasebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
