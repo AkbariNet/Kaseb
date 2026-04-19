@@ -3,7 +3,7 @@
     "Name": "Kaseb Profile",
     "Projects": [
       {
-        "Path": "..\\..\\KasebAPI\\KasebAPI\\KasebAPI.csproj",
+        "Path": "KasebAPI\\KasebAPI\\KasebAPI.csproj",
         "Action": "Start",
         "DebugTarget": "http"
       },

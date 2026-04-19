@@ -16,65 +16,64 @@ namespace KasebAPI.Models.Search
 
 
 
+
         [JsonPropertyName("category")]
-        public string? Category { get; set; }
+        public Category? Category { get; set; }
 
         [JsonPropertyName("title")]
-        public string Title { get; set; } = string.Empty;
+        public string? Title { get; set; } = string.Empty;
 
         [JsonPropertyName("city")]
-        public string City { get; set; } = string.Empty;
+        public Cities? City { get; set; }
 
         [JsonPropertyName("minPrice")]
-        public string MinPrice { get; set; } = string.Empty;
+        public decimal? MinPrice { get; set; }
 
         [JsonPropertyName("maxPrice")]
-        public string MaxPrice { get; set; } = string.Empty;
+        public decimal? MaxPrice { get; set; }
 
         [JsonPropertyName("isUrgent")]
         public bool IsUrgent { get; set; }
 
         [JsonPropertyName("minValueOfWeighKG")]
-        public string MinValueOfWeighKG { get; set; } = string.Empty;
+        public decimal? MinValueOfWeighKG { get; set; }
 
         [JsonPropertyName("maxValueOfWeighKG")]
-        public string MaxValueOfWeighKG { get; set; } = string.Empty;
+        public decimal? MaxValueOfWeighKG { get; set; }
 
         [JsonPropertyName("isNonCash")]
         public bool IsNonCash { get; set; }
-
     }
 
 
-
-
-    public interface ISearchElement
+    
+    public  interface ISearchElement
     {
 
 
         [JsonPropertyName("category")]
-        public string? Category { get; set; }
+        public Category? Category { get; set; }
 
         [JsonPropertyName("title")]
-        public string Title { get; set; } 
+        public string? Title { get; set; } 
 
         [JsonPropertyName("city")]
-        public string City { get; set; }
+        public Cities? City { get; set; }
 
         [JsonPropertyName("minPrice")]
-        public string MinPrice { get; set; } 
+        public decimal? MinPrice { get; set; } 
 
         [JsonPropertyName("maxPrice")]
-        public string MaxPrice { get; set; } 
+        public decimal? MaxPrice { get; set; } 
 
         [JsonPropertyName("isUrgent")]
         public bool IsUrgent { get; set; }
 
         [JsonPropertyName("minValueOfWeighKG")]
-        public string MinValueOfWeighKG { get; set; } 
+        public decimal? MinValueOfWeighKG { get; set; } 
 
         [JsonPropertyName("maxValueOfWeighKG")]
-        public string MaxValueOfWeighKG { get; set; } 
+        public decimal? MaxValueOfWeighKG { get; set; } 
 
         [JsonPropertyName("isNonCash")]
         public bool IsNonCash { get; set; }

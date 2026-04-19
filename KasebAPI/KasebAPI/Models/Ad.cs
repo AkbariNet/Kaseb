@@ -1,76 +1,73 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace KasebAPI.Models
+namespace KasebAPI.Models;
+
+/// <summary>
+/// نمایندگی یک آگهی.
+/// </summary>
+public class Ad
 {
-    public class Ad
-    {
-        [System.ComponentModel.DataAnnotations.Key]
-        [Required]
-        public int Id { get; set; }
+    [Key]
+    public int Id { get; set; }
 
+    [MaxLength(50)]
+    public string Title { get; set; } = default!;
 
-        [MaxLength(50)]
-        public string? Title { get; set; }
+    [MaxLength(1000)]
+    public string Content { get; set; } = default!;
 
-        [MaxLength(1000)]
-        public string? Content { get; set; }
+    [MaxLength(50)]
+    public string Author { get; set; } = default!;
 
-        [MaxLength(50)]
-        public string? Author { get; set; }
+    [MaxLength(50)]
+    public string City { get; set; } = default!;
 
-        [MaxLength(50)]
-        public string? City { get; set; }
+    [MaxLength(20)]
+    public string Phone { get; set; } = default!;
 
-        [MaxLength(20)]
-        public string? Phone { get; set; }
+    [MaxLength(50)]
+    public string Price { get; set; } = default!;              // به‌صورت string ذخیره می‌شود تا امکان فرمت دلخواه داشته باشد
 
-        [MaxLength(50)]
-        public string? Price { get; set; }
+    public DateTime? Date { get; set; }
 
-        public DateTime? Date { get; set; }
+    public Category Category { get; set; }
 
-        public Category Category { get; set; }
+    public bool IsUrgent { get; set; }
+    public bool NonCash { get; set; }
+    public bool SomeOfCashMostPayed { get; set; }
 
-        public bool IsUrgent { get; set; }
+    public int MonthForNonCash { get; set; }
 
-        public bool NonCash { get; set; }
+    public double Latitude { get; set; }
+    public double Longitude { get; set; }
 
-        public bool SomeOfCashMostPayed { get; set; }
+    public int InventoryGuarantee { get; set; }
 
-        public int MonthForNonCash { get; set; }
+    [MaxLength(50)]
+    public string ValueOfWeighKG { get; set; } = default!;     // string→decimal در لایه سرویس کنونی.
 
-        public double Latitude { get; set; }
+    [MaxLength(50)]
+    public string ValueOfTag1 { get; set; } = default!;
+    [MaxLength(50)]
+    public string ValueOfTag2 { get; set; } = default!;
 
-        public double Longitude { get; set; }
+    public List<AdImage>? Images { get; set; }                 // navigation
+}
 
-        public int InventoryGuarantee { get; set; }
+/// <summary>
+/// دسته‌بندی محصولات.
+/// </summary>
+public enum Category
+{
+    IsNull, Garlic, Shallot, Walnut, Potato, Cucumber, Tomato,
+    Mushroom, Almond
+}
 
-        [MaxLength(50)]
-        public string? ValueOfWeighKG { get; set; }
-
-        [MaxLength(50)]
-        public string? ValueOfTag1 { get; set; }
-
-        [MaxLength(50)]
-        public string? ValueOfTag2 { get; set; }
-
-
-        // navigation property
-        public List<AdImage>? Images { get; set; }
-
-    }
-
-
-    public enum Category
-    {
-        IsNull,
-        Garlic,
-        Shallot,
-        Walnut,
-        Potato,
-        Cucumber,
-        Tomato,
-        Mushroom,
-        Almond,
-    }
+/// <summary>
+/// شهرها (داده‌آیته‌سازی ساده)
+/// </summary>
+public enum Cities
+{
+    IsNull, Barfejin, Toejin, Muejin, Selulan, HeydareBalaShahr,
+    Maryanaj, Bahar
 }
