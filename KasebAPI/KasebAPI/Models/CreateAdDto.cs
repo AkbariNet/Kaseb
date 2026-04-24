@@ -12,7 +12,7 @@
 
         public string? Phone { get; set; }
 
-        public string? Price { get; set; }
+        public decimal Price { get; set; }
 
         public DateTime? Date { get; set; }
 
@@ -32,7 +32,7 @@
 
         public int InventoryGuarantee { get; set; }
 
-        public string? ValueOfWeighKG { get; set; }
+        public decimal ValueOfWeighKG { get; set; }
 
         public string? ValueOfTag1 { get; set; }
 

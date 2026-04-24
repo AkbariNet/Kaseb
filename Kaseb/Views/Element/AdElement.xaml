@@ -6,6 +6,7 @@
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material" 
              xmlns:VM="clr-namespace:Kaseb.ViewModels.Element"  Background="Transparent"
              StrokeShape="RoundRectangle 0"
+                     
              Padding="0" 
                      Tapped="AdElementView_Pressed"
              xmlns:Models="clr-namespace:KasebCore.Models;assembly=KasebCore" BackgroundColor="Transparent"
@@ -63,7 +64,7 @@
 HorizontalOptions="Start"
 Margin="5,0,0,0"
 Opacity="1"/>
-                            <Label Text="{Binding ValueOfWeighKG}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="10" Margin="5,0,10,0"/>
+                            <Label Text="{Binding ValueOfWeighKGString}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="10" Margin="5,0,10,0"/>
 
                         </StackLayout>
                     </Border>
@@ -95,7 +96,7 @@ Opacity="1"/>
                 <Label Text="{Binding ValueSummery}" FontSize="14"   Margin="0,0,0,0"></Label>
                 <StackLayout Orientation="Horizontal">
                     <Label FontSize="14"  HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Margin="0,0,0,0" Text="کیلویی "></Label>
-                    <Label Text="{Binding Price}" FontSize="14"  HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Margin="0,0,0,0"></Label>
+                    <Label Text="{Binding PriceString}" FontSize="14"  HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Margin="0,0,0,0"></Label>
                     <Label FontSize="14"  HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Margin="0,0,0,0" Text=" تومان"></Label>
                 </StackLayout>
 

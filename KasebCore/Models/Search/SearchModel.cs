@@ -23,8 +23,6 @@ namespace KasebCore.Models.Search
     public class AgriculturalProductsSearchModel : ISearchElement
     {
 
-
-
         [JsonPropertyName("category")]
         public Category? Category { get; set; }
 
@@ -51,6 +49,8 @@ namespace KasebCore.Models.Search
 
         [JsonPropertyName("isNonCash")]
         public bool IsNonCash { get; set; }
+        public int MaxAdsValue { get; set; } = 10;
+        public int LastAdID { get; set; }
 
     }
 
@@ -84,6 +84,9 @@ namespace KasebCore.Models.Search
 
         [JsonPropertyName("isNonCash")]
         public bool IsNonCash { get; set; }
+        public int MaxAdsValue { get; set; }
+        public int LastAdID { get; set; }
+
     }
    
 

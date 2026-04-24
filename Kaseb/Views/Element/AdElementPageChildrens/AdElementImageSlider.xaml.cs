@@ -5,15 +5,23 @@ namespace Kaseb.Views.Element.AdElementPageChildrens;
 
 public partial class AdElementImageSlider : Grid
 {
-	public AdElementImageSlider()
-	{
-		InitializeComponent();/*
-        List<string> imagePaths = new List<string>();
-        foreach (var item in images)
+    List<string> _imagePaths;
+    public List<string> ImagePaths
+    {
+        get
         {
-            imagePaths.Add(item.ImagePath);
+            return _imagePaths;
         }
-            ImageSlider.ItemsSource = imagePaths;*/
+        set
+        {
+            _imagePaths = value;
+            ImageSlider.ItemsSource = _imagePaths;
+        }
+    }
+
+    public AdElementImageSlider()
+	{
+		InitializeComponent();
     }
 
 

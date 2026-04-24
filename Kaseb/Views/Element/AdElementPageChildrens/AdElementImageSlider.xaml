@@ -5,14 +5,12 @@
              x:Name="AddElementImgaeSliderView"
              >
     <CarouselView x:Name="ImageSlider"
-              HeightRequest="300" Background="Red"
+              Background="Transparent"
               IndicatorView="indicator">
         <CarouselView.ItemTemplate>
             <DataTemplate>
-                <Image Source="{Binding}" 
-                   Aspect="AspectFill"
-                   WidthRequest="350"
-                   HeightRequest="200"
+                <Image Source="{Binding }" 
+                   Aspect="AspectFit"
                    Margin="5"
                    />
             </DataTemplate>
@@ -20,8 +18,8 @@
     </CarouselView>
     
     <d:IndicatorView x:Name="indicator"
-               IndicatorColor="LightGray"
-               SelectedIndicatorColor="White"
+               IndicatorColor="{DynamicResource Primary}"
+               SelectedIndicatorColor="{DynamicResource Secondary}"
                HorizontalOptions="Center"
                Margin="0,5,0,0"/>
 

@@ -1,6 +1,8 @@
 ﻿using Kaseb.Services;
 using Kaseb.ViewModels;
+using Kaseb.ViewModels.Element;
 using Kaseb.Views.Element.AdElementPageChildrens;
+using KasebCore.Models.Element;
 using Microsoft.Maui.Maps;
 using UraniumUI.Pages;
 
@@ -25,7 +27,7 @@ public partial class AdElementPage : Grid
         
     }
 
-    internal AddAdsVM ViewModel => this.BindingContext as AddAdsVM;
+    internal AdElementVM ViewModel => this.BindingContext as AdElementVM;
     public async Task CallNumberAsync(string phoneNumber)
     {
         if (string.IsNullOrWhiteSpace(phoneNumber))
@@ -47,9 +49,9 @@ public partial class AdElementPage : Grid
     {
         try
         {
-            if (ViewModel?.Latitude != null && ViewModel?.Longitude != null)
+            if (ViewModel?.Model.Latitude != null && ViewModel?.Model.Longitude != null)
             {
-                var location = new Location(ViewModel.Latitude, ViewModel.Longitude);
+                var location = new Location(ViewModel.Model.Latitude, ViewModel.Model.Longitude);
                 var span = MapSpan.FromCenterAndRadius(location, Distance.FromKilometers(2));
                 MapAd.MoveToRegion(span);
 
@@ -78,11 +80,10 @@ public partial class AdElementPage : Grid
     }
 
     private void ImageView_Tapped(object sender, EventArgs e)
-    {/*
+    {
         AdElementImageSlider views = new AdElementImageSlider();
-        views.images = ViewModel.Images;
-        GridOfImages.Children.Add(views);
-        GridOfImages.IsVisible = true;*/
+        views.ImagePaths = ViewModel.ImageLinks;
+        PageLoader.includeOverlay(null,views);
 
     }
 }

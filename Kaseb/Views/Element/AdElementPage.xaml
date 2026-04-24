@@ -10,7 +10,7 @@
              xmlns:Controls="clr-namespace:Kaseb.Controls"
              >
     <uranium:UraniumContentPage Grid.RowSpan="4">
-        
+
         <Grid>
 
 
@@ -21,7 +21,7 @@
                 <RowDefinition Height="100"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <ScrollView Grid.Row="1"  Margin="0,-60,0,0">
+            <ScrollView Grid.Row="1"  Margin="0,-60,0,20">
                 <StackLayout  >
                     <Border Margin="50,50,50,0"
             StrokeShape="RoundRectangle 50,50,50,50" 
@@ -47,15 +47,15 @@
                         <Label Text="{Binding Title}"  FontFamily="VazirmatnBlack"  FontSize="24" HorizontalOptions="Center"></Label>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                             <Label Text="{Binding TheSummeryOfDateAndCity}"  FontFamily="VazirmatnMedium" FontSize="16" Margin="0,10,0,0" Opacity="0.5" HorizontalOptions="Center"></Label>
-                  
+
                         </StackLayout>
-                       </StackLayout >
+                    </StackLayout >
                     <StackLayout Margin="0,15,0,0" Spacing="10" Orientation="Horizontal"  HorizontalOptions="Center">
                         <Border HeightRequest="50"  StrokeShape="20"
                     BackgroundColor="{StaticResource Primary}"
                                 IsVisible="{Binding IsUrgent}"
                     >
-                           
+
                             <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Start">
 
                                 <Label Text="{x:Static Models:FontAwsomeIconLoader.Fire}"
@@ -156,7 +156,7 @@
                 </Grid>
             </Border>
         </Grid>
-        
+
         <uranium:UraniumContentPage.Attachments>
             <Controls:MyCustomBottomSheetView 
                 x:Name="bottomSheet" 
@@ -172,118 +172,118 @@
                                   CloseOnTapOutside="True"
                                   >
 
-               
+
 
 
                 <material:BottomSheetView.Body >
                     <ScrollView HeightRequest="450">
-                    <Grid 
+                        <Grid 
                           BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}">
-                        <StackLayout Margin="20" Spacing="10">
-                            <Label Text="جزئیات آگهی" FontSize="18" FontAttributes="Bold" Opacity="0.8" Margin="20,0,20,20"/>
-                            
-                            <Grid ColumnDefinitions="*,*">
-                            <Grid ColumnDefinitions="*,*">
-                                <StackLayout Orientation="Horizontal"  Margin="20,0,0,0">
+                            <StackLayout Margin="20" Spacing="10">
+                                <Label Text="جزئیات آگهی" FontSize="18" FontAttributes="Bold" Opacity="0.8" Margin="20,0,20,20"/>
 
-                                    <Label Text="مکان آگهی : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
-                                    <Label Text="{Binding City}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
+                                <Grid ColumnDefinitions="*,*">
+                                    <Grid ColumnDefinitions="*,*">
+                                        <StackLayout Orientation="Horizontal"  Margin="20,0,0,0">
 
-                                </StackLayout>
-                            </Grid>
-                            <Grid ColumnDefinitions="*,*" Grid.Column="1">
-                                <StackLayout Orientation="Horizontal"  Margin="20,0,0,0">
+                                            <Label Text="مکان آگهی : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
+                                            <Label Text="{Binding City}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
 
-                                    <Label Text="وزن : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
-                                    <Label Text="{Binding ValueOfWeighKG}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
+                                        </StackLayout>
+                                    </Grid>
+                                    <Grid ColumnDefinitions="*,*" Grid.Column="1">
+                                        <StackLayout Orientation="Horizontal"  Margin="20,0,0,0">
 
-                                </StackLayout>
-                            </Grid>
-                            </Grid>
-                            <BoxView StyleClass="Divider" />
-                            <Grid ColumnDefinitions="*,*">
-                                <StackLayout Orientation="Horizontal"  Margin="20,0,20,0">
+                                            <Label Text="وزن : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
+                                            <Label Text="{Binding ValueOfWeighKG}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
 
-                                    <Label Text="زمان انتشار : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
-                                    <Label Text="{Binding Date}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </Grid>
+                                <BoxView StyleClass="Divider" />
+                                <Grid ColumnDefinitions="*,*">
+                                    <StackLayout Orientation="Horizontal"  Margin="20,0,20,0">
 
-                                </StackLayout>
-                            </Grid>
-                            <BoxView StyleClass="Divider" />
-                            <Grid ColumnDefinitions="*,*">
-                            <StackLayout Orientation="Horizontal"  Margin="20,0,20,0">
+                                        <Label Text="زمان انتشار : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
+                                        <Label Text="{Binding Date}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
 
-                                <Label Text="نوع فروش: " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
-                                    <Label Text="{Binding ValueOfTag1}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
-                                    <Label Text=" و فوری" FontSize="16" FontAttributes="Bold"  Opacity="0.8">
+                                    </StackLayout>
+                                </Grid>
+                                <BoxView StyleClass="Divider" />
+                                <Grid ColumnDefinitions="*,*">
+                                    <StackLayout Orientation="Horizontal"  Margin="20,0,20,0">
 
-                                        <Label.Triggers>
-                                            <DataTrigger TargetType="Label"
+                                        <Label Text="نوع فروش: " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
+                                        <Label Text="{Binding ValueOfTag1}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
+                                        <Label Text=" و فوری" FontSize="16" FontAttributes="Bold"  Opacity="0.8">
+
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label"
                                 Binding="{Binding IsUrgent}"
+                                Value="True">
+                                                    <Setter Property="IsVisible" Value="True"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Label"
+                                Binding="{Binding IsUrgent}"
+                                Value="False">
+                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Grid.Column="1"  Margin="20,0,20,0">
+
+                                        <Label Text="مدت : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
+                                        <Label Text="{Binding MonthForNonCash}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
+                                        <Label Text=" ماهه" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
+
+                                        <StackLayout.Triggers>
+                                            <DataTrigger TargetType="StackLayout"
+                                Binding="{Binding NonCash}"
                                 Value="True">
                                                 <Setter Property="IsVisible" Value="True"></Setter>
                                             </DataTrigger>
-                                            <DataTrigger TargetType="Label"
-                                Binding="{Binding IsUrgent}"
+                                            <DataTrigger TargetType="StackLayout"
+                                Binding="{Binding SomeOfCashMostPayed}"
                                 Value="False">
                                                 <Setter Property="IsVisible" Value="False"></Setter>
                                             </DataTrigger>
-                                        </Label.Triggers>
-                                    </Label>
+                                        </StackLayout.Triggers>
+                                    </StackLayout>
+                                </Grid>
+                                <Label Text="پرداخت پیش پرداخت الزامی است"
+                                   IsVisible="{Binding SomeOfCashMostPayed}"
+                                   Margin="20,10,20,0" FontSize="16" FontAttributes="Bold"  Opacity="0.8">
 
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal" Grid.Column="1"  Margin="20,0,20,0">
+                                </Label>
+                                <BoxView StyleClass="Divider" />
+                                <StackLayout Spacing="10">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="تضمین موجودی آگهی: " FontSize="16" FontAttributes="Bold"  Opacity="0.3" Margin="20,0,20,0"/>
+                                        <Label Text="{Binding InventoryGuarantee}"   FontSize="16" FontAttributes="Bold"  Opacity="0.8" Margin="20,0,20,0"/>
+                                        <Label Text=" روز" FontSize="16" FontAttributes="Bold"  Opacity="0.3" Margin="0,0,20,0"/>
 
-                                    <Label Text="مدت : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
-                                    <Label Text="{Binding MonthForNonCash}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
-                                    <Label Text=" ماهه" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
+                                    </StackLayout>
+
+                                    <BoxView StyleClass="Divider" />
 
                                     <StackLayout.Triggers>
+
                                         <DataTrigger TargetType="StackLayout"
-                                Binding="{Binding NonCash}"
-                                Value="True">
-                                            <Setter Property="IsVisible" Value="True"></Setter>
-                                        </DataTrigger>
-                                        <DataTrigger TargetType="StackLayout"
-                                Binding="{Binding SomeOfCashMostPayed}"
-                                Value="False">
+                                Binding="{Binding InventoryGuarantee}"
+                                Value="0">
                                             <Setter Property="IsVisible" Value="False"></Setter>
                                         </DataTrigger>
                                     </StackLayout.Triggers>
                                 </StackLayout>
-                            </Grid>
-                            <Label Text="پرداخت پیش پرداخت الزامی است"
-                                   IsVisible="{Binding SomeOfCashMostPayed}"
-                                   Margin="20,10,20,0" FontSize="16" FontAttributes="Bold"  Opacity="0.8">
+                                <Border StrokeShape="20" HeightRequest="100" Margin="20,0,20,0" >
+                                    <maps:Map x:Name="MapAd">
 
-                            </Label>
-                            <BoxView StyleClass="Divider" />
-                            <StackLayout Spacing="10">
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="تضمین موجودی آگهی: " FontSize="16" FontAttributes="Bold"  Opacity="0.3" Margin="20,0,20,0"/>
-                                    <Label Text="{Binding InventoryGuarantee}"   FontSize="16" FontAttributes="Bold"  Opacity="0.8" Margin="20,0,20,0"/>
-                                    <Label Text=" روز" FontSize="16" FontAttributes="Bold"  Opacity="0.3" Margin="0,0,20,0"/>
-
-                                </StackLayout>
-
-                                <BoxView StyleClass="Divider" />
-
-                                <StackLayout.Triggers>
-
-                                    <DataTrigger TargetType="StackLayout"
-                                Binding="{Binding InventoryGuarantee}"
-                                Value="0">
-                                        <Setter Property="IsVisible" Value="False"></Setter>
-                                    </DataTrigger>
-                                </StackLayout.Triggers>
+                                    </maps:Map>
+                                </Border>
                             </StackLayout>
-                            <Border StrokeShape="20" HeightRequest="100" Margin="20,0,20,0" >
-                                <maps:Map x:Name="MapAd">
-                                  
-                                </maps:Map>
-                            </Border>
-                        </StackLayout>
-                    </Grid>
+                        </Grid>
                     </ScrollView>
                 </material:BottomSheetView.Body>
                 <material:BottomSheetView.Header>
@@ -301,5 +301,4 @@
             </Controls:MyCustomBottomSheetView>
         </uranium:UraniumContentPage.Attachments>
     </uranium:UraniumContentPage>
-    <Grid IsVisible="False" x:Name="GridOfImages" Background="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}"></Grid>
 </Grid>

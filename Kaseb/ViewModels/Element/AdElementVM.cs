@@ -83,6 +83,23 @@ namespace Kaseb.ViewModels.Element
                 }
             }
         }
+
+
+        //Propery For Phone
+        public string Phone
+        {
+            get => Model?.Phone ?? "";
+            set
+            {
+                if (Model != null && Model.Phone != value)
+                {
+                    Model.Phone = value;
+                    OnPropertyChanged(nameof(Phone));
+                }
+            }
+        }
+
+
         //Propery For Date
         public DateTime Date
         {
@@ -97,9 +114,9 @@ namespace Kaseb.ViewModels.Element
             }
         }
         //Propery For Price
-        public string Price
+        public decimal Price
         {
-            get => string.Format("{0:N0}", long.Parse(Model?.Price ?? ""));
+            get => Model?.Price ?? 0;
 
             set
             {
@@ -221,13 +238,13 @@ namespace Kaseb.ViewModels.Element
             }
         }
         //Value For WeighKG
-        public string ValueOfWeighKG
+        public decimal ValueOfWeighKG
         {
 
             get
             {
 
-                return Model?.ValueOfWeighKG ?? "";
+                return Model?.ValueOfWeighKG ?? 0;
             }
 
 

@@ -1,5 +1,6 @@
 ﻿using KasebCore.Models.Element;
 using KasebCore.Models.Services.AdService;
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -15,6 +16,10 @@ namespace KasebCore.Services.Converting
             return Link;
         }
 
+        public static double KiloToTon(double kilo)
+        {
+            return kilo / 1000.0;
+        }
         public static string ConvertDateTimeToSummeryTime(DateTime dateTime)
         {
             TimeSpan timeDifference = DateTime.Now - dateTime;
@@ -117,6 +122,18 @@ namespace KasebCore.Services.Converting
                 KasebCore.Models.Element.Cities.Bahar => "بهار",
                 _ => "تعریف نشده",
             };
+        }
+        public static string ConvertWeighDecimalToWeighString (decimal WeighDecimal)
+        {
+                        return WeighDecimal >= 1000
+                        ? KiloToTon((double) WeighDecimal).ToString() + " تُن"
+                        : ((double)WeighDecimal).ToString() + " کیلوگرم";
+
+
+        }
+        public static string ConvertPriceDecimalToPriceStringWithSeprator(decimal Price)
+        {
+            return Price.ToString("N0", CultureInfo.CreateSpecificCulture("fa-IR"));
         }
     }
 }

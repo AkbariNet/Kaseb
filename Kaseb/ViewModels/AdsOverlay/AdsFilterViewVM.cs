@@ -1,6 +1,7 @@
-﻿using KasebCore.Models.Element;
-using KasebCore.Services.Converting;
+﻿using Kaseb.Services;
+using KasebCore.Models.Element;
 using KasebCore.Models.Search;
+using KasebCore.Services.Converting;
 using MvvmHelpers;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,10 @@ namespace Kaseb.ViewModels.AdsOverlay
 
         private void AdsFilterViewVM_ApplyFilter()
         {
+
             SearchModel.MainSearchModel = Temp;
+            PageLoader.Ads.ViewModel.RefreshAdsAction?.Invoke();
+            Console.WriteLine("");
         }
 
         public Action ApplyFilter;

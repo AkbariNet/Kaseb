@@ -4,6 +4,7 @@ using Microsoft.Maui.Dispatching;
 using MvvmHelpers;
 using KasebCore.Models.Element;
 using KasebAdServices.Services.Connection;
+using KasebCore.Models.Search;
 
 namespace Kaseb.ViewModels
 {
@@ -17,28 +18,36 @@ namespace Kaseb.ViewModels
 
         bool LazyLoadCompleted = true;
 
-
+        public Action RefreshAdsAction;
 
         // Pull to Refresh
         [ObservableProperty]
         private bool isRefreshing;
 
+        bool RefreshReserved;
         // Command برای RefreshView
         [RelayCommand]
-        private async void RefreshAds()
+        private async Task RefreshAds()
         {
             Items.Clear();
             ad_Services.AdsModel.Clear();
             IsRefreshing = true;
-            try
+            if (!RefreshReserved)
             {
-                await LoadAdsAsync();
+                try
+                {
+                    RefreshReserved = true;
+                    await LoadAdsAsync();
+                    RefreshReserved = false;
 
-            }
-            catch (Exception)
-            {
+                }
+                catch (Exception ex)
+                {
+                    RefreshReserved = false;
 
-                throw;
+                    throw;
+                }
+
             }
 
             IsRefreshing = false;
@@ -53,7 +62,9 @@ namespace Kaseb.ViewModels
             ad_Services.isLazyLoadCompleted += () => LazyLoadCompleted=true;
             // بارگذاری اولیه
             _ = LoadAdsAsync();
+            RefreshAdsAction += () => RefreshAds();
         }
+
 
         private void ProcessOfAddItems()
         {  

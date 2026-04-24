@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KasebAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260417130718_Ver0.2")]
-    partial class Ver02
+    [Migration("20260420104844_Main5")]
+    partial class Main5
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.5")
+                .HasAnnotation("ProductVersion", "10.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -73,9 +73,9 @@ namespace KasebAPI.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("Price")
+                    b.Property<decimal>("Price")
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<bool>("SomeOfCashMostPayed")
                         .HasColumnType("bit");
@@ -92,9 +92,8 @@ namespace KasebAPI.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("ValueOfWeighKG")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<decimal>("ValueOfWeighKG")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

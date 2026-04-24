@@ -202,9 +202,18 @@ namespace KasebAPI.Controllers
 
         }
 
-        [HttpPost("search/Model={model}")]
-        public async Task<IActionResult> SearchAds([FromBody] AgriculturalProductsSearchModel model)
+        [HttpPost("search")]
+        public async Task<IActionResult> SearchAds([FromForm] AgriculturalProductsSearchModel model )
         {
+            if (model.MaxAdsValue > 10)
+            {
+                model.MaxAdsValue = 10;
+            }
+            if (model.MaxAdsValue < 0)
+            {
+                model.MaxAdsValue = 0;
+
+            }
             if (model == null)
             {
                 return BadRequest("Search payload is required.");
@@ -212,53 +221,63 @@ namespace KasebAPI.Controllers
 
             // We start with the whole set of ads.
             IQueryable<Ad> query = context.Ads
-                                           .Include(a => a.Images); // eager load images
+                .Include(x => x.Images)
+                .OrderByDescending(x => x.Id)
+                .Take(model.MaxAdsValue);
+            // eager load images
 
+
+            if (model.LastAdID > 0)
+            {
+
+                query = query.Where(x => x.Id < model.LastAdID);
+            }
             /* ──────────────────────────────
                1️⃣  Category
             ─────────────────────────────── */
-            if (!string.IsNullOrWhiteSpace(model.Category))
+     /*       if (!string.IsNullOrWhiteSpace(model.Category))
             {
                 if (Enum.TryParse<Category>(model.Category, ignoreCase: true, out var cat) &&
                     cat != Category.IsNull)               // `IsNull` means “no filter”
                 {
                     query = query.Where(a => a.Category == cat);
                 }
-            }
+            }*/
 
             /* ──────────────────────────────
                2️⃣  Title (contains, case‑insensitive)
             ─────────────────────────────── */
             if (!string.IsNullOrWhiteSpace(model.Title))
             {
-                var title = model.Title.Trim();
-                query = query.Where(a => a.Title != null &&
-                                         a.Title.Contains(title, StringComparison.OrdinalIgnoreCase));
+               // var title = model.Title.Trim();
+                query = query .Where(a => a.Title != null && a.Title.ToLower().Contains(model.Title.ToLower()));
+                //query = query.Where(a => a.Title != null &&
+                //                         a.Title.Contains(title, StringComparison.OrdinalIgnoreCase));
             }
 
             /* ──────────────────────────────
                3️⃣  City
             ─────────────────────────────── */
-            if (!string.IsNullOrWhiteSpace(model.City))
+       /*     if (!string.IsNullOrWhiteSpace(model.City))
             {
                 var city = model.City.Trim();
                 query = query.Where(a => a.City != null &&
                                          a.City.Contains(city, StringComparison.OrdinalIgnoreCase));
-            }
+            }*/
 
             /* ──────────────────────────────
                4️⃣  Price (min/max)
             ─────────────────────────────── */
-            if (double.TryParse(model.MinPrice, out var minPrice))
+            if (model.MinPrice>0)
             {
-                double p ;
-                query = query.Where(a => double.TryParse(a.Price, out  p) && p >= minPrice);
+
+                query = query.Where(a =>a.Price >= model.MinPrice);
+
             }
 
-            if (double.TryParse(model.MaxPrice, out var maxPrice))
+            if (model.MaxPrice > 0)
             {
-                double p;
-                query = query.Where(a => double.TryParse(a.Price, out p) && p <= maxPrice);
+                query = query.Where(a => a.Price <= model.MaxPrice);
             }
 
             /* ──────────────────────────────
@@ -277,17 +296,15 @@ namespace KasebAPI.Controllers
             /* ──────────────────────────────
                6️⃣  Weight (min/max)
             ─────────────────────────────── */
-            if (double.TryParse(model.MinValueOfWeighKG, out var minWeight))
+            if (model.MinValueOfWeighKG>0)
             {
 
-                double w;
-                query = query.Where(a => double.TryParse(a.ValueOfWeighKG, out w) && w >= minWeight);
+                query = query.Where(a => a.ValueOfWeighKG >= model.MinValueOfWeighKG);
             }
 
-            if (double.TryParse(model.MaxValueOfWeighKG, out var maxWeight))
+            if (model.MaxValueOfWeighKG > 0)
             {
-                double w;
-                query = query.Where(a => double.TryParse(a.ValueOfWeighKG, out w) && w <= maxWeight);
+                query = query.Where(a => a.ValueOfWeighKG <= model.MaxValueOfWeighKG);
             }
 
             /* ──────────────────────────────

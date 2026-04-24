@@ -11,6 +11,8 @@ using ConvertCore = KasebCore.Services.Converting.Convert;
 using CommunityToolkit.Mvvm.Input;
 using MvvmHelpers;
 using Kaseb.Views;
+using KasebCore.Models.Search;
+using System.ComponentModel.DataAnnotations;
 
 namespace Kaseb.ViewModels
 {
@@ -26,6 +28,7 @@ namespace Kaseb.ViewModels
         }
 
         private AdElementModel _model = new AdElementModel();
+
 
         protected void OnPropertyChanged(string propertyName)
         {
@@ -72,26 +75,33 @@ namespace Kaseb.ViewModels
             OverlayOfProcessing.Show("درحال افزودن آگهی...");
             PageLoader.includeOverlay(null, OverlayOfProcessing);
 
-            GetResoultInfo UploadAdProcessingInfo = await UploadAd.UploadAdAsync(_model);
-
-
-            if (UploadAdProcessingInfo.IsSuccess)
+            GetResoultInfo InfoOfValidation = _model.IsValidToUpload();
+            if (InfoOfValidation.IsSuccess )
             {
-                OverlayOfProcessing.Show("موفقیت آمیز!", UploadAdProcessingInfo.Message,false);
-                await Task.Delay(3000);
-                PageLoader.removeOverlay(OverlayOfProcessing);
+                GetResoultInfo UploadAdProcessingInfo = await UploadAd.UploadAdAsync(_model);
 
-                PageLoader.includePage(PageLoader.Ads);
-                PageLoader.Ads.ViewModel=new AdsVM();
-                PageLoader.AddAds = new AddAds();
+                if (UploadAdProcessingInfo.IsSuccess)
+                {
+                    OverlayOfProcessing.Show("موفقیت آمیز!", UploadAdProcessingInfo.Message, false);
+                    await Task.Delay(2000);
+                    OverlayOfProcessing.Remove();
 
+                    PageLoader.includePage(PageLoader.Ads);
+                    PageLoader.Ads.ViewModel.RefreshAdsAction?.Invoke();
+
+                }
+                else
+                {
+                    OverlayOfProcessing.Show("شکست!", UploadAdProcessingInfo.Message, false);
+               
+                }
             }
             else
             {
-                OverlayOfProcessing.Show("شکست!", UploadAdProcessingInfo.Message, false);
-                await Task.Delay(5000);
-                PageLoader.removeOverlay(OverlayOfProcessing);
+
+                OverlayOfProcessing.Show("شکست!", InfoOfValidation.Message, false);
             }
+
 
         }
 
@@ -114,8 +124,6 @@ namespace Kaseb.ViewModels
 
                 ///
 
-                ///Add <,> to Price like 1,000,000 
-                Price = string.Format("{0:N0}", long.Parse(Price));
 
             }
         }
@@ -309,9 +317,9 @@ namespace Kaseb.ViewModels
         }
 
         //Propery For Price
-        public string Price
+        public decimal Price
         {
-            get => Model?.Price ?? "";
+            get => Model?.Price ?? 0;
             set
             {
                 if (Model != null && Model.Price != value)
@@ -391,10 +399,10 @@ namespace Kaseb.ViewModels
         }
 
         //Value For WeighKG
-        public string ValueOfWeighKG
+        public decimal ValueOfWeighKG
         {
 
-            get => Model?.ValueOfWeighKG ?? "";
+            get => Model?.ValueOfWeighKG ?? 0;
 
             set
             {

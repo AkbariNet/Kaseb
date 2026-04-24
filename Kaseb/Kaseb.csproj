@@ -148,6 +148,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Include="Resources\Splash\ImageSplash\image_splash.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\KasebAdServices\KasebAdServices.csproj" />
 	  <ProjectReference Include="..\KasebCore\KasebCore.csproj" />
 	</ItemGroup>

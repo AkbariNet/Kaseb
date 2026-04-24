@@ -12,7 +12,7 @@
             
             >
     <Border Margin="20,50,20,50"
-            Background="White"
+            Background="{AppThemeBinding Dark={DynamicResource Gray600},Light={DynamicResource White}}"
             StrokeShape="20" 
             Shadow="{Shadow Opacity=0.8 , Brush={AppThemeBinding Light={x:StaticResource Gray100},
  Dark={x:StaticResource Gray600}}}">
@@ -23,12 +23,12 @@ HorizontalOptions="Center"
 Margin="0,30,0,10"
 FontSize="18"
 Opacity="0.4"></Label>
-            <ScrollView Grid.Row="1">
+            <ScrollView Grid.Row="1" >
                 <StackLayout  Margin="20,0,20,0" Spacing="20" >
-                   
-                    <Grid ColumnDefinitions="*,*" >
 
-                        <StackLayout  Padding="20">
+                    <Grid ColumnDefinitions="*,*">
+
+                        <StackLayout  >
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.MapLocationDot},
                                                 Size=18, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
@@ -54,7 +54,7 @@ Size=14, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray
                                 </Button>
                             </StackLayout>
                         </StackLayout>
-                        <StackLayout  Padding="20" Grid.Column="1" HorizontalOptions="End">
+                        <StackLayout   Grid.Column="1" HorizontalOptions="End">
                             <StackLayout Orientation="Horizontal" >
                                 <Image Source="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.ListUl},
                                                 Size=18, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
@@ -122,7 +122,7 @@ Size=14, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray
                    Opacity="0.4"></Label>
                                     <material:TextField
                                             Grid.Column="1"
-                                    Text="0"
+                                    Text="{Binding MinPrice}" 
                             TextColor="{AppThemeBinding Light={DynamicResource Gray900}}">
                                         <validation:DigitsOnlyValidation Message="لطفا وزن را بصورت عددی و صحیح وارد نمایید" />
                                     </material:TextField>
@@ -142,7 +142,7 @@ Size=14, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray
                    Opacity="0.4"></Label>
                                     <material:TextField
                                             Grid.Column="1"
-                                    Text="0" 
+                                    Text="{Binding MaxPrice}" 
                             TextColor="{AppThemeBinding Light={DynamicResource Gray900}}">
                                         <validation:DigitsOnlyValidation Message="لطفا وزن را بصورت عددی و صحیح وارد نمایید" />
                                     </material:TextField>
@@ -175,26 +175,34 @@ Size=14, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray
                                     StrokeShape="10"  
                                    >
                             <StackLayout>
-                                <Label Text="وزن :"></Label>
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.WeightScale},
+                     Size=24, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                     Dark={StaticResource White}}}" 
+      HorizontalOptions="Start"
+      Margin="10,0,0,0"
+      Opacity="1"></Image>
+                                    <Label Text="محدوده وزن:"
+         HorizontalOptions="Start"
+         Margin="10,0,0,0"
+         FontSize="14"
+         Opacity="1"></Label>
+                                </StackLayout>
                                 <Grid ColumnDefinitions="*,20,*" Margin="10">
 
                                     <Label Text="از: " Margin="0,20,0,0"></Label>
-                                    <material:TextField Icon="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.WeightHanging},
-Size=24, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
-Dark={StaticResource White}}}" BorderColor="{AppThemeBinding Light={x:StaticResource Gray300},
+                                    <material:TextField  BorderColor="{AppThemeBinding Light={x:StaticResource Gray300},
 Dark={x:StaticResource Gray900}}" Margin="20,0,0,0"
-    Text="{Binding ValueOfWeighKG}"
+    Text="{Binding MinValueOfWeighKG}"
     BackgroundColor="Transparent" >
                                         <validation:RequiredValidation Message="این قسمت باید پر شود" />
 
                                         <validation:DigitsOnlyValidation Message="لطفا وزن را بصورت عددی و صحیح وارد نمایید" />
                                     </material:TextField>
                                     <Label Text="تا: " Margin="0,20,0,0" Grid.Column="2"></Label>
-                                    <material:TextField Icon="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.WeightHanging},
-Size=24, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
-Dark={StaticResource White}}}" BorderColor="{AppThemeBinding Light={x:StaticResource Gray300},
+                                    <material:TextField  BorderColor="{AppThemeBinding Light={x:StaticResource Gray300},
 Dark={x:StaticResource Gray900}}"
-    Text="{Binding ValueOfWeighKG}"
+    Text="{Binding MaxValueOfWeighKG}"
     BackgroundColor="Transparent" Margin="20,0,0,0"
                                                 Grid.Column="2">
                                         <validation:RequiredValidation Message="این قسمت باید پر شود" />
@@ -221,7 +229,7 @@ Dark={x:StaticResource Gray900}}"
                         <Label Text="فقط فوری" HorizontalOptions="Start" VerticalOptions="Center"></Label>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <CheckBox HorizontalOptions="Start" IsChecked="{Binding IsUrgent}" ></CheckBox>
+                        <CheckBox HorizontalOptions="Start" IsChecked="{Binding IsNonCash}" ></CheckBox>
                         <Label Text="فقط غیرنقدی" HorizontalOptions="Start" VerticalOptions="Center"></Label>
                     </StackLayout>
                 </StackLayout>

@@ -3,13 +3,14 @@
     "Name": "Kaseb Profile",
     "Projects": [
       {
-        "Path": "..\\..\\KasebAPI\\KasebAPI\\KasebAPI.csproj",
+        "Path": "KasebAPI\\KasebAPI\\KasebAPI.csproj",
         "Action": "Start",
         "DebugTarget": "http"
       },
       {
         "Path": "Kaseb\\Kaseb.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "Xiaomi M2101K6G (Android 13.0 - API 33)"
       }
     ]
   }

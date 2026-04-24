@@ -36,6 +36,10 @@
                    Opacity="0.4"
                    x:Name="MessageSubtitleLabel"
                    FontSize="10"></Label>
+
+                <Button WidthRequest="100" Text="باشه" Margin="20"
+                        TextColor="White"
+                        Clicked="OkButton_Clicked" x:Name="OkButton"></Button>
             </StackLayout>
 
         </Grid>

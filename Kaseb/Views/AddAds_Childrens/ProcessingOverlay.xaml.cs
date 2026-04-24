@@ -1,4 +1,5 @@
-﻿using KasebCore.Models.Element;
+﻿using Kaseb.Services;
+using KasebCore.Models.Element;
 using System.ComponentModel;
 
 namespace Kaseb.Views.AddAds_Childrens
@@ -18,6 +19,14 @@ namespace Kaseb.Views.AddAds_Childrens
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        private void OkButton_Clicked(object sender, EventArgs e)
+        {
+            Remove();
+        }
+        public void Remove()
+        {
+            PageLoader.removeOverlay(this);
+        }
         public void Show(string Message)
         {
             MessageLabel.IsVisible = true;

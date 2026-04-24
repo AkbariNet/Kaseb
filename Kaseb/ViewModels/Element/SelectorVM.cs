@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using KasebCore.Models; // AdElementModel
 using KasebCore.Models.Element;
-using KasebAdServices.Services.Calculating;
 using Kaseb.Services;
 using KasebAdServices.Services.Connection;
 using Microsoft.Maui.ApplicationModel;
@@ -52,10 +51,10 @@ namespace Kaseb.ViewModels.Element
             Microsoft.Maui.ApplicationModel.MainThread.BeginInvokeOnMainThread(() =>
             {
                 foreach (var ad in ad_Services.AdsModel)
-                {
+                {/*
                     ad.ValueOfWeighKG = uint.Parse(ad.ValueOfWeighKG) >= 1000
                     ? KasebProcessor.KiloToTon(double.Parse(ad.ValueOfWeighKG)).ToString() + " تن"
-                    : ad.ValueOfWeighKG + " کیلوگرم";
+                    : ad.ValueOfWeighKG + " کیلوگرم";*/
                     ItemsLazyLoad.Add(ad);
                 }
             });

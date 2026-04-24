@@ -1,18 +1,65 @@
 ﻿using KasebCore.Models.Element;
-using KasebCore.Services.Converting;
-using Convert = KasebCore.Services.Converting.Convert;
+using KasebCore.Models.Search;
 using KasebCore.Models.Services.AdService;
-using KasebAdServices.Services.Calculating;
+using KasebCore.Services.Converting;
 using System.Text.Json;
+using System.Web;
+using ConvertCore = KasebCore.Services.Converting.Convert;
+using Convert = System.Convert;
 
 namespace KasebAdServices.Services.Connection
 {
     public class Ad_Services
     {
-        int? lastID = 0;
          static Ad_Services()
         {
             AdServiceModel.SetHTTP();
+        }
+        public async Task<string> PostStringAdsAsync()
+        {
+            try
+            {
+
+                var form = new MultipartFormDataContent();
+
+                var properties = SearchModel.MainSearchModel.GetType().GetProperties();
+
+                foreach (var prop in properties)
+                {
+                    var value = prop.GetValue(SearchModel.MainSearchModel);
+
+                    if (value == null)
+                        continue;
+
+                    form.Add(
+                        new StringContent(value.ToString()),
+                        prop.Name
+                    );
+                }
+
+                try
+                {
+
+                    var response = await AdServiceModel.httpClient.PostAsync("api/ads/search", form);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return await response.Content.ReadAsStringAsync();
+
+                    }
+                    else
+                    {
+                        Console.WriteLine(response.Content.ToString());
+                        return "";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return ""; 
+                }
+                
+
+            }
+            catch { return ""; }
         }
         public async Task<List<AdElementModel>> ReadAdFromDatabase(bool isUpdate)
         {
@@ -20,7 +67,9 @@ namespace KasebAdServices.Services.Connection
             {
                 try
                 {
-                    var response = await AdServiceModel.httpClient.GetStringAsync($"api/ads/MaximumAds=5&LastID={lastID}");
+                    //var response = await AdServiceModel.httpClient.GetStringAsync($"api/ads/MaximumAds=5&LastID={lastID}");
+
+                    var response = await PostStringAdsAsync();
                     Console.WriteLine(response);
 
                     //List<AdElementModel> adElement = JsonSerializer.Deserialize<List<AdElementModel>>(response);
@@ -34,7 +83,8 @@ namespace KasebAdServices.Services.Connection
                             {
                                 foreach (AdImage image in model.Images)
                                 {
-                                    model.ImageLinks.Add(Convert.ConvertImagePathToLink(image.ImagePath));
+                                    model.ImageLinks.Add(ConvertCore.ConvertImagePathToLink(image.ImagePath));
+                                
                                 }
 
                             }
@@ -49,7 +99,7 @@ namespace KasebAdServices.Services.Connection
                             }
                         }
 
-                        lastID = Respound[Respound.Count - 1].Id;
+                        SearchModel.MainSearchModel.LastAdID = (int)Respound[Respound.Count - 1].Id;
                         Console.WriteLine("لیست دریافت شد ");
                         return Respound;
                     }
@@ -68,12 +118,14 @@ namespace KasebAdServices.Services.Connection
             }
             else 
             try
-            { 
-                var response = await AdServiceModel.httpClient.GetStringAsync("api/ads/MaxAds=10");
-                Console.WriteLine(response);
+            {
+                    //var response = await AdServiceModel.httpClient.GetStringAsync("api/ads/MaxAds=10");
+                    SearchModel.MainSearchModel.LastAdID = -1;
+                    var response = await PostStringAdsAsync();
+                    Console.WriteLine(response);
                 //List<AdElementModel> adElement = JsonSerializer.Deserialize<List<AdElementModel>>(response);
                 List<AdElementModel> Respound = JsonSerializer.Deserialize<List<AdElementModel>>(response);
-                if (Respound != null)
+                if (Respound != null && Respound.Count>0)
                 {
 
                     foreach (AdElementModel model in Respound)
@@ -82,7 +134,7 @@ namespace KasebAdServices.Services.Connection
                         {
                             foreach (AdImage image in model.Images)
                             {
-                                model.ImageLinks.Add(Convert.ConvertImagePathToLink(image.ImagePath));
+                                model.ImageLinks.Add(ConvertCore.ConvertImagePathToLink(image.ImagePath));
                             }
 
                         }
@@ -97,7 +149,7 @@ namespace KasebAdServices.Services.Connection
                         }
                     }
 
-                    lastID = Respound[Respound.Count - 1].Id;
+                        SearchModel.MainSearchModel.LastAdID = (int)Respound[Respound.Count - 1].Id;
                         Console.WriteLine("لیست دریافت شد ");
                         return Respound;
                     }
@@ -128,14 +180,14 @@ namespace KasebAdServices.Services.Connection
             if (isUpdate)
             {
                 foreach (var ad in await ReadAdFromDatabase(true))
-                {
-                    if (ad.ValueOfWeighKG is not null)
+                {/*
+                    if (ad.ValueOfWeighKG !=0)
                     {
-                        ad.ValueOfWeighKG = uint.Parse(ad.ValueOfWeighKG) >= 1000
-                        ? KasebProcessor.KiloToTon(double.Parse(ad.ValueOfWeighKG)).ToString() + " تن"
+                        ad.ValueOfWeighKG = ad.ValueOfWeighKG >= 1000
+                        ? KasebProcessor.KiloToTon(ad.ValueOfWeighKG).ToString() + " تن"
                         : ad.ValueOfWeighKG + " کیلوگرم";
 
-                    }
+                    }*/
                     AdsModel.Add(ad);
                 }
 
@@ -144,14 +196,14 @@ namespace KasebAdServices.Services.Connection
             {
                 AdsModel.Clear();
                 foreach (var ad in await ReadAdFromDatabase(false))
-                {
-                    if (ad.ValueOfWeighKG is not null)
+                {/*
+                    if (ad.ValueOfWeighKG !=0)
                     {
-                        ad.ValueOfWeighKG = uint.Parse(ad.ValueOfWeighKG) >= 1000
+                        ad.ValueOfWeighKG = ad.ValueOfWeighKG >= 1000
                         ? KasebProcessor.KiloToTon(double.Parse(ad.ValueOfWeighKG)).ToString() + " تن"
                         : ad.ValueOfWeighKG + " کیلوگرم";
 
-                    }
+                    }*/
                     AdsModel.Add(ad);
                 }
 

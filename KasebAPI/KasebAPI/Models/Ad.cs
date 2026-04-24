@@ -25,7 +25,7 @@ namespace KasebAPI.Models
         public string? Phone { get; set; }
 
         [MaxLength(50)]
-        public string? Price { get; set; }
+        public decimal Price { get; set; }
 
         public DateTime? Date { get; set; }
 
@@ -45,8 +45,7 @@ namespace KasebAPI.Models
 
         public int InventoryGuarantee { get; set; }
 
-        [MaxLength(50)]
-        public string? ValueOfWeighKG { get; set; }
+        public decimal ValueOfWeighKG { get; set; }
 
         [MaxLength(50)]
         public string? ValueOfTag1 { get; set; }
@@ -72,5 +71,19 @@ namespace KasebAPI.Models
         Tomato,
         Mushroom,
         Almond,
+    }
+    public enum Cities
+    {
+        IsNull,
+        Barfejin,
+        Toejin,
+        Muejin,
+        Selulan,
+        HeydareBalaShahr,
+        Maryanaj,
+        Bahar,
+
+
+
     }
 }

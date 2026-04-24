@@ -22,8 +22,7 @@ namespace Kaseb
         }
         public async Task AddOverlay(IView newContent)
         {
-            Overlay.IsVisible = false;
-            Overlay.Children.Clear();
+            Overlay.Children.Remove(newContent);
             Overlay.Children.Add(newContent);
 
             await Animation.ShowWithFade(Overlay, Contain);
@@ -32,8 +31,7 @@ namespace Kaseb
         public async Task RemoveOverlay(IView OldContent)
         {
             await Animation.HideWithFade(Overlay, Contain);
-            Overlay.Children.Clear();
-            Contain.Effects.Clear();
+            Overlay.Children.Remove(OldContent);
 
 
         }
