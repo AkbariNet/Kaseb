@@ -1,36 +1,54 @@
-﻿using KasebAPI.Data;
-using KasebAPI.Repositories;
-using KasebAPI.Services;
+using KasebAPI.Data;
 using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
-// MVC + JSON (Ignore cycles for navigation)
 builder.Services.AddControllers()
-    .AddJsonOptions(o => o.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles);
-
-// CORS: Allow All (در محیط‌های production باید محدود شود)
-builder.Services.AddCors(opt =>
+.AddJsonOptions(x =>
 {
-    opt.AddPolicy("AllowAll", p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+    x.JsonSerializerOptions.ReferenceHandler =
+        System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+});
+builder.Services.AddControllers();
+
+
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+
+options.UseSqlServer(
+
+builder.Configuration.GetConnectionString("DefaultConnection")
+
+));
+
+
+builder.Services.AddCors(options =>
+
+{
+
+    options.AddPolicy("AllowAll",
+
+    policy => policy
+
+    .AllowAnyOrigin()
+
+    .AllowAnyHeader()
+
+    .AllowAnyMethod()
+
+    );
+
 });
 
-// EF Core – SqlServer
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-// DI – Repository & Service
-builder.Services.AddScoped<IAdRepository, AdRepository>();
-builder.Services.AddScoped<IAdService, AdService>();
 
 var app = builder.Build();
 
-app.UseStaticFiles();   // wwwroot (images)
+app.UseStaticFiles();
 app.UseCors("AllowAll");
 
-if (app.Environment.IsDevelopment())
-    app.UseDeveloperExceptionPage();
-
+app.UseDeveloperExceptionPage();
 app.MapControllers();
+
 
 app.Run();
