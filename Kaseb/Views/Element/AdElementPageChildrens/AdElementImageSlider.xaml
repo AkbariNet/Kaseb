@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
              x:Class="Kaseb.Views.Element.AdElementPageChildrens.AdElementImageSlider"
              x:Name="AddElementImgaeSliderView"
              >
+    <Grid Background="Black">
     <CarouselView x:Name="ImageSlider"
               Background="Transparent"
               IndicatorView="indicator">
         <CarouselView.ItemTemplate>
             <DataTemplate>
-                <Image Source="{Binding }" 
-                   Aspect="AspectFit"
-                   Margin="5"
-                   />
+                    <Border StrokeShape="RoundRectangle 20,20,20,20">
+                        <Image Source="{Binding }" 
+   Aspect="AspectFit"
+   Margin="0"
+       
+   />
+                    </Border>
+                
             </DataTemplate>
         </CarouselView.ItemTemplate>
     </CarouselView>
@@ -21,6 +26,6 @@
                IndicatorColor="{DynamicResource Primary}"
                SelectedIndicatorColor="{DynamicResource Secondary}"
                HorizontalOptions="Center"
-               Margin="0,5,0,0"/>
-
-</Grid>
+               Margin="0,55,0,0"/>
+    </Grid>
+</ContentPage>

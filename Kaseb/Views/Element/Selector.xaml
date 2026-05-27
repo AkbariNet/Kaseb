@@ -44,7 +44,7 @@
 
         <Controls:MyCustomBottomSheetView x:Name="bottomSheet" 
                                   BackgroundColor="{AppThemeBinding Dark={DynamicResource Black}, Light={DynamicResource White}}"
-                                  Margin="0,200,0,0"
+                                  Margin="0,210,0,0"
                                   HorizontalOptions="Center"
                                   StrokeShape="RoundRectangle 20,20,0,0"
                                   

@@ -1,18 +1,19 @@
-﻿using KasebCore.Models.Element;
+﻿using CommunityToolkit.Mvvm.Input;
 using Kaseb.Services;
-using KasebAdServices.Services.Connection;
+using Kaseb.Services.ShowingContext;
 using Kaseb.ViewModels.Element;
+using Kaseb.Views;
 using Kaseb.Views.AddAds_Childrens;
 using Kaseb.Views.Element;
-using System.ComponentModel;
-using Enum = System.Enum;
-using Kaseb.Services.ShowingContext;
-using ConvertCore = KasebCore.Services.Converting.Convert;
-using CommunityToolkit.Mvvm.Input;
-using MvvmHelpers;
-using Kaseb.Views;
+using KasebAdServices.Services.Connection;
+using KasebCore.Models.Element;
 using KasebCore.Models.Search;
+using Microsoft.Maui.Controls;
+using MvvmHelpers;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using ConvertCore = KasebCore.Services.Converting.Convert;
+using Enum = System.Enum;
 
 namespace Kaseb.ViewModels
 {
@@ -73,7 +74,8 @@ namespace Kaseb.ViewModels
             ProcessingOverlay OverlayOfProcessing = new ProcessingOverlay();
             
             OverlayOfProcessing.Show("درحال افزودن آگهی...");
-            PageLoader.includeOverlay(null, OverlayOfProcessing);
+            await Shell.Current.Navigation.PushAsync(OverlayOfProcessing);
+            
 
             GetResoultInfo InfoOfValidation = _model.IsValidToUpload();
             if (InfoOfValidation.IsSuccess )
@@ -86,8 +88,7 @@ namespace Kaseb.ViewModels
                     await Task.Delay(2000);
                     OverlayOfProcessing.Remove();
 
-                    PageLoader.includePage(PageLoader.Ads);
-                    PageLoader.Ads.ViewModel.RefreshAdsAction?.Invoke();
+                    await Shell.Current.GoToAsync("..");
 
                 }
                 else

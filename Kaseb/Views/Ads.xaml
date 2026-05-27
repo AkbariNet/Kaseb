@@ -1,23 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
              xmlns:Models="clr-namespace:KasebCore.Models;assembly=KasebCore" 
-             
+             FlowDirection="RightToLeft"
              xmlns:Childrens="clr-namespace:Kaseb.Views.Lobby_Childrens"
              xmlns:Elements="clr-namespace:Kaseb.Views.Element"
              xmlns:local="clr-namespace:Kaseb.Views.Element"
+            
              x:Class="Kaseb.Views.Ads">
 
-    <Border >
+    <Border Margin="0,40,0,0">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="80" ></RowDefinition>
             </Grid.RowDefinitions>
-       
+
             <Border Grid.Row="1"  Margin="15,20,15,0" StrokeShape="RoundRectangle 20" >
 
                 <RefreshView
@@ -59,9 +60,9 @@
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
-            
-            <Childrens:MenuAPP Grid.Row="2" isAdClicked="True" ></Childrens:MenuAPP>
+
+            <Childrens:MenuAPP Grid.Row="2"/>
         </Grid>
     </Border>
 
-</Grid>
+</ContentPage>

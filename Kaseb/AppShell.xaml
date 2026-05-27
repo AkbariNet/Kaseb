@@ -1,16 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="Kaseb.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Kaseb"
-    x:Name="TheShell"
-    Title="Kaseb">
-    <ShellContent x:Name="MainShellContent"
-        Shell.NavBarIsVisible="False"
-        Shell.FlyoutItemIsVisible="False"
-        Shell.TabBarIsVisible="False"
-                    Route="MainPage"
-                  ContentTemplate="{DataTemplate local:Container}">
-    </ShellContent>
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             
+             FlowDirection="RightToLeft"
+             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}"
+             xmlns:Pages="clr-namespace:Kaseb.Views" 
+             Shell.FlyoutItemIsVisible="False"
+       Shell.NavBarIsVisible="False"
+      
+       Shell.TabBarIsVisible="False"
+             x:Class="Kaseb.AppShell">
+
+ 
+    <ShellContent 
+        Shell.TabBarBackgroundColor="Orange"
+         Title="Ads"
+        ContentTemplate="{DataTemplate Pages:Ads}" />
+ 
+
 </Shell>

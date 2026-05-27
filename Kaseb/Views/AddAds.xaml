@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
              xmlns:Models="clr-namespace:KasebCore.Models;assembly=KasebCore" BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray900}}"
@@ -13,14 +13,11 @@
              xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:loc="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
-      
+             FlowDirection="RightToLeft"
 
              x:Class="Kaseb.Views.AddAds">
 
-    <Grid.BindingContext>
-        <VM:AddAdsVM />
-    </Grid.BindingContext>
-    <Grid>
+    <Grid Margin="0,40,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="60" ></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -512,4 +509,4 @@ Opacity="0.8" >
         </Border>
     </Grid>
 
-</Grid>
+</ContentPage>

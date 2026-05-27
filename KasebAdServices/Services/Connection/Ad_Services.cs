@@ -180,14 +180,7 @@ namespace KasebAdServices.Services.Connection
             if (isUpdate)
             {
                 foreach (var ad in await ReadAdFromDatabase(true))
-                {/*
-                    if (ad.ValueOfWeighKG !=0)
-                    {
-                        ad.ValueOfWeighKG = ad.ValueOfWeighKG >= 1000
-                        ? KasebProcessor.KiloToTon(ad.ValueOfWeighKG).ToString() + " تن"
-                        : ad.ValueOfWeighKG + " کیلوگرم";
-
-                    }*/
+                {
                     AdsModel.Add(ad);
                 }
 
@@ -196,14 +189,7 @@ namespace KasebAdServices.Services.Connection
             {
                 AdsModel.Clear();
                 foreach (var ad in await ReadAdFromDatabase(false))
-                {/*
-                    if (ad.ValueOfWeighKG !=0)
-                    {
-                        ad.ValueOfWeighKG = ad.ValueOfWeighKG >= 1000
-                        ? KasebProcessor.KiloToTon(double.Parse(ad.ValueOfWeighKG)).ToString() + " تن"
-                        : ad.ValueOfWeighKG + " کیلوگرم";
-
-                    }*/
+                {
                     AdsModel.Add(ad);
                 }
 

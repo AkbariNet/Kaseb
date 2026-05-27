@@ -11,7 +11,7 @@ using System.Linq;
 using Kaseb.Services.ShowingContext;
 namespace Kaseb.Views
 {
-    public partial class AddAds : Grid
+    public partial class AddAds : ContentPage
     {
 
         AddAdsVM ViewModel=new AddAdsVM();
@@ -191,8 +191,9 @@ namespace Kaseb.Views
 
         private void exit_Clicked(object sender, EventArgs e)
         {
-           
-            PageLoader.includePage(PageLoader.Ads);
+
+
+            Shell.Current.GoToAsync("..");
         }
     }
 

@@ -257,8 +257,29 @@ namespace Kaseb.ViewModels.Element
                 }
             }
         }
+        //String For WeighKG
+        public string ValueOfWeighKGString
+        {
 
+            get
+            {
 
+                return Model?.ValueOfWeighKGString ?? "";
+            }
+
+        }
+
+        //String For Price
+        public string PriceString
+        {
+
+            get
+            {
+
+                return Model?.PriceString ?? "";
+            }
+
+        }
         //Value For Tag1
         public string ValueOfTag1
         {

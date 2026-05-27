@@ -1,4 +1,6 @@
-﻿namespace Kaseb.Views.Lobby_Childrens
+﻿using KasebCore.Models;
+
+namespace Kaseb.Views.Lobby_Childrens
 {
     public partial class MenuAPP : Grid 
     {
@@ -9,20 +11,19 @@
         /// <param name="isAdClicked"></param>
         /// <returns></returns>
 
-        public static readonly BindableProperty isAdClickedProperty =
-        BindableProperty.Create(
-        nameof(isAdClicked),
-        typeof(bool),
-        typeof(MenuAPP),
-        defaultValue: false
-         );
 
         public bool isAdClicked
         {
-            get => (bool)GetValue(isAdClickedProperty);
-            set {
-                SetValue(isAdClickedProperty, value);
-                isMapClicked = false; isAddAdClicked = false;
+            get
+            {
+                if (PageLoadProcessing.MenuStatement == PageLoadProcessing.PageState.ad)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
@@ -32,21 +33,19 @@
         /// 
         public bool isMapClicked
         {
-            get => (bool)GetValue(isMapClickedProperty);
-            set
+            get
             {
-                SetValue(isMapClickedProperty, value);
-                isAdClicked = false; isAddAdClicked = false;
+                if (PageLoadProcessing.MenuStatement == PageLoadProcessing.PageState.location)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
-        public static readonly BindableProperty isMapClickedProperty =
-        BindableProperty.Create(
-        nameof(isMapClicked),
-        typeof(bool),
-        typeof(MenuAPP),
-        defaultValue: false
-         );
 
         /// <summary>
         /// 3
@@ -54,22 +53,39 @@
 
         public bool isAddAdClicked
         {
-            get => (bool)GetValue(isAddAdClickedProperty);
-            set
+            get
             {
-                SetValue(isAddAdClickedProperty, value);
-                isAdClicked = false; isMapClicked = false;
+                if (PageLoadProcessing.MenuStatement == PageLoadProcessing.PageState.addAd)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
 
-        public static readonly BindableProperty isAddAdClickedProperty =
-        BindableProperty.Create(
-        nameof(isAddAdClicked),
-        typeof(bool),
-        typeof(MenuAPP),
-        defaultValue: false
-         );
+        /// <summary>
+        /// 4
+        /// </summary>
+
+        public bool isProfileClicked
+        {
+            get
+            {
+                if (PageLoadProcessing.MenuStatement == PageLoadProcessing.PageState.profile)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
 
 
         public MenuAPP()

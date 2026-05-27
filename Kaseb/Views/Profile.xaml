@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"       
+             xmlns:Models="clr-namespace:KasebCore.Models;assembly=KasebCore" 
+       xmlns:loc="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+       xmlns:Childrens="clr-namespace:Kaseb.Views.Lobby_Childrens"
+       xmlns:Elements="clr-namespace:Kaseb.Views.Element"
+       xmlns:ur="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+       xmlns:urElement="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             xmlns:ProfileButtons="clr-namespace:Kaseb.Views.Element.Buttons"
+             x:Class="Kaseb.Views.Profile" Background="#F1F1F3"
+             Title="Profile">
+    <Border Margin="0,40,0,0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="80" ></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="1"  Margin="15,20,15,0" StrokeShape="RoundRectangle 20" >
+                <StackLayout Spacing="20">
+                <Frame HeightRequest="200"
+                   WidthRequest="200"
+                   CornerRadius="100"
+                   HorizontalOptions="Center"
+                   IsClippedToBounds="True"
+                   Padding="-5"
+                   BorderColor="Transparent"
+                   Margin="0,0,0,0">
+                    <Image Source="man.png"></Image>
+                    </Frame>
+                    
+                    <StackLayout  HorizontalOptions="Center">
+                        <Label Text="محمد رسول اکبری داور"
+                               HorizontalOptions="Center"
+                               FontSize="24"
+                               FontFamily="VazirmatnBold"/>
+                        <Label Text="کاربر عادی"
+                 FontSize="16"
+                               HorizontalOptions="Center"
+                 FontFamily="VazirmatnLight"/>
+                    </StackLayout>
+                    <ScrollView>
+                        <StackLayout Spacing="20">
+
+                            <ProfileButtons:HamburgerMenuItem 
+                        Title="اطلاعات شخصی"
+                        Description="نام، شماره تماس، ثبت هویت..."
+                        Icon="{FontImageSource 
+                        Glyph={x:Static Models:FontAwsomeIconLoader.User},
+                        Size=16,
+                        FontFamily=7Awesome,
+                        Color={AppThemeBinding Light={DynamicResource Gray600},
+               Dark={StaticResource White}}}"/>
+                            <ProfileButtons:HamburgerMenuItem 
+                         Title="آگهی ها"
+                         Description="منتشر شده، درحال بررسی، رد شده..."
+                         Icon="{FontImageSource 
+                         Glyph={x:Static Models:FontAwsomeIconLoader.ListCheck},
+                         Size=16,
+                         FontFamily=7Awesome,
+                         Color={AppThemeBinding Light={DynamicResource Gray600},
+                Dark={StaticResource White}}}"/>
+                            <ProfileButtons:HamburgerMenuItem 
+                         Title="نشان شده ها"
+                         Description="آگهی های ذخیره شده"
+                         Icon="{FontImageSource 
+                         Glyph={x:Static Models:FontAwsomeIconLoader.Bookmark},
+                         Size=16,
+                         FontFamily=7Awesome,
+                         Color={AppThemeBinding Light={DynamicResource Gray600},
+                Dark={StaticResource White}}}"/>
+                            <ProfileButtons:HamburgerMenuItem 
+                         Title="تنظیمات"
+                         Description="نوتیفیکیشن ها، فونت، تم..."
+                         Icon="{FontImageSource 
+                         Glyph={x:Static Models:FontAwsomeIconLoader.Gear},
+                         Size=16,
+                         FontFamily=7Awesome,
+                         Color={AppThemeBinding Light={DynamicResource Gray600},
+                Dark={StaticResource White}}}"/>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Border>
+
+            <Childrens:MenuAPP Grid.Row="2" />
+        </Grid>
+    </Border>
+</ContentPage>

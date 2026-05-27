@@ -6,7 +6,7 @@ using Microsoft.Maui.Maps;
 using System.Linq;
 namespace Kaseb.Views
 {
-    public partial class Lobby : Grid
+    public partial class Lobby : ContentPage
     {
         public Lobby()
         {

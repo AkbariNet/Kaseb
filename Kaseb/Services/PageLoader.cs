@@ -1,12 +1,12 @@
-﻿using KasebCore.Models;
+﻿/*using KasebCore.Models;
 using Kaseb.Views;
 
 namespace Kaseb.Services 
 {
     internal static class PageLoader
     {
-        public static Container TheParent = new Container();
-        public static void getCountainer(Container container)
+        public static AppShell TheParent = new AppShell();
+        public static void getCountainer(AppShell container)
         {
             TheParent = container;
         }
@@ -20,33 +20,30 @@ namespace Kaseb.Services
             switch (PageLoadProcessing.MenuStatement)
             {
                 case PageLoadProcessing.PageState.location:
-                    TheParent.UpdateGrid(Lobby);
+                   
 
                     break;
 
                 case PageLoadProcessing.PageState.ad:
-                    TheParent.UpdateGrid(Ads);
+                   
                     break;
 
                 case PageLoadProcessing.PageState.addAd:
-                    TheParent.UpdateGrid(AddAds);
+                    
                     break;
             }
         }
-        public static void includePage(View view) => TheParent.UpdateGrid(view);
+        public static void includePage(IView view) => ;
         public static void includeOverlay(object sender, IView Content)
         {
-            TheParent.AddOverlay(Content);
         }
         public static void removeOverlay(IView Content)
         {
 
-            TheParent.RemoveOverlay(Content);
         }
         public static void removeOverlay()
         {
-
-            TheParent.RemoveOverlay();
         }
     }
 }
+*/

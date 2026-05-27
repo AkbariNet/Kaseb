@@ -8,7 +8,7 @@ using UraniumUI.Pages;
 
 namespace Kaseb.Views.Element;
 
-public partial class AdElementPage : Grid
+public partial class AdElementPage : ContentPage
 {
 	public AdElementPage()
 	{
@@ -18,7 +18,7 @@ public partial class AdElementPage : Grid
 
     private void Button_Clicked(object sender, EventArgs e)
     {
-		PageLoader.removeOverlay();
+        Shell.Current.GoToAsync("..");
     }
 
     private void CallButton_Clicked(object sender, EventArgs e)
@@ -83,7 +83,9 @@ public partial class AdElementPage : Grid
     {
         AdElementImageSlider views = new AdElementImageSlider();
         views.ImagePaths = ViewModel.ImageLinks;
-        PageLoader.includeOverlay(null,views);
+
+        Shell.Current.Navigation.PushAsync(views,false);
+        //PageLoader.includeOverlay(null,views);
 
     }
 }

@@ -37,7 +37,7 @@ namespace Kaseb.Views.Element
             {
                 try
                 {
-                    PageLoader.includeOverlay(null, new AdElementPage
+                    Shell.Current.Navigation.PushAsync(new AdElementPage
                     {
                         BindingContext = new AdElementVM()
                         {
@@ -45,6 +45,16 @@ namespace Kaseb.Views.Element
 
                         }
                     });
+                    //Shell.Current.GoToAsync(nameof(AdElementPage));
+
+                    /*   PageLoader.includeOverlay(null, new AdElementPage
+                       {
+                           BindingContext = new AdElementVM()
+                           {
+                               Model = this.Model
+
+                           }
+                       });*/
                 }
                 catch (Exception e)
                 {

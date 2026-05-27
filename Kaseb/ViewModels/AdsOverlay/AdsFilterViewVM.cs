@@ -23,7 +23,7 @@ namespace Kaseb.ViewModels.AdsOverlay
         {
 
             SearchModel.MainSearchModel = Temp;
-            PageLoader.Ads.ViewModel.RefreshAdsAction?.Invoke();
+
             Console.WriteLine("");
         }
 

@@ -8,7 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 namespace Kaseb.Views
 {
-    public partial class Ads : Grid
+    public partial class Ads : ContentPage
     {
         public AdsVM ViewModel=new AdsVM();
         public  Ads()

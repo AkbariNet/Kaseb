@@ -1,10 +1,11 @@
 ﻿using Kaseb.Services;
+using Kaseb.Views.Element;
 using KasebCore.Models.Element;
 using System.ComponentModel;
 
 namespace Kaseb.Views.AddAds_Childrens
 {
-    public partial class ProcessingOverlay : Grid, INotifyPropertyChanged
+    public partial class ProcessingOverlay : ContentPage, INotifyPropertyChanged
     {
         public ProcessingOverlay()
         {
@@ -25,7 +26,7 @@ namespace Kaseb.Views.AddAds_Childrens
         }
         public void Remove()
         {
-            PageLoader.removeOverlay(this);
+            Shell.Current.GoToAsync("..");
         }
         public void Show(string Message)
         {

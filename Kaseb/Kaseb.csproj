@@ -22,16 +22,16 @@
 		<ApplicationTitle>Kaseb</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.kaseb</ApplicationId>
+		<ApplicationId>com.AkbariNET.kaseb</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
-		<WindowsPackageType>None</WindowsPackageType>
+		<WindowsPackageType>MSIX</WindowsPackageType>
 
-		<!--<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>-->
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 		<Configurations>Debug;Release;Deploy</Configurations>
 		
@@ -72,11 +72,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="AppShell.xaml.cs">
+	    <DependentUpon>AppShell.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\AddAds.xaml.cs">
 	    <DependentUpon>AddAds.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\AddAds_Childrens\ProcessingOverlay.xaml.cs">
 	    <DependentUpon>ProcessingOverlay.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Element\Buttons\HamburgerMenuItem.xaml.cs">
+	    <DependentUpon>HamburgerMenuItem.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\Element\ImagePicker.xaml.cs">
 	    <DependentUpon>ImagePicker.xaml</DependentUpon>
@@ -90,7 +96,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Container.xaml">
+	  <MauiXaml Update="AppShell.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\AddAds.xaml">
@@ -112,6 +118,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Element\AdElementPageChildrens\AdElementImageSlider.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Element\Buttons\HamburgerMenuItem.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Element\Header.xaml">
@@ -141,10 +150,14 @@
 	  <MauiXaml Update="Views\Lobby_Childrens\Menu.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Profile.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Folder Include="Resources\Images\foods\" />
+	  <Folder Include="Services\" />
 	</ItemGroup>
 
 	<ItemGroup>

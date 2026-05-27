@@ -15,7 +15,7 @@ namespace Kaseb.Views.Element
 
         private void AdsFilterButton_Clicked(object sender, EventArgs e)
         {
-            PageLoader.includeOverlay(null, new AdsFilterView());
+            Shell.Current.GoToAsync(nameof(AdsFilterView));
         }
     }
 

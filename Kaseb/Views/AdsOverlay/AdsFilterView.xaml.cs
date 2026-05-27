@@ -1,10 +1,11 @@
 using Kaseb.Services;
 using Kaseb.ViewModels.AdsOverlay;
+using Kaseb.Views.Element;
 using KasebCore.Models.Search;
 
 namespace Kaseb.Views.AdsOverlay;
 
-public partial class AdsFilterView : Grid
+public partial class AdsFilterView : ContentPage
 {
 	public AdsFilterView()
 	{
@@ -16,7 +17,7 @@ public partial class AdsFilterView : Grid
     public AdsFilterViewVM VM = new AdsFilterViewVM(); 
     private void Cancel_Clicked(object sender, EventArgs e)
     {
-        PageLoader.removeOverlay(this);
+        Shell.Current.GoToAsync("..");
     }
 
     private void Submit_Clicked(object sender, EventArgs e)
@@ -24,6 +25,6 @@ public partial class AdsFilterView : Grid
         VM.ApplyFilter.Invoke();
 
 
-        PageLoader.removeOverlay(this);
+        Shell.Current.GoToAsync("..");
     }
 }

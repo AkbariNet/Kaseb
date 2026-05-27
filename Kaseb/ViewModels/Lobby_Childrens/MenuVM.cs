@@ -1,4 +1,6 @@
 ﻿using Kaseb.Services;
+using Kaseb.Views;
+using Kaseb.Views.Element;
 using KasebCore.Models;
 using System;
 using System.Collections.Generic;
@@ -15,24 +17,51 @@ namespace Kaseb.ViewModels.Lobby_Childrens
         public ICommand isAdButtonClicked { get; set; }
         public ICommand isAddAdButtonClicked { get; set; }
         public ICommand isLocationButtonClicked { get; set; }
+        public ICommand isProfileButtonClicked { get; set; }
 
         public MenuVM()
         {
             isAdButtonClicked = new Command(() =>
             {
-                PageLoadProcessing.MenuStatement = PageLoadProcessing.PageState.ad;
-                PageLoader.includePage();
+                if (PageLoadProcessing.MenuStatement != PageLoadProcessing.PageState.ad)
+                {
+                    PageLoadProcessing.MenuStatement = PageLoadProcessing.PageState.ad;
+                    Routing.RegisterRoute(nameof(Ads), typeof(Ads));
+
+                    Shell.Current.GoToAsync(nameof(Ads));
+
+                }
+
             });
             isAddAdButtonClicked = new Command(() =>
             {
-                PageLoadProcessing.MenuStatement = PageLoadProcessing.PageState.addAd;
-                PageLoader.includePage();
+                if (PageLoadProcessing.MenuStatement != PageLoadProcessing.PageState.addAd)
+                {
+                    PageLoadProcessing.MenuStatement = PageLoadProcessing.PageState.addAd;
+                    Routing.RegisterRoute(nameof(AddAds), typeof(AddAds));
+                    Shell.Current.GoToAsync(nameof(AddAds));
+                }
+
             });
             isLocationButtonClicked = new Command(() =>
             {
-                PageLoadProcessing.MenuStatement = PageLoadProcessing.PageState.location;
-                PageLoader.includePage();
+                if (PageLoadProcessing.MenuStatement != PageLoadProcessing.PageState.location)
+                {
+                    PageLoadProcessing.MenuStatement = PageLoadProcessing.PageState.location;
+                    Routing.RegisterRoute(nameof(Lobby), typeof(Lobby));
+                    Shell.Current.GoToAsync(nameof(Lobby));
+                }
             });
+            isProfileButtonClicked = new Command(() =>
+            {
+                if (PageLoadProcessing.MenuStatement != PageLoadProcessing.PageState.profile)
+                {
+                    PageLoadProcessing.MenuStatement = PageLoadProcessing.PageState.profile;
+                    Routing.RegisterRoute(nameof(Profile), typeof(Profile));
+                    Shell.Current.GoToAsync(nameof(Profile));
+                }
+            });
+
 
         }
     }

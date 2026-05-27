@@ -11,7 +11,8 @@
         {
             ad,
             location,
-            addAd
+            addAd,
+            profile
         }
     }
 }
