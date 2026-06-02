@@ -1,4 +1,6 @@
-﻿namespace KasebAPI.Models
+﻿using KasebAPI.Models;
+
+namespace KasebAPI.Models.DTOs
 {
     public class CreateAdDto
     {

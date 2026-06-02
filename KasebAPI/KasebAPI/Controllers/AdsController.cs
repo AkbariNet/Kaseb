@@ -1,5 +1,6 @@
 ﻿using KasebAPI.Data;
 using KasebAPI.Models;
+using KasebAPI.Models.DTOs;
 using KasebAPI.Models.Search;
 
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ namespace KasebAPI.Controllers
 
     [Route("api/ads")]
 
-    public class AdsController : ControllerBase
+    public partial class Controller : ControllerBase
     {
 
         private readonly AppDbContext context;
@@ -19,7 +20,7 @@ namespace KasebAPI.Controllers
         private readonly IWebHostEnvironment env;
 
 
-        public AdsController(AppDbContext context, IWebHostEnvironment env)
+        public Controller(AppDbContext context, IWebHostEnvironment env)
         {
 
             this.context = context;

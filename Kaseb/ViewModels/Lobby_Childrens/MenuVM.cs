@@ -52,7 +52,7 @@ namespace Kaseb.ViewModels.Lobby_Childrens
                     Shell.Current.GoToAsync(nameof(Lobby));
                 }
             });
-            isProfileButtonClicked = new Command(() =>
+     /*       isProfileButtonClicked = new Command(() =>
             {
                 if (PageLoadProcessing.MenuStatement != PageLoadProcessing.PageState.profile)
                 {
@@ -60,8 +60,17 @@ namespace Kaseb.ViewModels.Lobby_Childrens
                     Routing.RegisterRoute(nameof(Profile), typeof(Profile));
                     Shell.Current.GoToAsync(nameof(Profile));
                 }
-            });
+            });*/
 
+            isProfileButtonClicked = new Command(() =>
+            {
+                if (PageLoadProcessing.MenuStatement != PageLoadProcessing.PageState.profile)
+                {
+                    PageLoadProcessing.MenuStatement = PageLoadProcessing.PageState.profile;
+                    Routing.RegisterRoute(nameof(Login), typeof(Login));
+                    Shell.Current.GoToAsync(nameof(Login));
+                }
+            });
 
         }
     }

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material" 
+            
+             xmlns:Models="clr-namespace:KasebCore.Models;assembly=KasebCore"
+              xmlns:Childrens="clr-namespace:Kaseb.Views.Lobby_Childrens"
+             x:Class="Kaseb.Views.Login"
+             Title="Login">
+    <Border Margin="0,40,0,0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="80" ></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="1"  Margin="15,20,15,0" StrokeShape="RoundRectangle 20" >
+                <StackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
+               
+                    <StackLayout  HorizontalOptions="Center" Spacing="20">
+                        <Image Source="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.User},
+                         Size=36, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
+                         Dark={StaticResource White}}}"/>
+                        <Label Text="ورود / ثبت نام"
+                             HorizontalOptions="Center"
+                             FontSize="24"
+                             FontFamily="VazirmatnBold"/>
+                        <Label Text="جهت استفاده از تمامی امکانات برنامه، لطفا وارد شوید."
+               FontSize="16"
+                             HorizontalOptions="Center"
+               FontFamily="VazirmatnLight"/>
+                        <Label x:Name="Debug"
+FontSize="16"
+              HorizontalOptions="Center"
+FontFamily="VazirmatnLight"/>
+                    </StackLayout>
+                    <ScrollView>
+                        <StackLayout Spacing="20" >
+                            <Grid ColumnDefinitions="*,10,60">
+                                
+                                <Border Grid.Column="2"
+      Background="Transparent"  IsVisible="True"
+                                        Stroke="{DynamicResource Gray100}"
+                                        StrokeThickness="1"
+      StrokeShape="RoundRectangle 10">
+                                    <Button Text="+98"
+                                            FlowDirection="LeftToRight"
+                                            TextColor="{AppThemeBinding 
+                                        Dark={DynamicResource White}
+                                        , Light={DynamicResource Black}}"
+                                            Background="Transparent"/>
+
+                                </Border>
+                                <Border 
+      Background="{AppThemeBinding
+      Light={DynamicResource Gray100},
+      Dark={DynamicResource Gray900}}"
+      StrokeShape="RoundRectangle 10">
+                                    <material:TextField
+                                        AllowClear="True"
+                                        x:Name="PhoneNumberText"
+                                        ToolTipProperties.Text="9120000000"
+                                        Keyboard="Telephone"
+                                        
+                                        />
+
+                                </Border>
+                            </Grid>
+                            <Button Text="ورود" WidthRequest="100" Clicked="Button_Clicked"/>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Border>
+
+            <Childrens:MenuAPP Grid.Row="2" />
+        </Grid>
+    </Border>
+</ContentPage>

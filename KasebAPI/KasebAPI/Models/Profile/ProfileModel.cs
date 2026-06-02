@@ -1,10 +1,13 @@
-﻿using System;
+﻿using KasebAPI.Interfaces;
+using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace KasebCore.Models
+namespace KasebAPI.Models.Profile
 {
-    public static class ProfileModel
+    public class ProfileModel : IdentityUser
     {
         /// <summary>
         /// Defines the possible roles a user can have within the application.
@@ -21,11 +24,12 @@ namespace KasebCore.Models
         /// Represents a user profile within the agricultural product marketplace application.
         /// Mimics some features found in platforms like دیوار (Divar).
         /// </summary>
-        public class UserProfile
+        public class UserProfile : IProfile
         {
             /// <summary>
             /// Unique identifier for the user profile.
             /// </summary>
+            [Required]
             public int Id { get; set; }
 
             /// <summary>
