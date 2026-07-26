@@ -61,14 +61,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="14.1.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="14.2.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.51" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.6" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.51" />
-		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="10.0.51" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.71" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.9" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.71" />
+		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="10.0.71" />
 		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
-		<PackageReference Include="UraniumUI.Material" Version="2.15.0" />
+		<PackageReference Include="UraniumUI.Material" Version="2.16.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -92,6 +92,12 @@
 	  </Compile>
 	  <Compile Update="Views\Element\SelectAdType.xaml.cs">
 	    <DependentUpon>SelectAdType.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\LoginChildren\LoginGetCode.xaml.cs">
+	    <DependentUpon>LoginGetCode.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\LoginChildren\LoginMainPage.xaml.cs">
+	    <DependentUpon>LoginMainPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -151,6 +157,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Login.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LoginChildren\LoginGetCode.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LoginChildren\LoginMainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Profile.xaml">

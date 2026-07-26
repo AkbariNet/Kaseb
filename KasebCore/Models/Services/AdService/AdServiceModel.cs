@@ -7,11 +7,12 @@
         public static void SetHTTP()
         {
             httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("http://2.185.144.243:5008/");
-            //httpClient.BaseAddress = new Uri("http://192.168.1.100:5008/");
+            //httpClient.BaseAddress = new Uri("http://2.185.144.243:5008/");
+            httpClient.BaseAddress = new Uri("http://192.168.0.102:5008/");
+            //httpClient.BaseAddress = new Uri("http://2.185.144.243:5008/");
 
         }
-      
+
         public static void SetHTTP(Uri uri , string TokenTemp)
         {
             httpClient = new HttpClient();

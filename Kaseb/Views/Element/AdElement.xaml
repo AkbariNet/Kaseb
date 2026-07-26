@@ -64,7 +64,7 @@
 HorizontalOptions="Start"
 Margin="5,0,0,0"
 Opacity="1"/>
-                            <Label Text="{Binding ValueOfWeighKGString}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="10" Margin="5,0,10,0"/>
+                            <Label Text="{Binding AreaValueString}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="10" Margin="5,0,10,0"/>
 
                         </StackLayout>
                     </Border>

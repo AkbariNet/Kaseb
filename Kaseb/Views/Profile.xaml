@@ -7,6 +7,7 @@
        xmlns:Elements="clr-namespace:Kaseb.Views.Element"
        xmlns:ur="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
        xmlns:urElement="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             xmlns:Profile="clr-namespace:KasebCore.Models.Profile;assembly=KasebCore"
              xmlns:ProfileButtons="clr-namespace:Kaseb.Views.Element.Buttons"
              x:Class="Kaseb.Views.Profile" Background="#F1F1F3"
              Title="Profile">
@@ -36,7 +37,7 @@
                                HorizontalOptions="Center"
                                FontSize="24"
                                FontFamily="VazirmatnBold"/>
-                        <Label Text="کاربر عادی"
+                        <Label Text="{x:Static Profile:Profile.Profile.MainProfile.MobileNumber}"
                  FontSize="16"
                                HorizontalOptions="Center"
                  FontFamily="VazirmatnLight"/>

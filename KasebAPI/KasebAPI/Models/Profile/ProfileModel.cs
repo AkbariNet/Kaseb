@@ -6,9 +6,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace KasebAPI.Models.Profile
-{
-    public class ProfileModel : IdentityUser
+{ 
+    
+
+    public class ProfileModel : IdentityUser, IProfile
     {
+
         /// <summary>
         /// Defines the possible roles a user can have within the application.
         /// </summary>
@@ -21,16 +24,11 @@ namespace KasebAPI.Models.Profile
         }
 
         /// <summary>
-        /// Represents a user profile within the agricultural product marketplace application.
-        /// Mimics some features found in platforms like دیوار (Divar).
+        /// Unique identifier for the user profile.
         /// </summary>
-        public class UserProfile : IProfile
-        {
-            /// <summary>
-            /// Unique identifier for the user profile.
-            /// </summary>
-            [Required]
-            public int Id { get; set; }
+
+        [Key]
+            public string Id { get; set; } = string.Empty;
 
             /// <summary>
             /// User's first name.
@@ -58,10 +56,16 @@ namespace KasebAPI.Models.Profile
             /// </summary>
             public string City { get; set; } = string.Empty;
 
-            /// <summary>
-            /// User's mobile phone number.  **IMPORTANT: Consider encryption for security.**
-            /// </summary>
-            public string MobileNumber { get; set; } = string.Empty;
+        /// <summary>
+        /// User's Image URI.
+        /// </summary>
+        public string ProfileImageUri { get; set; } = string.Empty;
+
+
+        /// <summary>
+        /// User's mobile phone number.  **IMPORTANT: Consider encryption for security.**
+        /// </summary>
+        public string MobileNumber { get; set; } = string.Empty;
 
             /// <summary>
             /// Indicates whether the user's identity has been verified.
@@ -118,7 +122,7 @@ namespace KasebAPI.Models.Profile
             public string Location { get; set; } = string.Empty;
 
          
-        }
+        
     }
 
 }

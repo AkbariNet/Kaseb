@@ -90,32 +90,32 @@ namespace Kaseb.ViewModels.AdsOverlay
                 }
             }
         }
-        //Propery For MinValueOfWeighKG
-        public decimal MinValueOfWeighKG
+        //Propery For MinAreaValue
+        public decimal MinAreaValue
         {
-            get => Temp?.MinValueOfWeighKG ?? 0;
+            get => Temp?.MinAreaValue ?? 0;
 
             set
             {
-                if (Temp != null && Temp.MinValueOfWeighKG != value)
+                if (Temp != null && Temp.MinAreaValue != value)
                 {
-                    Temp.MinValueOfWeighKG = value;
-                    OnPropertyChanged(nameof(MinValueOfWeighKG));
+                    Temp.MinAreaValue = value;
+                    OnPropertyChanged(nameof(MinAreaValue));
                 }
             }
         }
 
-        //Propery For MaxValueOfWeighKG
-        public decimal MaxValueOfWeighKG
+        //Propery For MaxAreaValue
+        public decimal MaxAreaValue
         {
-            get => Temp?.MaxValueOfWeighKG ?? 0;
+            get => Temp?.MaxAreaValue ?? 0;
 
             set
             {
-                if (Temp != null && Temp.MaxValueOfWeighKG != value)
+                if (Temp != null && Temp.MaxAreaValue != value)
                 {
-                    Temp.MaxValueOfWeighKG = value;
-                    OnPropertyChanged(nameof(MaxValueOfWeighKG));
+                    Temp.MaxAreaValue = value;
+                    OnPropertyChanged(nameof(MaxAreaValue));
                 }
             }
         }

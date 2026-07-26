@@ -45,7 +45,7 @@ namespace KasebAPI.Models
 
         public int InventoryGuarantee { get; set; }
 
-        public decimal ValueOfWeighKG { get; set; }
+        public decimal AreaValue { get; set; }
 
         [MaxLength(50)]
         public string? ValueOfTag1 { get; set; }
@@ -63,25 +63,63 @@ namespace KasebAPI.Models
     public enum Category
     {
         IsNull,
-        Garlic,
-        Shallot,
-        Walnut,
-        Potato,
-        Cucumber,
-        Tomato,
-        Mushroom,
-        Almond,
+        house,
+        apartment,
+        Rent,
+        Worn_texture,
+        Land,
+
+
     }
+
     public enum Cities
     {
         IsNull,
-        Barfejin,
-        Toejin,
-        Muejin,
-        Selulan,
-        HeydareBalaShahr,
-        Maryanaj,
-        Bahar,
+        Yerevan,
+        Gyumri,
+        Vanadzor,
+        Abovyan,
+        Vagharshapat,
+        Hrazdan,
+        Kapan,
+        Armavir,
+        Artashat,
+        Ijevan,
+        Gavar,
+        Goris,
+        Charentsavan,
+        Masis,
+        Ashtarak,
+        Sevan,
+        Dilijan,
+        Spitak,
+        Sisian,
+        Stepanavan,
+        Martuni,
+        Vardenis,
+        Yeghvard,
+        Byureghavan,
+        NorHachn,
+        Aparan,
+        Berd,
+        Tashir,
+        Alaverdi,
+        Noyemberyan,
+        Jermuk,
+        Chambarak,
+        Metsamor,
+        Vedi,
+        Maralik,
+        Talin,
+        Tumanyan,
+        Meghri,
+        Agarak,
+        Kajaran,
+        Dastakert,
+        Shamlugh,
+        Ayrum,
+        Tsaghkadzor,
+        Ararat
 
 
 

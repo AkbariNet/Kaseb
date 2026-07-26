@@ -21,14 +21,14 @@ namespace KasebCore.Models.Element
                 && Category.Value != Element.Category.IsNull
                 && Price > 1000
                 && Price < 500000
-                && ValueOfWeighKG > 10
-                && ValueOfWeighKG < 999000
+                && AreaValue > 10
+                && AreaValue < 999000
    )
             {
                 return new GetResoultInfo()
                 {
                     IsSuccess = true,
-                    Message = "اگهی با موفقیت بررسی شد.",
+                    Message = "Ad validation completed successfully.",
                     StatusCode = 400
                 };
             }
@@ -38,11 +38,11 @@ namespace KasebCore.Models.Element
 
                 if (string.IsNullOrWhiteSpace(Title))
                 {
-                    ErrorMessage += "لطفاً عنوان را وارد کنید.\n";
+                    ErrorMessage += "Please enter a title.\n";
                 }
                 else if (Title.Length < 5)
                 {
-                    ErrorMessage += "عنوان باید حداقل 5 کاراکتر باشد.\n";
+                    ErrorMessage += "Title must be at least 5 characters long.\n";
                 }
 
 
@@ -50,31 +50,31 @@ namespace KasebCore.Models.Element
 
                 if (string.IsNullOrWhiteSpace(Content))
                 {
-                    ErrorMessage += "لطفاً توضیحات را وارد کنید.\n";
+                    ErrorMessage += "Please enter a description.\n";
                 }
 
                 else if (Content.Length < 10)
                 {
-                    ErrorMessage += "توضیحات باید حداقل 10 کاراکتر باشد.\n";
+                    ErrorMessage += "Description must be at least 10 characters long.\n";
                 }
 
 
                 if (string.IsNullOrWhiteSpace(City))
                 {
-                    ErrorMessage += "لطفاً شهر را وارد کنید.\n";
+                    ErrorMessage += "Please select a city.\n";
                 }
 
                 if (Category == null || Category.Value == Element.Category.IsNull)
                 {
-                    ErrorMessage += "لطفاً دسته بندی را انتخاب کنید.\n";
+                    ErrorMessage += "Please select a category.\n";
                 }
 
-                if (Price <= 1000 || Price >= 500000)
+                if (Price <= 1 || Price >= 5000000)
                 {
-                    ErrorMessage += "مبلغ باید بین 1000 و 500000 تومان باشد.\n";
+                    ErrorMessage += "Price must be between 1 and 5,000,000.";
                 }
 
-                if (ValueOfWeighKG <= 10 || ValueOfWeighKG >= 999000)
+                if (AreaValue <= 10 || AreaValue >= 999000)
                 {
                     ErrorMessage += "وزن باید بین 10 و 999000 کیلوگرم باشد.\n";
                 }
@@ -104,8 +104,8 @@ namespace KasebCore.Models.Element
                 }
                 bool awser3 = Price > 1000;
                 bool a43 = Price < 500000;
-                bool aasdc = ValueOfWeighKG > 10;
-                bool aasd3 = ValueOfWeighKG < 999000;
+                bool aasdc = AreaValue > 10;
+                bool aasd3 = AreaValue < 999000;
                 #endregion
 
                 return new GetResoultInfo()
@@ -189,10 +189,10 @@ namespace KasebCore.Models.Element
         [JsonPropertyName("isUrgentRequest")]
         public bool IsUrgentRequest { get; set; }
 
-        [Required(ErrorMessage = "وارد کردن وزن محصول الزامی ست.")]
-        //باید وزن از 10 کیلوگرم تا 999 تن محدود شود
-        [JsonPropertyName("valueOfWeighKG")]
-        public decimal ValueOfWeighKG { get; set; }
+        [Required(ErrorMessage = "you must enter the Area Value.")]
+        
+        [JsonPropertyName("AreaValue")]
+        public decimal AreaValue { get; set; }
 
         [JsonPropertyName("valueOfTag1")]
         public string ValueOfTag1 { get; set; } = string.Empty;
@@ -260,7 +260,7 @@ namespace KasebCore.Models.Element
             get
             {
 
-                if (ValueOfWeighKG != 0)
+                if (AreaValue != 0)
                 {
                     return true;
                 }
@@ -305,13 +305,13 @@ namespace KasebCore.Models.Element
             }
         }
 
-        //Property For Showing String ValueOfWeighKG
+        //Property For Showing String AreaValue
 
-        public string ValueOfWeighKGString
+        public string AreaValueString
         {
             get
             {
-                return ConvertCore.ConvertWeighDecimalToWeighString(ValueOfWeighKG);
+                return ConvertCore.ConvertMeterDecimalToMeterString(AreaValue);
             }
         }
 
@@ -322,26 +322,62 @@ namespace KasebCore.Models.Element
     public enum Category
     {
         IsNull,
-        Garlic,
-        Shallot,
-        Walnut,
-        Potato,
-        Cucumber,
-        Tomato,
-        Mushroom,
-        Almond,
+        house,
+        apartment,
+        Rent,
+        Worn_texture,
+        Land,
+
 
     }
     public enum Cities
     {
         IsNull,
-        Barfejin,
-        Toejin,
-        Muejin,
-        Selulan,
-        HeydareBalaShahr,
-        Maryanaj,
-        Bahar,
+        Yerevan,
+        Gyumri,
+        Vanadzor,
+        Abovyan,
+        Vagharshapat,
+        Hrazdan,
+        Kapan,
+        Armavir,
+        Artashat,
+        Ijevan,
+        Gavar,
+        Goris,
+        Charentsavan,
+        Masis,
+        Ashtarak,
+        Sevan,
+        Dilijan,
+        Spitak,
+        Sisian,
+        Stepanavan,
+        Martuni,
+        Vardenis,
+        Yeghvard,
+        Byureghavan,
+        NorHachn,
+        Aparan,
+        Berd,
+        Tashir,
+        Alaverdi,
+        Noyemberyan,
+        Jermuk,
+        Chambarak,
+        Metsamor,
+        Vedi,
+        Maralik,
+        Talin,
+        Tumanyan,
+        Meghri,
+        Agarak,
+        Kajaran,
+        Dastakert,
+        Shamlugh,
+        Ayrum,
+        Tsaghkadzor,
+        Ararat
 
 
 

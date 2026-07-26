@@ -73,7 +73,7 @@ namespace KasebAPI.Controllers
 
                 InventoryGuarantee = model.InventoryGuarantee,
 
-                ValueOfWeighKG = model.ValueOfWeighKG,
+                AreaValue = model.AreaValue,
 
                 ValueOfTag1 = model.ValueOfTag1,
 
@@ -297,15 +297,15 @@ namespace KasebAPI.Controllers
             /* ──────────────────────────────
                6️⃣  Weight (min/max)
             ─────────────────────────────── */
-            if (model.MinValueOfWeighKG>0)
+            if (model.MinAreaValue>0)
             {
 
-                query = query.Where(a => a.ValueOfWeighKG >= model.MinValueOfWeighKG);
+                query = query.Where(a => a.AreaValue >= model.MinAreaValue);
             }
 
-            if (model.MaxValueOfWeighKG > 0)
+            if (model.MaxAreaValue > 0)
             {
-                query = query.Where(a => a.ValueOfWeighKG <= model.MaxValueOfWeighKG);
+                query = query.Where(a => a.AreaValue <= model.MaxAreaValue);
             }
 
             /* ──────────────────────────────

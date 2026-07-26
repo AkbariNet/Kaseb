@@ -7,7 +7,7 @@ namespace KasebAPI.Interfaces
         /// <summary>
         /// Unique identifier for the user profile.
         /// </summary>
-        int Id { get; set; }
+        string Id { get; set; }
 
         /// <summary>
         /// User's first name.

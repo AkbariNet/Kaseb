@@ -34,7 +34,7 @@ namespace KasebAPI.Models.DTOs
 
         public int InventoryGuarantee { get; set; }
 
-        public decimal ValueOfWeighKG { get; set; }
+        public decimal AreaValue { get; set; }
 
         public string? ValueOfTag1 { get; set; }
 

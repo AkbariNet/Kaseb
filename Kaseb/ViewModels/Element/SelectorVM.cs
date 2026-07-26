@@ -52,9 +52,9 @@ namespace Kaseb.ViewModels.Element
             {
                 foreach (var ad in ad_Services.AdsModel)
                 {/*
-                    ad.ValueOfWeighKG = uint.Parse(ad.ValueOfWeighKG) >= 1000
-                    ? KasebProcessor.KiloToTon(double.Parse(ad.ValueOfWeighKG)).ToString() + " تن"
-                    : ad.ValueOfWeighKG + " کیلوگرم";*/
+                    ad.AreaValue = uint.Parse(ad.AreaValue) >= 1000
+                    ? KasebProcessor.MeterToKilometer(double.Parse(ad.AreaValue)).ToString() + " تن"
+                    : ad.AreaValue + " کیلوگرم";*/
                     ItemsLazyLoad.Add(ad);
                 }
             });

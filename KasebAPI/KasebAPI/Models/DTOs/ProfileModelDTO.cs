@@ -3,11 +3,14 @@ using KasebAPI.Models.Profile;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Net;
 using System.Text;
 using static KasebAPI.Models.Profile.ProfileModel;
 
 namespace KasebAPI.Models.DTOs
 {
+  
     public class ProfileModelDTO
     {
 
@@ -20,7 +23,8 @@ namespace KasebAPI.Models.DTOs
             /// <summary>
             /// Unique identifier for the user profile.
             /// </summary>
-            public int Id { get; set; }
+            [Key]
+            public override string Id { get; set; } = string.Empty;
 
             /// <summary>
             /// User's first name.
@@ -107,6 +111,19 @@ namespace KasebAPI.Models.DTOs
             /// </summary>
             public string Location { get; set; } = string.Empty;
         }
+      
+
+    }
+    public class ProfileRegistrationDTO
+    {
+        public string MobileNumber { get; set; } = string.Empty;
+
+    }
+    public class RegistrationResponseDto
+    {
+
+        public bool IsSuccessfulRegistration { get; set; }
+        public IEnumerable<string>? Errors { get; set; }
     }
 
 }

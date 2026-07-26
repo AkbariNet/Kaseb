@@ -85,7 +85,7 @@
                            TextColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                            VerticalOptions="Center"
                            Opacity="0.7" HorizontalOptions="Center"></Label>
-                                    <Label Text="{Binding ValueOfWeighKGString}" FontFamily="VazirmatnExtraBold"  VerticalOptions="Center" FontAttributes="Bold"
+                                    <Label Text="{Binding AreaValueString}" FontFamily="VazirmatnExtraBold"  VerticalOptions="Center" FontAttributes="Bold"
                                 Opacity="0.7" HorizontalOptions="Center"  Margin="0,0,15,0"></Label>
                             </StackLayout>
 
@@ -199,7 +199,7 @@
                                         <StackLayout Orientation="Horizontal"  Margin="20,0,0,0">
 
                                             <Label Text="وزن : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
-                                            <Label Text="{Binding ValueOfWeighKG}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
+                                            <Label Text="{Binding AreaValue}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
 
                                         </StackLayout>
                                     </Grid>

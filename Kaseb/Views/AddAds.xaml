@@ -164,7 +164,7 @@ Opacity="0.8" >
                                       Size=24, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
                                       Dark={StaticResource White}}}" BorderColor="{AppThemeBinding Light={x:StaticResource Gray300},
                                       Dark={x:StaticResource Gray900}}"
-                                          Text="{Binding ValueOfWeighKG}"
+                                          Text="{Binding AreaValue}"
                                           BackgroundColor="Transparent" >
                                 <validation:RequiredValidation Message="این قسمت باید پر شود" />
 

@@ -32,7 +32,7 @@ namespace Kaseb.ViewModels.Element
                 OnPropertyChanged(nameof(IsShowWeighKG));
                 OnPropertyChanged(nameof(ValueOfTag1));
                 OnPropertyChanged(nameof(ValueOfTag2));
-                OnPropertyChanged(nameof(ValueOfWeighKG));
+                OnPropertyChanged(nameof(AreaValue));
                 OnPropertyChanged(nameof(Image));
 
 
@@ -238,33 +238,33 @@ namespace Kaseb.ViewModels.Element
             }
         }
         //Value For WeighKG
-        public decimal ValueOfWeighKG
+        public decimal AreaValue
         {
 
             get
             {
 
-                return Model?.ValueOfWeighKG ?? 0;
+                return Model?.AreaValue ?? 0;
             }
 
 
             set
             {
-                if (Model != null && Model.ValueOfWeighKG != value)
+                if (Model != null && Model.AreaValue != value)
                 {
-                    Model.ValueOfWeighKG = value;
-                    OnPropertyChanged(nameof(ValueOfWeighKG));
+                    Model.AreaValue = value;
+                    OnPropertyChanged(nameof(AreaValue));
                 }
             }
         }
         //String For WeighKG
-        public string ValueOfWeighKGString
+        public string AreaValueString
         {
 
             get
             {
 
-                return Model?.ValueOfWeighKGString ?? "";
+                return Model?.AreaValueString ?? "";
             }
 
         }

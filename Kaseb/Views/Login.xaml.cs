@@ -1,3 +1,4 @@
+using Kaseb.ViewModels;
 using KasebCore.Models.Services.AdService;
 using Microsoft.Maui.Controls.Compatibility;
 using System.Text;
@@ -9,14 +10,30 @@ public partial class Login : ContentPage
 	public Login()
 	{
 		InitializeComponent();
+        OTPSent += Login_OTPSent;
 	}
 
-    private void Button_Clicked(object sender, EventArgs e)
+    private void Login_OTPSent(LoginPageStatement Statement)
     {
-        var response = AdServiceModel.httpClient
-            .GetAsync($"Profile/SendOTP?PhoneNumber{PhoneNumberText.Text}"
-            );
+        if (Statement == LoginPageStatement.GetCodePage)
+        {
+            MainPage.IsVisible = false;
+            GetCodePage.IsVisible = true;
 
-        Debug.Text = response.Result.ToString();
+        }
+        else if (Statement == LoginPageStatement.MainPage)
+        {
+
+            MainPage.IsVisible = true;
+            GetCodePage.IsVisible = false;
+        }
+    }
+
+    public static Action<LoginPageStatement> ?OTPSent;
+
+    public enum LoginPageStatement
+    {
+        MainPage,
+        GetCodePage,
     }
 }

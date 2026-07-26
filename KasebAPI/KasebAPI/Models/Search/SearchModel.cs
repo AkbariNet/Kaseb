@@ -34,11 +34,11 @@ namespace KasebAPI.Models.Search
         [JsonPropertyName("isUrgent")]
         public bool IsUrgent { get; set; }
 
-        [JsonPropertyName("minValueOfWeighKG")]
-        public decimal? MinValueOfWeighKG { get; set; }
+        [JsonPropertyName("minAreaValue")]
+        public decimal? MinAreaValue { get; set; }
 
-        [JsonPropertyName("maxValueOfWeighKG")]
-        public decimal? MaxValueOfWeighKG { get; set; }
+        [JsonPropertyName("maxAreaValue")]
+        public decimal? MaxAreaValue { get; set; }
 
         [JsonPropertyName("isNonCash")]
         public bool IsNonCash { get; set; }
@@ -71,11 +71,11 @@ namespace KasebAPI.Models.Search
         [JsonPropertyName("isUrgent")]
         public bool IsUrgent { get; set; }
 
-        [JsonPropertyName("minValueOfWeighKG")]
-        public decimal? MinValueOfWeighKG { get; set; }
+        [JsonPropertyName("minAreaValue")]
+        public decimal? MinAreaValue { get; set; }
 
-        [JsonPropertyName("maxValueOfWeighKG")]
-        public decimal? MaxValueOfWeighKG { get; set; }
+        [JsonPropertyName("maxAreaValue")]
+        public decimal? MaxAreaValue { get; set; }
 
         [JsonPropertyName("isNonCash")]
         public bool IsNonCash { get; set; }

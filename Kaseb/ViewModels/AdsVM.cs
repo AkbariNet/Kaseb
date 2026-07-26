@@ -31,7 +31,7 @@ namespace Kaseb.ViewModels
         {
             Items.Clear();
             ad_Services.AdsModel.Clear();
-            IsRefreshing = true;
+            isRefreshing = true;
             if (!RefreshReserved)
             {
                 try
@@ -50,7 +50,7 @@ namespace Kaseb.ViewModels
 
             }
 
-            IsRefreshing = false;
+            isRefreshing = false;
         }
 
         public AdsVM()

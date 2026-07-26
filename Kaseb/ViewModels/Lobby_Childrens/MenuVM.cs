@@ -2,6 +2,7 @@
 using Kaseb.Views;
 using Kaseb.Views.Element;
 using KasebCore.Models;
+using KasebCore.Models.Profile;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,12 +22,21 @@ namespace Kaseb.ViewModels.Lobby_Childrens
 
         public MenuVM()
         {
+            //Rigesteration Routes
+            Routing.RegisterRoute(nameof(Ads), typeof(Ads));
+            Routing.RegisterRoute(nameof(AddAds), typeof(AddAds));
+            Routing.RegisterRoute(nameof(Lobby), typeof(Lobby));
+            Routing.RegisterRoute(nameof(Login), typeof(Login));
+            Routing.RegisterRoute(nameof(Kaseb.Views.Profile), typeof(Kaseb.Views.Profile));
+            //
+
+
+
             isAdButtonClicked = new Command(() =>
             {
                 if (PageLoadProcessing.MenuStatement != PageLoadProcessing.PageState.ad)
                 {
                     PageLoadProcessing.MenuStatement = PageLoadProcessing.PageState.ad;
-                    Routing.RegisterRoute(nameof(Ads), typeof(Ads));
 
                     Shell.Current.GoToAsync(nameof(Ads));
 
@@ -38,7 +48,6 @@ namespace Kaseb.ViewModels.Lobby_Childrens
                 if (PageLoadProcessing.MenuStatement != PageLoadProcessing.PageState.addAd)
                 {
                     PageLoadProcessing.MenuStatement = PageLoadProcessing.PageState.addAd;
-                    Routing.RegisterRoute(nameof(AddAds), typeof(AddAds));
                     Shell.Current.GoToAsync(nameof(AddAds));
                 }
 
@@ -48,7 +57,6 @@ namespace Kaseb.ViewModels.Lobby_Childrens
                 if (PageLoadProcessing.MenuStatement != PageLoadProcessing.PageState.location)
                 {
                     PageLoadProcessing.MenuStatement = PageLoadProcessing.PageState.location;
-                    Routing.RegisterRoute(nameof(Lobby), typeof(Lobby));
                     Shell.Current.GoToAsync(nameof(Lobby));
                 }
             });
@@ -67,8 +75,13 @@ namespace Kaseb.ViewModels.Lobby_Childrens
                 if (PageLoadProcessing.MenuStatement != PageLoadProcessing.PageState.profile)
                 {
                     PageLoadProcessing.MenuStatement = PageLoadProcessing.PageState.profile;
-                    Routing.RegisterRoute(nameof(Login), typeof(Login));
-                    Shell.Current.GoToAsync(nameof(Login));
+                    if (KasebCore.Models.Profile.Profile.MainProfile != null)
+                    {
+                        Shell.Current.GoToAsync(nameof(Kaseb.Views.Profile));
+
+                    }
+                    else
+                        Shell.Current.GoToAsync(nameof(Login));
                 }
             });
 

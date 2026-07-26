@@ -16,9 +16,9 @@ namespace KasebCore.Services.Converting
             return Link;
         }
 
-        public static double KiloToTon(double kilo)
+        public static double MeterToKilometer(double Meter)
         {
-            return kilo / 1000.0;
+            return Meter / 1000.0;
         }
         public static string ConvertDateTimeToSummeryTime(DateTime dateTime)
         {
@@ -30,56 +30,57 @@ namespace KasebCore.Services.Converting
 
             if (totalMinutes >= 0 && totalMinutes < 59)
             {
-                return "دقایقی پیش";
+                return "A few minutes ago";
             }
             else if (totalHours >= 0 && totalHours < 24)
             {
-                return "ساعاتی پیش";
+                return "A few hours ago";
             }
             else if (totalDays >= 0 && totalDays < 1)
             {
-                return "دیروز";
+                return "Yesterday";
             }
             else if (totalDays >= 1 && totalDays < 2)
             {
-                return "پریروز";
+                return "Two days ago";
             }
             else if (totalDays >= 2 && totalDays < 3)
             {
-                return "سه روز پیش";
+                return "Three days ago";
             }
             else if (totalDays >= 3 && totalDays < 4)
             {
-                return "چهار روز پیش";
+                return "Four days ago";
             }
             else if (totalDays >= 4 && totalDays < 5)
             {
-                return "پنج روز پیش";
+                return "Five days ago";
             }
             else if (totalDays >= 5 && totalDays < 6)
             {
-                return "شش روز پیش";
+                return "Six days ago";
             }
             else if (totalDays >= 6 && totalDays < 7)
             {
-                return "یک هفته پیش";
+                return "One week ago";
             }
             else if (totalDays >= 7 && totalDays < 14)
             {
-                return "دو هفته پیش";
+                return "Two weeks ago";
             }
             else if (totalDays >= 14 && totalDays < 21)
             {
-                return "سه هفته پیش";
+                return "Three weeks ago";
             }
             else if (totalDays >= 21 && totalDays < 28)
             {
-                return "چهار هفته پیش";
+                return "Four weeks ago";
             }
             else
             {
-                return "بیش از چهار هفته پیش";  // اگر زمان بیشتر از چهار هفته است
+                return "More than one month ago"; // If the time is greater than four weeks
             }
+
         }
 
         public static string ConvertCategoryListToCategoryString(Category? category)
@@ -90,16 +91,13 @@ namespace KasebCore.Services.Converting
 
                 return category switch
                 {
-                    KasebCore.Models.Element.Category.Garlic => "سیر",
-                    KasebCore.Models.Element.Category.Shallot => "موسیر",
-                    KasebCore.Models.Element.Category.Walnut => "گردو",
-                    KasebCore.Models.Element.Category.Potato => "سیب زمینی",
-                    KasebCore.Models.Element.Category.Cucumber => "خیار",
-                    KasebCore.Models.Element.Category.Tomato => "گوجه فرنگی",
-                    KasebCore.Models.Element.Category.Mushroom => "قارچ",
-                    KasebCore.Models.Element.Category.Almond => "بادام",
-                    KasebCore.Models.Element.Category.IsNull => "هنوز انتخاب نشده",
-                    _ => "نامشخص"
+                    KasebCore.Models.Element.Category.Worn_texture => "Worn texture",
+                    KasebCore.Models.Element.Category.apartment => "Apartment",
+                    KasebCore.Models.Element.Category.Land => "Land",
+                    KasebCore.Models.Element.Category.Rent => "Rent",
+                    KasebCore.Models.Element.Category.house => "house",
+                    KasebCore.Models.Element.Category.IsNull => "Empty",
+                    _ => "Unknown"
                 };
             }
             catch (Exception)
@@ -112,22 +110,60 @@ namespace KasebCore.Services.Converting
         {
             return city switch
             {
-                KasebCore.Models.Element.Cities.IsNull => "هنوز انتخاب نشده",
-                KasebCore.Models.Element.Cities.Barfejin => "برفجین",
-                KasebCore.Models.Element.Cities.Toejin => "توئجین",
-                KasebCore.Models.Element.Cities.Muejin => "موئجین",
-                KasebCore.Models.Element.Cities.Selulan => "سلولان",
-                KasebCore.Models.Element.Cities.HeydareBalaShahr => "حیدره بالای شهر",
-                KasebCore.Models.Element.Cities.Maryanaj => "مریانج",
-                KasebCore.Models.Element.Cities.Bahar => "بهار",
-                _ => "تعریف نشده",
+                KasebCore.Models.Element.Cities.IsNull => "Empty",
+                KasebCore.Models.Element.Cities.Yerevan => "Yerevan",
+                KasebCore.Models.Element.Cities.Gyumri => "Gyumri",
+                KasebCore.Models.Element.Cities.Vanadzor => "Vanadzor",
+                KasebCore.Models.Element.Cities.Abovyan => "Abovyan",
+                KasebCore.Models.Element.Cities.Vagharshapat => "Vagharshapat",
+                KasebCore.Models.Element.Cities.Hrazdan => "Hrazdan",
+                KasebCore.Models.Element.Cities.Kapan => "Kapan",
+                KasebCore.Models.Element.Cities.Armavir => "Armavir",
+                KasebCore.Models.Element.Cities.Artashat => "Artashat",
+                KasebCore.Models.Element.Cities.Ijevan => "Ijevan",
+                KasebCore.Models.Element.Cities.Gavar => "Gavar",
+                KasebCore.Models.Element.Cities.Goris => "Goris",
+                KasebCore.Models.Element.Cities.Charentsavan => "Charentsavan",
+                KasebCore.Models.Element.Cities.Masis => "Masis",
+                KasebCore.Models.Element.Cities.Ashtarak => "Ashtarak",
+                KasebCore.Models.Element.Cities.Sevan => "Sevan",
+                KasebCore.Models.Element.Cities.Dilijan => "Dilijan",
+                KasebCore.Models.Element.Cities.Spitak => "Spitak",
+                KasebCore.Models.Element.Cities.Sisian => "Sisian",
+                KasebCore.Models.Element.Cities.Stepanavan => "Stepanavan",
+                KasebCore.Models.Element.Cities.Martuni => "Martuni",
+                KasebCore.Models.Element.Cities.Vardenis => "Vardenis",
+                KasebCore.Models.Element.Cities.Yeghvard => "Yeghvard",
+                KasebCore.Models.Element.Cities.Byureghavan => "Byureghavan",
+                KasebCore.Models.Element.Cities.NorHachn => "Nor Hachn",
+                KasebCore.Models.Element.Cities.Aparan => "Aparan",
+                KasebCore.Models.Element.Cities.Berd => "Berd",
+                KasebCore.Models.Element.Cities.Tashir => "Tashir",
+                KasebCore.Models.Element.Cities.Alaverdi => "Alaverdi",
+                KasebCore.Models.Element.Cities.Noyemberyan => "Noyemberyan",
+                KasebCore.Models.Element.Cities.Jermuk => "Jermuk",
+                KasebCore.Models.Element.Cities.Chambarak => "Chambarak",
+                KasebCore.Models.Element.Cities.Metsamor => "Metsamor",
+                KasebCore.Models.Element.Cities.Vedi => "Vedi",
+                KasebCore.Models.Element.Cities.Maralik => "Maralik",
+                KasebCore.Models.Element.Cities.Talin => "Talin",
+                KasebCore.Models.Element.Cities.Tumanyan => "Tumanyan",
+                KasebCore.Models.Element.Cities.Meghri => "Meghri",
+                KasebCore.Models.Element.Cities.Agarak => "Agarak",
+                KasebCore.Models.Element.Cities.Kajaran => "Kajaran",
+                KasebCore.Models.Element.Cities.Dastakert => "Dastakert",
+                KasebCore.Models.Element.Cities.Shamlugh => "Shamlugh",
+                KasebCore.Models.Element.Cities.Ayrum => "Ayrum",
+                KasebCore.Models.Element.Cities.Tsaghkadzor => "Tsaghkadzor",
+                KasebCore.Models.Element.Cities.Ararat => "Ararat",
+                _ => "Unknown"
             };
         }
-        public static string ConvertWeighDecimalToWeighString (decimal WeighDecimal)
+        public static string ConvertMeterDecimalToMeterString (decimal MeterDecimal)
         {
-                        return WeighDecimal >= 1000
-                        ? KiloToTon((double) WeighDecimal).ToString() + " تُن"
-                        : ((double)WeighDecimal).ToString() + " کیلوگرم";
+                        return MeterDecimal >= 1000
+                        ? MeterToKilometer((double)MeterDecimal).ToString() + " Meter"
+                        : ((double)MeterDecimal).ToString() + " Kilometer";
 
 
         }

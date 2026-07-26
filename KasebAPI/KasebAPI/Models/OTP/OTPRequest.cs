@@ -1,12 +1,17 @@
-﻿namespace KasebAPI.Models.OTP
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+
+namespace KasebAPI.Models.OTP
 {
     public class OTPRequest
     {
-
         public class VerifyOTPRequest
         {
-            public string PhoneNumber { get; set; }
-            public string UserCode { get; set; }
+            [Key]
+            public int Id { get; set; }
+            public string PhoneNumber { get; set; } = string.Empty;
+            public string UserCode { get; set; } = string.Empty;
+            public DateTime Expiration {  get; set; }
         }
     }
 }

@@ -193,7 +193,7 @@ Size=14, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray
                                     <Label Text="از: " Margin="0,20,0,0"></Label>
                                     <material:TextField  BorderColor="{AppThemeBinding Light={x:StaticResource Gray300},
 Dark={x:StaticResource Gray900}}" Margin="20,0,0,0"
-    Text="{Binding MinValueOfWeighKG}"
+    Text="{Binding MinAreaValue}"
     BackgroundColor="Transparent" >
                                         <validation:RequiredValidation Message="این قسمت باید پر شود" />
 
@@ -202,7 +202,7 @@ Dark={x:StaticResource Gray900}}" Margin="20,0,0,0"
                                     <Label Text="تا: " Margin="0,20,0,0" Grid.Column="2"></Label>
                                     <material:TextField  BorderColor="{AppThemeBinding Light={x:StaticResource Gray300},
 Dark={x:StaticResource Gray900}}"
-    Text="{Binding MaxValueOfWeighKG}"
+    Text="{Binding MaxAreaValue}"
     BackgroundColor="Transparent" Margin="20,0,0,0"
                                                 Grid.Column="2">
                                         <validation:RequiredValidation Message="این قسمت باید پر شود" />

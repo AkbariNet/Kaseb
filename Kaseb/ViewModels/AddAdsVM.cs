@@ -119,7 +119,7 @@ namespace Kaseb.ViewModels
                 OnPropertyChanged(nameof(ValueOfTag1));
                 OnPropertyChanged(nameof(ValueOfTag2));
                 OnPropertyChanged(nameof(Price));
-                OnPropertyChanged(nameof(ValueOfWeighKG));
+                OnPropertyChanged(nameof(AreaValue));
                 OnPropertyChanged(nameof(Category));*/
 
 
@@ -400,17 +400,17 @@ namespace Kaseb.ViewModels
         }
 
         //Value For WeighKG
-        public decimal ValueOfWeighKG
+        public decimal AreaValue
         {
 
-            get => Model?.ValueOfWeighKG ?? 0;
+            get => Model?.AreaValue ?? 0;
 
             set
             {
-                if (Model != null && Model.ValueOfWeighKG != value)
+                if (Model != null && Model.AreaValue != value)
                 {
-                    Model.ValueOfWeighKG = value;
-                    OnPropertyChanged(nameof(ValueOfWeighKG));
+                    Model.AreaValue = value;
+                    OnPropertyChanged(nameof(AreaValue));
                 }
             }
         }

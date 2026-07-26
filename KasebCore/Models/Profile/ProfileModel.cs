@@ -6,7 +6,7 @@ namespace KasebCore.Models.Profile
 {
     public static class Profile
     {
-        public static ProfileModel MainProfile;
+        public static ProfileModel MainProfile = null;
     }
 
     public class ProfileModel
@@ -58,6 +58,11 @@ namespace KasebCore.Models.Profile
             /// User's city of residence.
             /// </summary>
             public string City { get; set; } = string.Empty;
+
+            /// <summary>
+            /// User's Image URI.
+            /// </summary>
+            public string ProfileImageUri { get; set; } = string.Empty;
 
             /// <summary>
             /// User's mobile phone number.  **IMPORTANT: Consider encryption for security.**
