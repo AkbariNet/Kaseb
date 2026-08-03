@@ -27,7 +27,7 @@
                     <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
                         <Label Grid.Column="1" Text="{x:Static Models:FontAwsomeIconLoader.LocationDot}" TextColor="{DynamicResource Primary}" FontSize="18" VerticalTextAlignment="Center" FontFamily="7Awesome" 
                            Margin="15,10,10,10"></Label>
-                        <Label Grid.Column="3" Text="همه ایران"  FontFamily="Vazirmatn" TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" FontSize="18" VerticalTextAlignment="Center" Margin="2" ></Label>
+                        <Label Grid.Column="3" Text="Yerevan"  FontFamily="Vazirmatn" TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" FontSize="18" VerticalTextAlignment="Center" Margin="2" ></Label>
                     </StackLayout>
                 </Border>
             </Border>
@@ -51,7 +51,7 @@
 
         </Grid>
         <StackLayout Orientation="Horizontal" Spacing="10">
-            <Button HorizontalOptions="Start" Text="فیلتر ها"
+            <Button HorizontalOptions="Start" Text="Filters"
                     FontSize="12"
                     Background="{AppThemeBinding Dark={DynamicResource Gray100},Light={DynamicResource Gray900}}"
                     TextColor="{AppThemeBinding Dark={DynamicResource Gray900},Light={DynamicResource White}}"

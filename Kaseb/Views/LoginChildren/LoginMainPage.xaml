@@ -15,11 +15,11 @@
                         <Image Source="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.User},
                          Size=36, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
                          Dark={StaticResource White}}}"/>
-                        <Label Text="ورود / ثبت نام"
+                        <Label Text="Login / Register"
                              HorizontalOptions="Center"
                              FontSize="24"
                              FontFamily="VazirmatnBold"/>
-                        <Label Text="جهت استفاده از تمامی امکانات برنامه، لطفا وارد شوید."
+            <Label Text="To use all the features of the program, please log in."
                FontSize="16"
                              HorizontalOptions="Center"
                FontFamily="VazirmatnLight"/>
@@ -30,15 +30,15 @@ FontFamily="VazirmatnLight"/>
                     </StackLayout>
                     <ScrollView>
                         <StackLayout Spacing="20" >
-                            <Grid ColumnDefinitions="*,10,60">
+                            <Grid ColumnDefinitions="60,10,*">
                                 
-                                <Border Grid.Column="2"
+                                <Border Grid.Column="0"
       Background="Transparent"  IsVisible="True"
                                         Stroke="{AppThemeBinding Light={DynamicResource Gray100} 
                                     , Dark={DynamicResource Gray600}}"
                                         StrokeThickness="1"
       StrokeShape="RoundRectangle 10">
-                                    <Button Text="+98"
+                                    <Button Text="+374"
                                             FlowDirection="LeftToRight"
                                             TextColor="{AppThemeBinding 
                                         Dark={DynamicResource White}
@@ -47,6 +47,7 @@ FontFamily="VazirmatnLight"/>
 
                                 </Border>
                                 <Border 
+                                    Grid.Column="2"
       Background="{AppThemeBinding
       Light={DynamicResource Gray100},
       Dark={DynamicResource Gray900}}"
@@ -54,14 +55,14 @@ FontFamily="VazirmatnLight"/>
                                     <material:TextField
                                         AllowClear="True"
                                         x:Name="PhoneNumberText"
-                                        ToolTipProperties.Text="9120000000"
+                                        ToolTipProperties.Text="0"
                                         Keyboard="Telephone"
                                         
                                         />
 
                                 </Border>
                             </Grid>
-                            <Button Text="ورود"
+                            <Button Text="Login"
                                     TextColor="White"
                                     WidthRequest="100" Clicked="Button_Clicked"/>
                         </StackLayout>

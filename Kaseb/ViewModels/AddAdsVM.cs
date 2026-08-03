@@ -73,7 +73,7 @@ namespace Kaseb.ViewModels
                 ImagePaths.Add(img.FilePath);
             ProcessingOverlay OverlayOfProcessing = new ProcessingOverlay();
             
-            OverlayOfProcessing.Show("درحال افزودن آگهی...");
+            OverlayOfProcessing.Show("Adding you ad...");
             await Shell.Current.Navigation.PushAsync(OverlayOfProcessing);
             
 
@@ -84,7 +84,7 @@ namespace Kaseb.ViewModels
 
                 if (UploadAdProcessingInfo.IsSuccess)
                 {
-                    OverlayOfProcessing.Show("موفقیت آمیز!", UploadAdProcessingInfo.Message, false);
+                    OverlayOfProcessing.Show("Successful!", UploadAdProcessingInfo.Message, false);
                     await Task.Delay(2000);
                     OverlayOfProcessing.Remove();
 
@@ -93,14 +93,14 @@ namespace Kaseb.ViewModels
                 }
                 else
                 {
-                    OverlayOfProcessing.Show("شکست!", UploadAdProcessingInfo.Message, false);
+                    OverlayOfProcessing.Show("Fail!", UploadAdProcessingInfo.Message, false);
                
                 }
             }
             else
             {
 
-                OverlayOfProcessing.Show("شکست!", InfoOfValidation.Message, false);
+                OverlayOfProcessing.Show("Fail!", InfoOfValidation.Message, false);
             }
 
 
@@ -186,7 +186,7 @@ namespace Kaseb.ViewModels
 
                 var model = new SelectAdTypeModel { Category = category };
 
-                var view = new SelectAdType(model);      // یا new SelectAdType() { BindingContext = vm };
+                var view = new SelectAdType(model);      //  new SelectAdType() { BindingContext = vm };
 
                 theList.Add(view);
             }
@@ -208,7 +208,7 @@ namespace Kaseb.ViewModels
 
                 var model = new SelectAdCityModel { Cities = Cities };
 
-                var view = new SelectAdCity(model);      // یا new SelectAdType() { BindingContext = vm };
+                var view = new SelectAdCity(model);      //  new SelectAdType() { BindingContext = vm };
 
                 theList.Add(view);
             }
@@ -307,7 +307,7 @@ namespace Kaseb.ViewModels
                 try
                 {
 
-                    return Model?.City ?? "نامشخص";
+                    return Model?.City ?? "Unknwon";
                 }
                 catch (Exception)
                 {
@@ -473,12 +473,12 @@ namespace Kaseb.ViewModels
                     OnPropertyChanged(nameof(NonCash));
                     if (NonCash)
                     {
-                        ValueOfTag1 = "غیرنقدی";
+                        ValueOfTag1 = "None Cash";
                     }
                     else
                     {
 
-                        ValueOfTag1 = "نقدی";
+                        ValueOfTag1 = "Cash";
                     }
                 }
             }

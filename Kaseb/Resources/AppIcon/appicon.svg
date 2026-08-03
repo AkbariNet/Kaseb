@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 120 120">
+  <!-- Generator: Adobe Illustrator 29.1.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 142)  -->
   <defs>
     <style>
-      .cls-1 {
-        fill: #ff7a30;
+      .st0 {
+        fill: #070707;
       }
     </style>
   </defs>
-  <rect class="cls-1" x="0" width="120" height="120"/>
+  <rect class="st0" width="120" height="120"/>
 </svg>

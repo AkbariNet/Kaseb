@@ -34,25 +34,32 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 		<Configurations>Debug;Release;Deploy</Configurations>
-		
-		
+
+
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
-		
+
 	</PropertyGroup>
 
+	<PropertyGroup Condition="$(TargetFramework. Contains('-android')) and '$(Configuration)' == 'Release'">
+		<AndroidKeyStore>True</AndroidKeyStore>
+		<AndroidSigningKeyStore> .\key.keystore</AndroidSigningKeyStore>
+		<AndroidSigningStorePass>testing</AndroidSigningStorePass>
+		<AndroidSigningKeyAlias>KasebAlias</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass>testing</AndroidSigningKeyPass>
+	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#070707" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#070707" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
-		
+
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
 
@@ -61,127 +68,127 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="14.2.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="15.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.71" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.9" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.71" />
-		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="10.0.71" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.90" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.10" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.90" />
+		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="10.0.90" />
 		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
-		<PackageReference Include="UraniumUI.Material" Version="2.16.0" />
+		<PackageReference Include="UraniumUI.Material" Version="3.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="AppShell.xaml.cs">
-	    <DependentUpon>AppShell.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\AddAds.xaml.cs">
-	    <DependentUpon>AddAds.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\AddAds_Childrens\ProcessingOverlay.xaml.cs">
-	    <DependentUpon>ProcessingOverlay.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\Element\Buttons\HamburgerMenuItem.xaml.cs">
-	    <DependentUpon>HamburgerMenuItem.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\Element\ImagePicker.xaml.cs">
-	    <DependentUpon>ImagePicker.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\Element\SelectAdCity.xaml.cs">
-	    <DependentUpon>SelectAdCity.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\Element\SelectAdType.xaml.cs">
-	    <DependentUpon>SelectAdType.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\LoginChildren\LoginGetCode.xaml.cs">
-	    <DependentUpon>LoginGetCode.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\LoginChildren\LoginMainPage.xaml.cs">
-	    <DependentUpon>LoginMainPage.xaml</DependentUpon>
-	  </Compile>
+		<Compile Update="AppShell.xaml.cs">
+			<DependentUpon>AppShell.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\AddAds.xaml.cs">
+			<DependentUpon>AddAds.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\AddAds_Childrens\ProcessingOverlay.xaml.cs">
+			<DependentUpon>ProcessingOverlay.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\Element\Buttons\HamburgerMenuItem.xaml.cs">
+			<DependentUpon>HamburgerMenuItem.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\Element\ImagePicker.xaml.cs">
+			<DependentUpon>ImagePicker.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\Element\SelectAdCity.xaml.cs">
+			<DependentUpon>SelectAdCity.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\Element\SelectAdType.xaml.cs">
+			<DependentUpon>SelectAdType.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\LoginChildren\LoginGetCode.xaml.cs">
+			<DependentUpon>LoginGetCode.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\LoginChildren\LoginMainPage.xaml.cs">
+			<DependentUpon>LoginMainPage.xaml</DependentUpon>
+		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="AppShell.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\AddAds.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\AddAds_Childrens\ProcessingOverlay.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Ads.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\AdsOverlay\AdsFilterView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Element\AdElement.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Element\AdElementPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Element\AdElementPageChildrens\AdElementImageSlider.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Element\Buttons\HamburgerMenuItem.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Element\Header.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Element\ImagePicker.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Element\SelectAdCity.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Element\SelectAdType.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Element\SearchElement.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Element\Selector.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Lobby.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Lobby_Childrens\MapSearching.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Lobby_Childrens\Menu.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Login.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\LoginChildren\LoginGetCode.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\LoginChildren\LoginMainPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Profile.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+		<MauiXaml Update="AppShell.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\AddAds.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\AddAds_Childrens\ProcessingOverlay.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Ads.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\AdsOverlay\AdsFilterView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Element\AdElement.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Element\AdElementPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Element\AdElementPageChildrens\AdElementImageSlider.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Element\Buttons\HamburgerMenuItem.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Element\Header.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Element\ImagePicker.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Element\SelectAdCity.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Element\SelectAdType.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Element\SearchElement.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Element\Selector.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Lobby.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Lobby_Childrens\MapSearching.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Lobby_Childrens\Menu.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Login.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\LoginChildren\LoginGetCode.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\LoginChildren\LoginMainPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Profile.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Resources\Images\foods\" />
-	  <Folder Include="Services\" />
+		<Folder Include="Resources\Images\foods\" />
+		<Folder Include="Services\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Include="Resources\Splash\ImageSplash\image_splash.png" />
+		<MauiImage Include="Resources\Splash\ImageSplash\image_splash.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\KasebAdServices\KasebAdServices.csproj" />
-	  <ProjectReference Include="..\KasebCore\KasebCore.csproj" />
+		<ProjectReference Include="..\KasebAdServices\KasebAdServices.csproj" />
+		<ProjectReference Include="..\KasebCore\KasebCore.csproj" />
 	</ItemGroup>
 
 </Project>

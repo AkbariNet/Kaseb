@@ -25,8 +25,8 @@
                         <x:Arguments>
                             <loc:Location>
                                 <x:Arguments>
-                                    <x:Double>34.820692</x:Double>
-                                    <x:Double>48.429202</x:Double>
+                                    <x:Double>40.180712</x:Double>
+                                    <x:Double>44.513687</x:Double>
                                 </x:Arguments>
                             </loc:Location>
                             <x:Double>.02</x:Double>
@@ -86,9 +86,9 @@
             <material:BottomSheetView.Header>
                 <Grid
                   HeightRequest="60" 
-                  BackgroundColor="{StaticResource Primary}"
+                  BackgroundColor="{StaticResource Gray900}"
                    >
-                    <Label Text="آگهی ها" TextColor="{DynamicResource White}" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" ></Label>
+                    <Label Text="Ads" TextColor="{DynamicResource Primary}" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" ></Label>
 
                 </Grid>
 

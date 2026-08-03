@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KasebAdServices</name>
+    </assembly>
+    <members>
+        <member name="M:KasebAdServices.Services.Connection.UploadAd.UploadAdAsync(KasebCore.Models.Element.AdElementModel)">
+            <summary>
+            The Process of Uploading ad to database with static methods
+            </summary>
+            <param name="model"></param>
+            <returns> </returns>
+        </member>
+        <member name="T:KasebAdServices.Resource">
+            <summary>
+            Android Resource Designer class.
+            Exposes the Android Resource designer assembly into the project Namespace.
+            </summary>
+        </member>
+    </members>
+</doc>

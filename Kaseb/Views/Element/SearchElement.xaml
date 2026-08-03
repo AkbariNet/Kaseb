@@ -37,7 +37,7 @@
                 ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.ChevronRight},
                 Size=24, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
                 Dark={StaticResource White}}}"></Button>
-            <material:TextField Grid.Column="1"  Margin="0,5,10,0" BorderThickness="1" Title="آگهی" Text="{Binding SearchText}" ></material:TextField>
+            <material:TextField Grid.Column="1"  Margin="0,5,10,0" BorderThickness="1" Title="Ad" Text="{Binding SearchText}" ></material:TextField>
         </Grid>
     </Grid>
 

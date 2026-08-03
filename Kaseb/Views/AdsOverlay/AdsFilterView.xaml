@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Kaseb.Views.AdsOverlay.AdsFilterView"
       xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-            FlowDirection="RightToLeft"
+            
       xmlns:validation="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
            
       xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material" 
@@ -18,7 +18,7 @@
  Dark={x:StaticResource Gray600}}}">
 
         <Grid RowDefinitions="auto,*,auto">
-            <Label Text="فیلتر ها"
+            <Label Text="Filters"
 HorizontalOptions="Center"
 Margin="0,30,0,10"
 FontSize="18"
@@ -36,7 +36,7 @@ Opacity="0.4"></Label>
                                  HorizontalOptions="Start"
                                  Margin="0,0,0,0"
                                  Opacity="1"></Image>
-                                <Label Text="مکان:"
+                                <Label Text="Location:"
                                     HorizontalOptions="Start"
                                     Margin="10,0,0,0"
                                     FontSize="14"
@@ -62,7 +62,7 @@ Size=14, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray
                                  HorizontalOptions="Start"
                                  Margin="0,0,0,0"
                                  Opacity="1"/>
-                                <Label Text="دسته بندی:"
+                                <Label Text="Category:"
                                     HorizontalOptions="Start"
                                     Margin="10,0,0,0"
                                     FontSize="14"
@@ -107,15 +107,15 @@ Size=14, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray
                                     HorizontalOptions="Start"
                                     Margin="10,0,0,0"
                                     Opacity="1"></Image>
-                                    <Label Text="محدوده قیمت:"
+                                    <Label Text="Price:"
                                        HorizontalOptions="Start"
                                        Margin="10,0,0,0"
                                        FontSize="14"
                                        Opacity="1"></Label>
                                 </StackLayout>
-                                <Grid ColumnDefinitions="30,*,30"   >
+                                <Grid ColumnDefinitions="80,*,30"   >
 
-                                    <Label Text="از:"
+                                    <Label Text="From:"
                                              
                    Margin="10,20,0,0"
                    FontSize="14"
@@ -124,18 +124,18 @@ Size=14, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray
                                             Grid.Column="1"
                                     Text="{Binding MinPrice}" 
                             TextColor="{AppThemeBinding Light={DynamicResource Gray900}}">
-                                        <validation:DigitsOnlyValidation Message="لطفا وزن را بصورت عددی و صحیح وارد نمایید" />
+                                        <validation:DigitsOnlyValidation Message="Please enter the weight numerically and correctly." />
                                     </material:TextField>
-                                    <Label Text="تومان"
+                                    <Label Text="AMD"
                                             Grid.Column="1"
                                HorizontalOptions="End"
                    Margin="10,20,40,0"
                    FontSize="14"
                    Opacity="1"></Label>
                                 </Grid>
-                                <Grid ColumnDefinitions="30,*,30"   Margin="0,0,0,20">
+                                <Grid ColumnDefinitions="80,*,30"   Margin="0,0,0,20">
 
-                                    <Label Text="تا:"
+                                    <Label Text="To:"
                                              
                    Margin="10,20,0,0"
                    FontSize="14"
@@ -144,9 +144,9 @@ Size=14, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray
                                             Grid.Column="1"
                                     Text="{Binding MaxPrice}" 
                             TextColor="{AppThemeBinding Light={DynamicResource Gray900}}">
-                                        <validation:DigitsOnlyValidation Message="لطفا وزن را بصورت عددی و صحیح وارد نمایید" />
+                                        <validation:DigitsOnlyValidation Message="Please enter the weight numerically and correctly." />
                                     </material:TextField>
-                                    <Label Text="تومان"
+                                    <Label Text="AMD"
                                             Grid.Column="1"
                                HorizontalOptions="End"
                    Margin="10,20,40,0"
@@ -182,7 +182,7 @@ Size=14, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray
       HorizontalOptions="Start"
       Margin="10,0,0,0"
       Opacity="1"></Image>
-                                    <Label Text="محدوده وزن:"
+                                    <Label Text="Area range:"
          HorizontalOptions="Start"
          Margin="10,0,0,0"
          FontSize="14"
@@ -190,27 +190,26 @@ Size=14, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray
                                 </StackLayout>
                                 <Grid ColumnDefinitions="*,20,*" Margin="10">
 
-                                    <Label Text="از: " Margin="0,20,0,0"></Label>
+                                    <Label Text="From: " Margin="0,20,0,0"></Label>
                                     <material:TextField  BorderColor="{AppThemeBinding Light={x:StaticResource Gray300},
-Dark={x:StaticResource Gray900}}" Margin="20,0,0,0"
+Dark={x:StaticResource Gray900}}" Margin="50,0,00,0"
     Text="{Binding MinAreaValue}"
     BackgroundColor="Transparent" >
-                                        <validation:RequiredValidation Message="این قسمت باید پر شود" />
+                                        <validation:RequiredValidation Message="You must fill this section." />
 
-                                        <validation:DigitsOnlyValidation Message="لطفا وزن را بصورت عددی و صحیح وارد نمایید" />
+                                        <validation:DigitsOnlyValidation Message="Please enter the weight numerically and correctly." />
                                     </material:TextField>
-                                    <Label Text="تا: " Margin="0,20,0,0" Grid.Column="2"></Label>
+                                    <Label Text="To: " Margin="0,20,0,0" Grid.Column="2"></Label>
                                     <material:TextField  BorderColor="{AppThemeBinding Light={x:StaticResource Gray300},
 Dark={x:StaticResource Gray900}}"
     Text="{Binding MaxAreaValue}"
-    BackgroundColor="Transparent" Margin="20,0,0,0"
+    BackgroundColor="Transparent" Margin="40,0,00,0"
                                                 Grid.Column="2">
-                                        <validation:RequiredValidation Message="این قسمت باید پر شود" />
+                                        <validation:RequiredValidation Message="You must fill this section." />
 
-                                        <validation:DigitsOnlyValidation Message="لطفا وزن را بصورت عددی و صحیح وارد نمایید" />
+                                        <validation:DigitsOnlyValidation Message="Please enter the weight numerically and correctly." />
                                     </material:TextField>
                                 </Grid>
-                                <Label Text="وزن برحسب کیلوگرم" Margin="0,10,0,0" Opacity=".2" ></Label>
                             </StackLayout>
                         </Border>
                     </StackLayout>
@@ -226,11 +225,11 @@ Dark={x:StaticResource Gray900}}"
                                             Dark={DynamicResource Gray300}}"/>
                     <StackLayout Orientation="Horizontal">
                         <CheckBox HorizontalOptions="Start" IsChecked="{Binding IsUrgent}" ></CheckBox>
-                        <Label Text="فقط فوری" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                        <Label Text="Urgent only" HorizontalOptions="Start" VerticalOptions="Center"></Label>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <CheckBox HorizontalOptions="Start" IsChecked="{Binding IsNonCash}" ></CheckBox>
-                        <Label Text="فقط غیرنقدی" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+                        <Label Text="NonCash only" HorizontalOptions="Start" VerticalOptions="Center"></Label>
                     </StackLayout>
                 </StackLayout>
 
@@ -242,7 +241,7 @@ Dark={x:StaticResource Gray900}}"
                          HorizontalOptions="Start"
                          Spacing="10"
                          Margin="20,30,20,20">
-                    <Button Text="ثبت فیلتر"
+                    <Button Text="Submit"
                              Padding="20,0,20,0"
                              CornerRadius="15"
                              FontAttributes="Bold"
@@ -250,7 +249,7 @@ Dark={x:StaticResource Gray900}}"
                                  Clicked="Submit_Clicked"
     
                              TextColor="White"/>
-                    <Button Text="لغو"
+                    <Button Text="Cancel"
                         Background="Transparent"
                         CornerRadius="15"
                        x:Name="Cancel"

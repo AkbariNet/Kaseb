@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KasebCore</name>
+    </assembly>
+    <members>
+        <member name="T:KasebCore.Models.Profile.ProfileModel.UserRole">
+            <summary>
+            Defines the possible roles a user can have within the application.
+            </summary>
+        </member>
+        <member name="T:KasebCore.Models.Profile.ProfileModel.UserProfile">
+            <summary>
+            Represents a user profile within the agricultural product marketplace application.
+            Mimics some features found in platforms like دیوار (Divar).
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.Id">
+            <summary>
+            Unique identifier for the user profile.
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.FirstName">
+            <summary>
+            User's first name.
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.LastName">
+            <summary>
+            User's last name.
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.RegistrationTime">
+            <summary>
+            Timestamp of when the user registered.
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.LastVisitTime">
+            <summary>
+            Timestamp of the user's last visit to the application.
+            Nullable to account for new users or users who have not logged in.
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.City">
+            <summary>
+            User's city of residence.
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.ProfileImageUri">
+            <summary>
+            User's Image URI.
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.MobileNumber">
+            <summary>
+            User's mobile phone number.  **IMPORTANT: Consider encryption for security.**
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.IsVerified">
+            <summary>
+            Indicates whether the user's identity has been verified.
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.NationalId">
+            <summary>
+            User's national identification number. **IMPORTANT: Consider encryption for security.**
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.ProfilePictureUrl">
+            <summary>
+            URL to the user's profile picture.
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.ViewedAdvertisements">
+            <summary>
+            List of advertisements the user has viewed.
+            \n By ID.
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.PostedAdvertisements">
+            <summary>
+            List of advertisements the user has posted.
+            \n By ID.
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.AdvertisementsUnderReview">
+            <summary>
+            List of advertisements currently under review by administrators.
+            \n By ID.
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.RejectedAdvertisements">
+            <summary>
+            List of advertisements that have been rejected.
+            \n By ID.
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.Role">
+            <summary>
+            The role of the user within the application.
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.Description">
+            <summary>
+             A description of the user (similar to دیوار).  Allows users to add additional information.
+            </summary>
+        </member>
+        <member name="P:KasebCore.Models.Profile.ProfileModel.UserProfile.Location">
+            <summary>
+            User's location (e.g., for map display).
+            </summary>
+        </member>
+        <member name="M:KasebCore.Services.Animation.ShowWithFade(Microsoft.Maui.Controls.View)">
+            <summary>
+            Shows a view with a fade‑in (and upward) animation.
+            </summary>
+        </member>
+        <member name="M:KasebCore.Services.Animation.ShowWithFade(Microsoft.Maui.Controls.View,Microsoft.Maui.Controls.View)">
+            <summary>
+            Shows a view with fade‑in while fading out its parent.
+            The parent is temporarily disabled.
+            </summary>
+        </member>
+        <member name="M:KasebCore.Services.Animation.HideWithFade(Microsoft.Maui.Controls.View)">
+            <summary>
+            Hides a view with a fade‑out animation.
+            </summary>
+        </member>
+        <member name="M:KasebCore.Services.Animation.HideWithFade(Microsoft.Maui.Controls.View,Microsoft.Maui.Controls.View)">
+            <summary>
+            Hides a view while restoring the parent’s opacity and enabled state.
+            </summary>
+        </member>
+        <member name="T:KasebCore.Resource">
+            <summary>
+            Android Resource Designer class.
+            Exposes the Android Resource designer assembly into the project Namespace.
+            </summary>
+        </member>
+    </members>
+</doc>

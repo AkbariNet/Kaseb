@@ -58,7 +58,7 @@ namespace Kaseb.ViewModels.Element
                 }
                 else
                 {
-                    return "جستجو کنید...";
+                    return "Search..";
                 }
 
             }

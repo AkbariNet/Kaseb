@@ -110,7 +110,7 @@
                     </StackLayout>
                     <StackLayout Margin="0,20,0,0" HorizontalOptions="Center" Orientation="Horizontal">
 
-                            <Label Text="{Binding PriceString}"  FontSize="18" FontAttributes="800"
+                            <Label Text="{Binding PriceString}"  FontSize="18"  
                        HorizontalTextAlignment="Center" Opacity="0.7"  FontFamily="VazirmatnBlack"
                        HorizontalOptions="Center"></Label>
                         <Label Text=" تومان"  FontSize="18" FontFamily="VazirmatnBlack"

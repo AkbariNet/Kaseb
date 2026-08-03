@@ -48,7 +48,7 @@ Value="Transparent" >
                         Padding="0,5,0,0"
                         Margin="0,15,0,0" HeightRequest="60" BackgroundColor="Transparent"
                         TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" 
-                        Text="آگهی ها"
+                        Text="Ads"
                         ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.House},
                         Size=18, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
                         Dark={StaticResource White}}}"  Command="{Binding isAdButtonClicked}" >
@@ -103,7 +103,7 @@ Value="Transparent" >
                                   Padding="0,5,0,0"
                         Margin="0,15,0,0" HeightRequest="60" BackgroundColor="Transparent"
                         TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" 
-                        Text="نقشه"
+                        Text="Maps"
                         ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.Map},
                         Size=18, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
                         Dark={StaticResource White}}}"  Command="{Binding isLocationButtonClicked}" >
@@ -157,7 +157,7 @@ Value="Transparent" >
                          Padding="0,5,0,0"
                          Margin="0,15,0,0" HeightRequest="60" BackgroundColor="Transparent"
                           TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" 
-                        Text="ثبت آگهی"
+                        Text="Add Ads"
                          ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.SquarePlus},
                          Size=18, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
                          Dark={StaticResource White}}}"  Command="{Binding  isAddAdButtonClicked}"  >
@@ -211,7 +211,7 @@ Value="Transparent" >
                          Padding="0,5,0,0"
                          Margin="0,15,0,0" HeightRequest="60" BackgroundColor="Transparent"
                           TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" 
-                        Text="پروفایل"
+                        Text="Profile"
                          ImageSource="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.User},
                          Size=18, FontFamily=R7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
                          Dark={StaticResource White}}}"  Command="{Binding  isProfileButtonClicked}"  >

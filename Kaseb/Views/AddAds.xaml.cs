@@ -74,21 +74,21 @@ namespace Kaseb.Views
                 AnimationReserved = true;
                 await SlideSections(Section1, Section2, true);
                 SectionBackButton.IsVisible = true;
-                NextButton.Text = "بعدی";
+                NextButton.Text = "Next";
             }
             else if (Section2.IsVisible && !AnimationReserved)
             {
                 AnimationReserved = true;
                 await SlideSections(Section2, Section3, true);
                 SectionBackButton.IsVisible = true;
-                NextButton.Text = "بعدی";
+                NextButton.Text = "Next";
             }
             else if (Section3.IsVisible && !AnimationReserved)
             {
                 AnimationReserved = true;
                 await SlideSections(Section3, Section4, true);
                 SectionBackButton.IsVisible = true;
-                NextButton.Text = "ثبت آگهی";
+                NextButton.Text = "Add ad";
             }
             else if (Section4.IsVisible && !AnimationReserved)
             {
@@ -104,21 +104,21 @@ namespace Kaseb.Views
                 AnimationReserved = true;
                 await SlideSections(Section4, Section3, false);
                 SectionBackButton.IsVisible = true;
-                NextButton.Text = "بعدی";
+                NextButton.Text = "Next";
             }
             else if (Section3.IsVisible && !AnimationReserved)
             {
                 AnimationReserved = true;
                 await SlideSections(Section3, Section2, false);
                 SectionBackButton.IsVisible = true;
-                NextButton.Text = "بعدی";
+                NextButton.Text = "Next";
             }
             else if (Section2.IsVisible && !AnimationReserved)
             {
                 AnimationReserved = true;
                 await SlideSections(Section2, Section1, false);
                 SectionBackButton.IsVisible = false;
-                NextButton.Text = "بعدی";
+                NextButton.Text = "Next";
             }
         }
 
@@ -150,7 +150,7 @@ namespace Kaseb.Views
 
                 var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
                 {
-                    Title = "انتخاب عکس"
+                    Title = "Select image"
                 });
 
                 if (result != null)
@@ -167,7 +167,7 @@ namespace Kaseb.Views
             }
             else
             {
-                MessageBox.ShowMessage("امکان افزایش عکس وجود ندارد", "شما فقط میتوانید 5 عکس انتخاب کنید","دریافت شد");
+                MessageBox.ShowMessage("Unable to add photo", "You can only select 5 photos.", "OK");
 
             }
         }

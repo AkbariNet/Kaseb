@@ -4,7 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
              xmlns:Models="clr-namespace:KasebCore.Models;assembly=KasebCore" 
-             FlowDirection="RightToLeft"
+             
              xmlns:Childrens="clr-namespace:Kaseb.Views.Lobby_Childrens"
              xmlns:Elements="clr-namespace:Kaseb.Views.Element"
              xmlns:local="clr-namespace:Kaseb.Views.Element"

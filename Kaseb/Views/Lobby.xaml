@@ -9,7 +9,7 @@
              xmlns:ur="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              xmlns:urElement="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
              x:Class="Kaseb.Views.Lobby"
-              FlowDirection="RightToLeft"
+             
              >
 
     <Border Margin="0,40,0,0">
@@ -29,7 +29,7 @@
 
             <Elements:Header></Elements:Header>
 
-            <Border Grid.Row="2" Background="White" Margin="0,-10,0,0" ></Border>
+            <Border Grid.Row="2" Background="{DynamicResource Black}" Margin="0,-10,0,0" ></Border>
             <Childrens:MenuAPP Grid.Row="2"   ></Childrens:MenuAPP>
 
         </Grid>

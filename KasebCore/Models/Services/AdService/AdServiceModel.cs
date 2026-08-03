@@ -8,7 +8,7 @@
         {
             httpClient = new HttpClient();
             //httpClient.BaseAddress = new Uri("http://2.185.144.243:5008/");
-            httpClient.BaseAddress = new Uri("http://192.168.0.102:5008/");
+            httpClient.BaseAddress = new Uri("http://192.168.0.101:5008/");
             //httpClient.BaseAddress = new Uri("http://2.185.144.243:5008/");
 
         }

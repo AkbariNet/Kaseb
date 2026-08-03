@@ -37,10 +37,10 @@
                                HorizontalOptions="Center"
                                FontSize="24"
                                FontFamily="VazirmatnBold"/>
-                        <Label Text="{x:Static Profile:Profile.Profile.MainProfile.MobileNumber}"
+                        <!--<Label Text="{x:Static Profile:Profile.Profile.MainProfile.MobileNumber}"
                  FontSize="16"
                                HorizontalOptions="Center"
-                 FontFamily="VazirmatnLight"/>
+                 FontFamily="VazirmatnLight"/>-->
                     </StackLayout>
                     <ScrollView>
                         <StackLayout Spacing="20">
