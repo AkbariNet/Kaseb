@@ -1,4 +1,7 @@
-# 🏠 Kaseb
+<h1>
+  <img src="Resources/Icon/Resources/Logo.svg" width="50" height="50" align="center" >
+    Kaseb
+</h1>
 
 **Kaseb** is a modern cross-platform real estate marketplace application built with **.NET MAUI**. It provides a complete solution for buying and selling properties with a clean architecture, scalable codebase, and a smooth mobile experience on both Android and iOS.
 
