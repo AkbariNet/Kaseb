@@ -44,7 +44,7 @@
 
 	<PropertyGroup Condition="$(TargetFramework. Contains('-android')) and '$(Configuration)' == 'Release'">
 		<AndroidKeyStore>True</AndroidKeyStore>
-		<AndroidSigningKeyStore> .\key.keystore</AndroidSigningKeyStore>
+		<AndroidSigningKeyStore> $(MSBuildProjectDirectory)\key.keystore</AndroidSigningKeyStore>
 		<AndroidSigningStorePass>testing</AndroidSigningStorePass>
 		<AndroidSigningKeyAlias>KasebAlias</AndroidSigningKeyAlias>
 		<AndroidSigningKeyPass>testing</AndroidSigningKeyPass>
