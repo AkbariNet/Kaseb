@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Resources/Logo/Banner_Logo%20icon.svg" alt="Bloby AI Banner">
+  <img src="Resources/Logo/Banner_Logo%20icon.svg" alt="Kaseb Banner">
 </p>
 
 
