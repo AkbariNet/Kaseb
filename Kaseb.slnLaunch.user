@@ -10,7 +10,7 @@
       {
         "Path": "Kaseb\\Kaseb.csproj",
         "Action": "Start",
-        "DebugTarget": "Xiaomi M2101K6G (Android 13.0 - API 33)"
+        "DebugTarget": "Pixel 7 - API 36.0 (Android 16.0 - API 36)"
       }
     ]
   }

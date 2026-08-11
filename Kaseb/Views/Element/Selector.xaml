@@ -86,7 +86,7 @@
             <material:BottomSheetView.Header>
                 <Grid
                   HeightRequest="60" 
-                  BackgroundColor="{StaticResource Gray900}"
+                  BackgroundColor="{AppThemeBinding Light={DynamicResource White},Dark={DynamicResource Gray900}}"
                    >
                     <Label Text="Ads" TextColor="{DynamicResource Primary}" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" ></Label>
 

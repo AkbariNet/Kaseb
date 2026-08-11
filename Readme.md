@@ -1,5 +1,5 @@
 <h1>
-  <img src="Resources/Icon/Resources/Logo.svg" width="50" height="50" align="center" >
+  <img src="Resources/Logo/Logo_Logo.svg" width="50" height="50" align="center" >
     Kaseb
 </h1>
 

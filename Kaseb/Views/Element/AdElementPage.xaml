@@ -7,9 +7,7 @@
              xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
              xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material" 
-             xmlns:Controls="clr-namespace:Kaseb.Controls"
-             FlowDirection="RightToLeft"
-             >
+             xmlns:Controls="clr-namespace:Kaseb.Controls" >
     <Grid 
         Margin="0,40,0,0"
         BackgroundColor="{AppThemeBinding Light={x:StaticResource White}, Dark={x:StaticResource Gray900}}">
@@ -56,7 +54,7 @@
                     </StackLayout >
                     <StackLayout Margin="0,15,0,0" Spacing="10" Orientation="Horizontal"  HorizontalOptions="Center">
                         <Border HeightRequest="50"  StrokeShape="20"
-                    BackgroundColor="{StaticResource Primary}"
+                    BackgroundColor="{StaticResource  Primary}"
                                 IsVisible="{Binding IsUrgent}"
                     >
 
@@ -68,14 +66,14 @@
                            TextColor="{StaticResource White}"
                            VerticalOptions="Center"
                             HorizontalOptions="Center"></Label>
-                                <Label Text="فوری" VerticalOptions="Center" 
+                                <Label Text="Urgent" VerticalOptions="Center" 
                             TextColor="{StaticResource White}" HorizontalOptions="Center" FontFamily="VazirmatnBlack"  Margin="0,0,15,0"></Label>
                             </StackLayout>
 
                         </Border>
                         <Border HeightRequest="50"  StrokeShape="20"
                     BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}"
-                    IsVisible="{Binding IsShowWeighKG}"
+                    IsVisible="{Binding IsShowAreaMeter}"
                     >
                             <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Start">
 
@@ -113,7 +111,7 @@
                             <Label Text="{Binding PriceString}"  FontSize="18"  
                        HorizontalTextAlignment="Center" Opacity="0.7"  FontFamily="VazirmatnBlack"
                        HorizontalOptions="Center"></Label>
-                        <Label Text=" تومان"  FontSize="18" FontFamily="VazirmatnBlack"
+                        <Label Text=" AMD "  FontSize="18" FontFamily="VazirmatnBlack"
                        HorizontalTextAlignment="Center" Opacity="0.7"
                        HorizontalOptions="Center"></Label>
                     </StackLayout>
@@ -129,7 +127,7 @@
                 <Border StrokeShape="20"  >
                     <Button
                 StyleClass="FilledButton" FontFamily="VazirmatnBlack" 
-                Text="تماس" HeightRequest="50" WidthRequest="150" 
+                Text="Call" HeightRequest="50" WidthRequest="150" 
                         BackgroundColor="{DynamicResource Primary}"
                         TextColor="{StaticResource White}"
                     FontSize="18" x:Name="CallButton" Clicked="CallButton_Clicked" ></Button>
@@ -140,7 +138,7 @@
                             Background="Transparent"
                             TextColor="{AppThemeBinding Light={DynamicResource Gray600}, Dark={DynamicResource Gray100}}"
            StyleClass="TextButton" FontFamily="VazirmatnBold" 
-           Text="جزئیات آگهی" HeightRequest="50" 
+           Text="Ad Detail" HeightRequest="50" 
                FontSize="18" ></Button>
                 </Border>
             </StackLayout>
@@ -184,13 +182,13 @@
                         <Grid 
                           BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}">
                             <StackLayout Margin="20" Spacing="10">
-                                <Label Text="جزئیات آگهی" FontSize="18" FontAttributes="Bold" Opacity="0.8" Margin="20,0,20,20"/>
+                                <Label Text="Ad Detail" FontSize="18" FontAttributes="Bold" Opacity="0.8" Margin="20,0,20,20"/>
 
                                 <Grid ColumnDefinitions="*,*">
                                     <Grid ColumnDefinitions="*,*">
                                         <StackLayout Orientation="Horizontal"  Margin="20,0,0,0">
 
-                                            <Label Text="مکان آگهی : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
+                                            <Label Text="Place : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
                                             <Label Text="{Binding City}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
 
                                         </StackLayout>
@@ -198,7 +196,7 @@
                                     <Grid ColumnDefinitions="*,*" Grid.Column="1">
                                         <StackLayout Orientation="Horizontal"  Margin="20,0,0,0">
 
-                                            <Label Text="وزن : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
+                                            <Label Text="Area : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
                                             <Label Text="{Binding AreaValue}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
 
                                         </StackLayout>
@@ -208,7 +206,7 @@
                                 <Grid ColumnDefinitions="*,*">
                                     <StackLayout Orientation="Horizontal"  Margin="20,0,20,0">
 
-                                        <Label Text="زمان انتشار : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
+                                        <Label Text="Time of publish ad : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
                                         <Label Text="{Binding Date}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
 
                                     </StackLayout>
@@ -217,9 +215,9 @@
                                 <Grid ColumnDefinitions="*,*">
                                     <StackLayout Orientation="Horizontal"  Margin="20,0,20,0">
 
-                                        <Label Text="نوع فروش: " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
+                                            <Label Text="Term of sale :" FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
                                         <Label Text="{Binding ValueOfTag1}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
-                                        <Label Text=" و فوری" FontSize="16" FontAttributes="Bold"  Opacity="0.8">
+                                        <Label Text=" and urgent" FontSize="16" FontAttributes="Bold"  Opacity="0.8">
 
                                             <Label.Triggers>
                                                 <DataTrigger TargetType="Label"
@@ -238,9 +236,9 @@
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal" Grid.Column="1"  Margin="20,0,20,0">
 
-                                        <Label Text="مدت : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
+                                        <Label Text="period : " FontSize="16" FontAttributes="Bold"  Opacity="0.3"/>
                                         <Label Text="{Binding MonthForNonCash}" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
-                                        <Label Text=" ماهه" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
+                                        <Label Text=" Month" FontSize="16" FontAttributes="Bold"  Opacity="0.8"/>
 
                                         <StackLayout.Triggers>
                                             <DataTrigger TargetType="StackLayout"
@@ -256,19 +254,14 @@
                                         </StackLayout.Triggers>
                                     </StackLayout>
                                 </Grid>
-                                <Label Text="پرداخت پیش پرداخت الزامی است"
+                                    <Label Text="Prepayment is required."
                                    IsVisible="{Binding SomeOfCashMostPayed}"
                                    Margin="20,10,20,0" FontSize="16" FontAttributes="Bold"  Opacity="0.8">
 
                                 </Label>
                                 <BoxView StyleClass="Divider" />
                                 <StackLayout Spacing="10">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="تضمین موجودی آگهی: " FontSize="16" FontAttributes="Bold"  Opacity="0.3" Margin="20,0,20,0"/>
-                                        <Label Text="{Binding InventoryGuarantee}"   FontSize="16" FontAttributes="Bold"  Opacity="0.8" Margin="20,0,20,0"/>
-                                        <Label Text=" روز" FontSize="16" FontAttributes="Bold"  Opacity="0.3" Margin="0,0,20,0"/>
-
-                                    </StackLayout>
+                                 
 
                                     <BoxView StyleClass="Divider" />
 

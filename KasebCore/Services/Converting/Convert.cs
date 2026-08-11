@@ -162,8 +162,8 @@ namespace KasebCore.Services.Converting
         public static string ConvertMeterDecimalToMeterString (decimal MeterDecimal)
         {
                         return MeterDecimal >= 1000
-                        ? MeterToKilometer((double)MeterDecimal).ToString() + " Meter"
-                        : ((double)MeterDecimal).ToString() + " Kilometer";
+                        ? MeterToKilometer((double)MeterDecimal).ToString() + " Kilometer"
+                        : ((double)MeterDecimal).ToString() + " Meter";
 
 
         }

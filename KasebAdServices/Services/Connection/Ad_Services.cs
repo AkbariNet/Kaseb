@@ -100,19 +100,19 @@ namespace KasebAdServices.Services.Connection
                         }
 
                         SearchModel.MainSearchModel.LastAdID = (int)Respound[Respound.Count - 1].Id;
-                        Console.WriteLine("لیست دریافت شد ");
+                        Console.WriteLine("We got a list! ");
                         return Respound;
                     }
                     else
                     {
-                        Console.WriteLine("بدون محتوا ");
+                        Console.WriteLine("None content");
                         return new List<AdElementModel>();  // حداقل لیست خالی برگرده
 
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("2خطا در دریافت داده: " + ex.Message);
+                    Console.WriteLine("we got an error: " + ex.Message);
                     return new List<AdElementModel>();  // حداقل لیست خالی برگرده
                 }
             }
@@ -150,12 +150,12 @@ namespace KasebAdServices.Services.Connection
                     }
 
                         SearchModel.MainSearchModel.LastAdID = (int)Respound[Respound.Count - 1].Id;
-                        Console.WriteLine("لیست دریافت شد ");
+                        Console.WriteLine("We got a list ");
                         return Respound;
                     }
                 else
                 {
-                    Console.WriteLine("بدون محتوا " );
+                    Console.WriteLine("None content " );
                     return new List<AdElementModel>();  // حداقل لیست خالی برگرده
 
                 }
@@ -163,7 +163,7 @@ namespace KasebAdServices.Services.Connection
             }
             catch (Exception ex)
             {
-                Console.WriteLine("خطا در دریافت داده: " + ex.Message);
+                Console.WriteLine("We got a error: " + ex.Message);
                 return new List<AdElementModel>();  // حداقل لیست خالی برگرده
             }
         }

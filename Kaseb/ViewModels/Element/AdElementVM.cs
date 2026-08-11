@@ -29,7 +29,7 @@ namespace Kaseb.ViewModels.Element
                 OnPropertyChanged(nameof(Title));
                 OnPropertyChanged(nameof(Content));
                 OnPropertyChanged(nameof(IsUrgent));
-                OnPropertyChanged(nameof(IsShowWeighKG));
+                OnPropertyChanged(nameof(IsShowAreaMeter));
                 OnPropertyChanged(nameof(ValueOfTag1));
                 OnPropertyChanged(nameof(ValueOfTag2));
                 OnPropertyChanged(nameof(AreaValue));
@@ -217,9 +217,9 @@ namespace Kaseb.ViewModels.Element
             }
         }
         //for tags
-        public bool IsShowWeighKG
+        public bool IsShowAreaMeter
         {
-            get => Model?.IsShowWeighKG ?? false;
+            get => Model?.IsShowAreaMeter ?? false;
         }
         public bool IsShowTag1
         {
@@ -234,7 +234,7 @@ namespace Kaseb.ViewModels.Element
         {
             get
             {
-                return Model?.ValueSummery ?? "خطا!";
+                return Model?.ValueSummery ?? "Error!";
             }
         }
         //Value For WeighKG

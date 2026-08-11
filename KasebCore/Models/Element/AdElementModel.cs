@@ -191,7 +191,7 @@ namespace KasebCore.Models.Element
 
         [Required(ErrorMessage = "you must enter the Area Value.")]
         
-        [JsonPropertyName("AreaValue")]
+        [JsonPropertyName("areaValue")]
         public decimal AreaValue { get; set; }
 
         [JsonPropertyName("valueOfTag1")]
@@ -255,7 +255,7 @@ namespace KasebCore.Models.Element
         }
 
 
-        public bool IsShowWeighKG
+        public bool IsShowAreaMeter
         {
             get
             {

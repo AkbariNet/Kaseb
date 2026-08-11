@@ -160,7 +160,7 @@ Opacity="0.8" >
 
                         <StackLayout>
                             <Label Text="Area *"></Label>
-                            <ur:TextField Icon="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.WeightHanging},
+                            <ur:TextField Icon="{FontImageSource Glyph={x:Static Models:FontAwsomeIconLoader.House},
                                       Size=24, FontFamily=7Awesome, Color={AppThemeBinding Light={DynamicResource Gray950},
                                       Dark={StaticResource White}}}" BorderColor="{AppThemeBinding Light={x:StaticResource Gray300},
                                       Dark={x:StaticResource Gray900}}"
@@ -315,8 +315,8 @@ Opacity="0.8" >
                                         <x:Arguments>
                                             <loc:Location>
                                                 <x:Arguments>
-                                                    <x:Double>34.823999</x:Double>
-                                                    <x:Double>48.429919</x:Double>
+                                                    <x:Double>40.180712</x:Double>
+                                                    <x:Double>44.513687</x:Double>
                                                 </x:Arguments>
                                             </loc:Location>
                                             <x:Double>.01</x:Double>

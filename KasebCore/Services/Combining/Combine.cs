@@ -13,7 +13,7 @@ namespace KasebCore.Services.Combining
     {
         public static string CombineDateAndCity(DateTime Date,string City)
         {
-            string Value = Convert.ConvertDateTimeToSummeryTime(Date) + " در " + City;
+            string Value = Convert.ConvertDateTimeToSummeryTime(Date) + " in " + City;
 
 
             return Value;
