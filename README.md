@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="Resources/Logo/Banner_Logo%20icon.svg" alt="Kaseb Banner">
+</p>
+
+
 <h1>
   <img src="Resources/Logo/Logo_Logo.svg" width="50" height="50" align="center" >
     Kaseb
